@@ -11,74 +11,77 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
 </head>
 <body>
 
 
 	
-	<div class=" menu-left">
-	
-		<ul>
+<div class=" menu-left">
 
-			<li>
-				<a href="">
-					<span class=" glyphicon glyphicon-home icon"></span>
-				</a>
-			</li>
-			<li>
-				<a href="">
-					<span class=" glyphicon glyphicon-dashboard icon"></span>
-				</a>
-				<p style="color: white;">Bảng điều khiển</p>
-			</li>
-			<li>
-				<a href="">
-					<span class=" glyphicon glyphicon-usd icon" ></span>
-				</a>
+	<ul>
+
+		<li>
+			<a href="">
+				<span class=" glyphicon glyphicon-home icon"></span>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<span class=" glyphicon glyphicon-dashboard icon"></span>
+			</a>
+			<p style="color: white;">Bảng điều khiển</p>
+		</li>
+		<li>
+			<a href="<?php echo base_url()?>sales" style = "display: block;">
+				<span class=" glyphicon glyphicon-usd icon" ></span>
 				<p style="color: white;">Bán hàng</p>
-			</li>
-			<li>
-				<a href="">
-					<span class=" glyphicon glyphicon-book icon" ></span>
-				</a>
-				<p style="color: white;">Các sản phẩm</p>
-			</li>
-			<li>
-				<a href="">
-					<span class="  glyphicon glyphicon-heart icon" ></span>
-				</a>
-				<p style="color: white;">Khách hàng</p>
-			</li>
-			<li>
-				<a href="">
-					<span class=" glyphicon glyphicon-book icon" ></span>
-				</a>
-				<p style="color: white;">Các sản phẩm</p>
-			</li>
-			<li>
-				<a href="">
-					<span class=" glyphicon glyphicon-book icon" ></span>
-				</a>
-				<p style="color: white;">Các sản phẩm</p>
-			</li>
-			<li>
-				<a href="">
-					<span class=" glyphicon glyphicon-book icon" ></span>
-				</a>
-				<p style="color: white;">Các sản phẩm</p>
-			</li>
-			<li>
-				<a href="">
-					<span class=" glyphicon glyphicon-book icon" ></span>
-				</a>
-				<p style="color: white;">Các sản phẩm</p>
-			</li>
-		</ul>
-	</div>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo base_url()?>product" style = "display: block;">
+				<span class=" glyphicon glyphicon-book icon" ></span>
+			
+			<p style="color: white;">Các sản phẩm</p>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo base_url()?>customer" style = "display: block;">
+				<span class="  glyphicon glyphicon-heart icon" ></span>
+			
+			<p style="color: white;">Khách hàng</p>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo base_url()?>product">
+				<span class=" glyphicon glyphicon-book icon" ></span>
+			</a>
+			<p style="color: white;">Các sản phẩm</p>
+		</li>
+		<li>
+			<a href="">
+				<span class=" glyphicon glyphicon-book icon" ></span>
+			</a>
+			<p style="color: white;">Các sản phẩm</p>
+		</li>
+		<li>
+			<a href="">
+				<span class=" glyphicon glyphicon-book icon" ></span>
+			</a>
+			<p style="color: white;">Các sản phẩm</p>
+		</li>
+		<li>
+			<a href="">
+				<span class=" glyphicon glyphicon-book icon" ></span>
+			</a>
+			<p style="color: white;">Các sản phẩm</p>
+		</li>
+	</ul>
+</div>
+
+<div class="menu-right">
 	
-	<div class="menu-right">
-		abc
-	</div>
-	
+</div>
+
 </body>
 </html>

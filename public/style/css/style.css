@@ -322,3 +322,26 @@ a, a:visited, a:active{
 .menu-right{
     margin: 0 0 0 100px;
 }
+.icon-user ul li{
+    list-style: none;
+    float: left;
+}
+.orange{
+    color: white;
+    background: orange;
+    float: right;
+}
+.table_edit_sp {
+    width: 100%;
+}
+.table_edit_sp tr{
+    width: 100%;
+
+}
+.table_edit_sp td{
+    /*width: 50%;*/
+    padding: 5px 10px 0px 10px;
+}
+.table_edit_sp input{
+    width: 100%;
+}
