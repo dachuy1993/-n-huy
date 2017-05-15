@@ -6,12 +6,18 @@
 	{
 		function index ()
 		{
-			$data = array();
-			$product = $this->Product_model->get();
-			if ($product) {
-				$data['product1'] = $product;
+			$user = $this->session->userdata('user');
+			if(isset($user)){
+				$data = array();
+				$product = $this->Product_model->get();
+				if ($product) {
+					$data['product1'] = $product;
+				}
+				$this->load->view('admin_sanpham',$data);
+			}else{
+				redirect('admin');
 			}
-			$this->load->view('admin_sanpham',$data);
+			// redirect('home');
 		}
 		function view($sanpham_id){
 			$getinfo = $this->Product_model->getinfo($sanpham_id);
@@ -49,6 +55,18 @@
 				$data['err'] = "Sản phẩm không tồn tại";
 			}
 			$this->load->view('admin_sanpham',$data);
+		}
+		function catalog($maloai_sp){
+			$getspcatalog = $this->Product_model->getspcatalog($maloai_sp);
+			if($getspcatalog){
+				$data['getspcatalog'] = $getspcatalog;
+			}
+			else
+			{
+				$data['err'] = "Sản phẩm không tồn tại";
+			}
+			$this->load->view('catalog',$data);
+
 		}
 		
 	}

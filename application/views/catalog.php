@@ -45,39 +45,38 @@
 <section id="menu">
 	<div class="main_menu">
 		<ul>
-		
 			<li><a href="#">TRANG CHỦ</a></li>
 			<li><a href="#">GIỚI THIỆU</a></li>
 			<li><a href="#">PHÒNG KHÁCH</a>
 				<ul>
-					<li><a href="<?php echo base_url()?>product/catalog/1">BỘ BÀN GHẾ</li>
-					<li><a href="<?php echo base_url()?>product/catalog/2">SẬP GỤ</li>
-					<li><a href="<?php echo base_url()?>product/catalog/3">ĐỒNG HỒ CÂY</li>
-					<li><a href="<?php echo base_url()?>product/catalog/4">KỆ TIVI</li>
-					<li><a href="<?php echo base_url()?>product/catalog/5">TỦ RƯỢU</li>
+					<li><a href="#">BỘ BÀN GHẾ</li>
+					<li><a href="#">SẬP GỤ</li>
+					<li><a href="#">ĐỒNG HỒ CÂY</li>
+					<li><a href="#">KỆ TIVI</li>
+					<li><a href="#">TỦ RƯỢU</li>
 				</ul>
 			</li>
 			<li><a href="#">PHÒNG NGỦ</a>
 				<ul>
-					<li><a href="<?php echo base_url()?>product/catalog/11">TỦ QUẦN ÁO</li>
-					<li><a href="<?php echo base_url()?>product/catalog/12">GIƯỜNG</li>
-					<li><a href="<?php echo base_url()?>product/catalog/13">BÀN PHẤN</li>
-					<li><a href="<?php echo base_url()?>product/catalog/14">ĐỒ TRANG TRÍ PHÒNG NGỦ</li>
+					<li><a href="#">TỦ QUẦN ÁO</li>
+					<li><a href="#">GIƯỜNG TỦ</li>
+					<li><a href="#">BÀN PHẤN</li>
+					<li><a href="#">ĐỒ TRANG TRÍ PHÒNG NGỦ</li>
 				</ul>
 			</li>
 			<li><a href="#">PHÒNG ĂN</a>
 				<ul>
-					<li><a href="<?php echo base_url()?>product/catalog/21">BỘ BÀN ĂN</li>
-					<li><a href="<?php echo base_url()?>product/catalog/22">TỦ BẾP</li>
+					<li><a href="#">BỘ BÀN ĂN</li>
+					<li><a href="#">TỦ BẾP</li>
 				</ul>
 			</li>
 			<li><a href="#">PHÒNG THỜ</a>
 				<ul>
-					<li><a href="<?php echo base_url()?>product/catalog/31">BAN THỜ</li>
-					<li><a href="<?php echo base_url()?>product/catalog/32">SẬP THỜ</li>
-					<li><a href="<?php echo base_url()?>product/catalog/33">HOÀNH PHI CÂU ĐỐI</li>
-					<li><a href="<?php echo base_url()?>product/catalog/34">TỦ THỜ</li>
-					<li><a href="<?php echo base_url()?>product/catalog/35">ĐỒ THỜ KHÁC</li>
+					<li><a href="#">BAN THỜ</li>
+					<li><a href="#">SẬP THỜ</li>
+					<li><a href="#">HOÀNH PHI CÂU ĐỐI</li>
+					<li><a href="#">TỦ THỜ</li>
+					<li><a href="#">ĐỒ THỜ KHÁC</li>
 				</ul>
 			</li>
 			<li><a href="#">NỘI THẤT VĂN PHÒNG</a>
@@ -150,8 +149,8 @@
 	  				<div class="row"><!-- khung trên 1 dòng -->
 	  				<!-- product -->
 	  				<?php 
-	  				if(isset($product1)){
-	  					foreach ($product1 as $key) {
+	  				if(isset($getspcatalog)){
+	  					foreach ($getspcatalog as $key) {
 					?>
 					<div class="col-lg-4"><!-- chia làm 3 sp trên 1 dòng -->
 	  						<div class = "sp-list">

@@ -18,6 +18,13 @@ class Product_model extends CI_Model
 			return $get->result();
 		}else return false;
 	}
+	function getspcatalog($maloai_sp){
+		$this->db->where('maloai_sp',$maloai_sp);
+		$get = $this->db->get('sanpham');
+		if($get->num_rows() > 0){
+			return $get->result();
+		}else return false;	
+	}
 }
 
  ?>
