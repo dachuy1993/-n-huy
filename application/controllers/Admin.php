@@ -29,18 +29,25 @@
 		}
 		function login()
 		{
+			$data = array();
+			$nhanvien = $this->Nhanvien_model->get();
 			$user = $this->input->post('user');
 			$pass = $this->input->post('pass');
 			if(isset($user) && isset($pass)){
-				if($user == "admin" && $pass == "admin"){
+				$login = array(
+					'tai_khoan' => $user,
+					'mat_khau' => $pass,
+					);
+				$login = $this->Nhanvien_model->login($login);
+				if($login){
 					$session = array(
 						'user' => $user,
-					);
+						);
 					$this->session->set_userdata($session);
 					redirect('admin');
+				}else $data['err'] = "Loi";
 				}
-			}
-			$this->load->view('login');
+			$this->load->view('login',$data);
 		}
 		function logout(){
 			$this->session->sess_destroy();

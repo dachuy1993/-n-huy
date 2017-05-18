@@ -22,18 +22,18 @@
 	<ul>
 
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-home icon"></span>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
+				<p style="color: white;">Bảng điều khiển</p>
 			</a>
-			<p style="color: white;">Bảng điều khiển</p>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>sales" style = "display: block;">
+			<a href="<?php echo base_url()?>order" style = "display: block;">
 				<span class=" glyphicon glyphicon-usd icon" ></span>
 				<p style="color: white;">Bán hàng</p>
 			</a>
@@ -53,10 +53,10 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>product">
+			<a href="<?php echo base_url()?>nhanvien">
 				<span class=" glyphicon glyphicon-book icon" ></span>
+				<p style="color: white;">Nhân viên</p>
 			</a>
-			<p style="color: white;">Các sản phẩm</p>
 		</li>
 		<li>
 			<a href="">
@@ -64,18 +64,7 @@
 			</a>
 			<p style="color: white;">Các sản phẩm</p>
 		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
+		
 	</ul>
 </div>
 

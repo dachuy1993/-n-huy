@@ -25,6 +25,27 @@ class Product_model extends CI_Model
 			return $get->result();
 		}else return false;	
 	}
+	function add($data){
+		$add = $this->db->insert('sanpham',$data);
+		if($add){
+			return true; 
+		}else return false; 
+
+	}function edit($sanpham_id,$edit){
+		$this->db->where('sanpham_id',$sanpham_id);
+		$edit = $this->db->update('sanpham',$edit);
+		if($edit){
+			return true;
+		}else return false;
+
+	}
+	function delete($sanpham_id){
+		$this->db->where('sanpham_id',$sanpham_id);
+		$delete = $this->db->delete('sanpham');
+		if($delete){
+			return true;
+		}else return false;
+	}
 }
 
  ?>

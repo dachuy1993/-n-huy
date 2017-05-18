@@ -28,21 +28,21 @@ if(isset($err)){
 	<ul>
 
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-home icon"></span>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			</a>
 			<p style="color: white;">Bảng điều khiển</p>
+			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>order" style = "display: block;">
 				<span class=" glyphicon glyphicon-usd icon" ></span>
+				<p style="color: white;">Bán hàng</p>
 			</a>
-			<p style="color: white;">Bán hàng</p>
 		</li>
 		<li>
 			<a href="<?php echo base_url()?>product" style = "display: block;">
@@ -54,14 +54,15 @@ if(isset($err)){
 		<li>
 			<a href="<?php echo base_url()?>customer" style = "display: block;">
 				<span class="  glyphicon glyphicon-heart icon" ></span>
-				<p style="color: white;">Khách hàng</p>
+			
+			<p style="color: white;">Khách hàng</p>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>product">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
 			<p style="color: white;">Các sản phẩm</p>
+			</a>
 		</li>
 		<li>
 			<a href="">
@@ -134,47 +135,42 @@ if(isset($err)){
 			<button type="submit" class="btn btn-default" style="margin: 20px; background: orange; float: right;">Lưu khách hàng</button>
 		</div>
 		<div class="row">
-			
 			<div >
-			
-				
-					<table class="table_edit_sp">
-						<tr>
-							<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin khách hàng</td>
-						</tr>
-						<tr>
-							<td>Tên khách hàng</td>
-							<td>
-								<input type="text" name="tenkh" value="<?php echo $key->Ten_kh?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Địa chỉ email</td>
-							<td>
-								<input type="text" name="diachiemail" value="<?php echo $key->Diachi_email?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Số điện thoại</td>
-							<td>
-								<input type="text" name="sodienthoai" value="<?php echo $key->Sdt?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Địa chỉ giao hàng</td>
-							<td>
-								<input type="text" name="diachigiaohang" value="<?php echo $key->Diachi_giaohang?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Ghi chú</td>
-							<td>
-								<input type="text" name="ghichu" value="<?php echo $key->Ghichu?>">
-							</td>
-						</tr>
-						
-						
-					</table>
+				<table class="table_edit_sp">
+					<tr>
+						<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin khách hàng</td>
+					</tr>
+					<tr>
+						<td>Tên khách hàng</td>
+						<td>
+							<input type="text" name="tenkh" value="<?php echo $key->Ten_kh?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Địa chỉ email</td>
+						<td>
+							<input type="text" name="diachiemail" value="<?php echo $key->Diachi_email?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Số điện thoại</td>
+						<td>
+							<input type="text" name="sodienthoai" value="<?php echo $key->Sdt?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Địa chỉ giao hàng</td>
+						<td>
+							<input type="text" name="diachigiaohang" value="<?php echo $key->Diachi_giaohang?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Ghi chú</td>
+						<td>
+							<input type="text" name="ghichu" value="<?php echo $key->Ghichu?>">
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<?php }}?>

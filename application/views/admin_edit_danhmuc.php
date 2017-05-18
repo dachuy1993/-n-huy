@@ -28,21 +28,21 @@ if(isset($err)){
 	<ul>
 
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-home icon"></span>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			</a>
 			<p style="color: white;">Bảng điều khiển</p>
+			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>order" style = "display: block;">
 				<span class=" glyphicon glyphicon-usd icon" ></span>
+				<p style="color: white;">Bán hàng</p>
 			</a>
-			<p style="color: white;">Bán hàng</p>
 		</li>
 		<li>
 			<a href="<?php echo base_url()?>product" style = "display: block;">
@@ -54,14 +54,15 @@ if(isset($err)){
 		<li>
 			<a href="<?php echo base_url()?>customer" style = "display: block;">
 				<span class="  glyphicon glyphicon-heart icon" ></span>
-				<p style="color: white;">Khách hàng</p>
+			
+			<p style="color: white;">Khách hàng</p>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>product">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
 			<p style="color: white;">Các sản phẩm</p>
+			</a>
 		</li>
 		<li>
 			<a href="">
@@ -127,7 +128,7 @@ if(isset($err)){
 		<?php 
 	  				if (isset($getinfo)) {
 	  					foreach ($getinfo as $key) {
-	  						echo form_open('catalog/edit/'.$key->danhmuc_id);
+	  						echo form_open('danhmuc/edit/'.$key->danhmuc_id);
 	  						?>
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0;">
 			<button type="submit" class="btn btn-default" style="margin: 20px; background: orange; float: right;">Lưu danh mục</button>
@@ -150,13 +151,30 @@ if(isset($err)){
 								<input type="text" name="tensp" value="<?php echo $key->tendanhmuc?>">
 							</td>
 						</tr>
-						<tr>
-							<td>Mã loại sản phẩm</td>
-							<td>
-								<input type="text" name="loaisp" value="<?php echo $key->maloai_sp?>">
-							</td>
-						</tr>
 					</table>
+					<table class="table table-bordered">
+				    <thead>
+				      <tr>
+				        <th>ID</th>
+				        <th>Tên chi tiết danh mục</th>
+				        <th>Hoạt động</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    <?php 
+	  				if(isset($danhmuc)){
+	  					foreach ($danhmuc as $key) {
+						?>
+				      <tr>
+				        <td><?php echo $key->chitiet_dm_id?></td>
+				        <td><?php echo $key->ten_chitiet_dm?></td>
+				        <td><a href="#login-box" class="login-window">Sửa</a>
+				        <a href="<?php echo base_url()?>danhmuc/delete/<?php echo $key->danhmuc_id?>">Xóa</a>
+				        </td>
+				      </tr>
+				      <?php }}?>
+				    </tbody>
+				</table>
 			</div>
 			<div class="col-lg-3"></div>
 		</div>

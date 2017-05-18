@@ -22,21 +22,21 @@
 	<ul>
 
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-home icon"></span>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			</a>
 			<p style="color: white;">Bảng điều khiển</p>
+			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>order" style = "display: block;">
 				<span class=" glyphicon glyphicon-usd icon" ></span>
+				<p style="color: white;">Bán hàng</p>
 			</a>
-			<p style="color: white;">Bán hàng</p>
 		</li>
 		<li>
 			<a href="<?php echo base_url()?>product" style = "display: block;">
@@ -46,22 +46,17 @@
 			</a>
 		</li>
 		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
-		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>customer" style = "display: block;">
 				<span class="  glyphicon glyphicon-heart icon" ></span>
-			</a>
+			
 			<p style="color: white;">Khách hàng</p>
+			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>product">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
 			<p style="color: white;">Các sản phẩm</p>
+			</a>
 		</li>
 		<li>
 			<a href="">
@@ -218,7 +213,7 @@
                 	<button class="btn btn-default" type="submit" style="margin: 10px;">
                 		<a href="">
                 			Lưu thông tin khách hàng
-                		</a>
+                		</a> 
                 	</button>
                 </div>
             <p>

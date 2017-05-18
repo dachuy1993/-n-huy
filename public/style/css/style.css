@@ -23,15 +23,16 @@
 	margin: 0;
 }
 .main_menu ul li{
+
 	list-style: none;
 	float: left;
 	/*display: inline;*/
-	padding: 2px 14px;
+	padding: 2px 15px;
 	line-height: 37px;
 	position: relative;
 }
 .main_menu ul li:hover{
-	background: green;
+	background: #3cb33c;
 }
 .main_menu ul li a{
 	text-decoration: none;
@@ -39,18 +40,23 @@
 	display: block;
 }
 .main_menu ul li a:hover{
-	background: green;
+	background: #3cb33c;
 	color:white;
 }
 .main_menu ul li ul a:hover{
-	background: green;
+	background: #3cb33c;
 }
 .main_menu ul li ul{display: none;
-	background: red;
-	color: black;
+	background: white;
 	position: absolute;
 	width: 200px;
 	z-index: 10000000;
+}
+.main_menu ul li ul li a{
+    color: black;
+}
+.main_menu ul li ul li{
+        width: 100%;
 }
 .main_menu ul li:hover ul{
 	display: block;
@@ -347,4 +353,10 @@ a, a:visited, a:active{
 }
 .sp_theloai{
     
+}
+.menu-left .sub-menu {
+ position: absolute;
+ left: 250px;
+ top: 0;
+ display: none;
 }

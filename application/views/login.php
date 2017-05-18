@@ -10,7 +10,13 @@ echo form_open('admin/login');
 
  ?>
  <fieldset style="background: #efefef; height: 150px;">
- 	<legend style="text-align: center;">ĐĂNG NHẬP HỆ THỐNG</legend>
+ 	<legend style="text-align: center;">ĐĂNG NHẬP HỆ THỐNG</legend><br>
+ 	<?php 
+ 	if(isset($err)){
+ 		echo $err;
+ 	}
+
+ 	 ?>
  	<div style="float: left;">
 	 	<table>
 	 		<tr>

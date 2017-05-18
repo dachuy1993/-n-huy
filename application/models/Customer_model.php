@@ -22,7 +22,7 @@ class Customer_model extends CI_Model
 		$this->db->where('Khachhang_id',$khachhang_id);
 		$edit = $this->db->update('khachhang',$edit);
 		if($edit){
-			return true;
+			return true; 
 		}else return false;
 
 	}
@@ -36,7 +36,7 @@ class Customer_model extends CI_Model
 	function add($data){
 		$add = $this->db->insert('khachhang',$data);
 		if($add){
-			return true;
+			return true; 
 		}else return false;
 
 	}

@@ -22,21 +22,21 @@
 	<ul>
 
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-home icon"></span>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			</a>
 			<p style="color: white;">Bảng điều khiển</p>
+			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>order" style = "display: block;">
 				<span class=" glyphicon glyphicon-usd icon" ></span>
+				<p style="color: white;">Bán hàng</p>
 			</a>
-			<p style="color: white;">Bán hàng</p>
 		</li>
 		<li>
 			<a href="<?php echo base_url()?>product" style = "display: block;">
@@ -48,14 +48,15 @@
 		<li>
 			<a href="<?php echo base_url()?>customer" style = "display: block;">
 				<span class="  glyphicon glyphicon-heart icon" ></span>
+			
 			<p style="color: white;">Khách hàng</p>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>product">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
 			<p style="color: white;">Các sản phẩm</p>
+			</a>
 		</li>
 		<li>
 			<a href="">
@@ -121,7 +122,7 @@
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
 			<div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
 
-				<a href="<?php echo base_url()?>catalog" class="btn btn-info lien-he login-window button orange">
+				<a href="<?php echo base_url()?>danhmuc" class="btn btn-info lien-he login-window button orange">
 				<span class="glyphicon"></span>
 				Danh mục
 				</a>
@@ -141,7 +142,8 @@
         <th>ID</th>
         <th>Ảnh sản phẩm</th>
         <th>Tên sản phẩm</th>
-        <th>Loại sản phẩm</th>
+        <th>Mã loại sản phẩm</th>
+        <th>Mã danh mục</th>
         <th>Số sản phẩm</th>
         <th>Giá sản phẩm</th>
         <th>Kích thước sản phẩm</th>
@@ -164,6 +166,7 @@
         </td>
         <td><?php echo $key->Ten_sp?></td>
         <td><?php echo $key->maloai_sp?></td>
+        <td><?php echo $key->danhmuc_id?></td>
         <td><?php echo $key->Soluong_sp?></td>
         <td><?php echo $key->Gia_sp?></td>
         <td><?php echo $key->Kichthuoc_sp?></td>
@@ -185,13 +188,14 @@
 
 	</div>
         <div id="login-box" class="login">
-            <p class="login_title"> Thêm sản phẩm <?php 
-	  				if (isset($getinfo)) {
-	  					foreach ($getinfo as $key) {
-	  						echo $key->Ten_sp;}}
-	  						?></p>
+            <p class="login_title"> Thêm sản phẩm mới</p>
             <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
-            <form method="post" class="login-content" action="#">
+            <?php 
+            	$style = array(
+            		'class' => 'login-content',
+            		);
+            	echo form_open('product/add',$style);
+             ?>
                 <table>
                 	<tr>
                 		<td colspan="2"><label>
@@ -200,18 +204,34 @@
 				</label></td>
                 	</tr>
                 	<tr>
-                		<td><label>Tên (*)</label></td>
-                		<td><input type="text" name="ten"></td>
+                		<td><label>Tên sản phẩm (*)</label></td>
+                		<td><input type="text" name="Ten"></td>
+                	</tr>
+                	<tr>
+                		<td><label>Mã loại danh mục (*)</label></td>
+                		<td>
+							<select name=mytextarea>
+							<option name=one value='1'>Phòng khách</option>
+							<option name=two value='2'>Phòng ngủ</option>
+							<option name=three value='3'>Phòng ăn</option>
+							<option name=four value='4'>Phòng thờ</option>
+							<option name=five value='5'>Nội thất văn phòng</option>
+							<option name=six value='6'>Đồ gỗ trang trí</option>
+							</select>
+							
+						</td>
                 	</tr>
                 	<tr>
                 		<td><label>Loại sản phẩm (*)</label></td>
-                		<td><form name=myform>
+                		<td>
 							<select name=mytextarea>
-							<option name=one value=one> one </option>
-							<option name=two value=two> two </option>
-							<option name=three value=three> three </option>
+							<option name=one value='1'> one </option>
+							<option name=two value='2'> two </option>
+							<option name=three value='3'> three </option>
+							<option name=two value='4'> two </option>
+							<option name=three value='5'> three </option>
 							</select>
-							</form>
+							
 						</td>
                 	</tr>
                 	<tr>
@@ -243,22 +263,23 @@
                 	<tr>
                 		<td><label>Bảo hành (*)</label></td>
                 		<td>
-                			<form name=myform>
+                			
 							<select name=mytextarea>
 							<option name=one value=one> 12 tháng </option>
 							<option name=two value=two> 24 tháng </option>
 							<option name=three value=three> 36 tháng </option>
 							</select>
-							</form>
+					
                 		</td>
                 	</tr>
                 </table>
                 <div class="text-center">
-                	<button class="button submit-button" type="button">Đặt hàng ngay</button>
+                	<button class="button submit-button" type="submit">Lưu thông tin khách hàng</button>
                 </div>
             <p>
             <a class="forgot" href="#">Quên mật khẩu?</a>
-            </p>        
+            </p>    
+            <?php echo form_close() ?>    
             </form>
         </div>
 

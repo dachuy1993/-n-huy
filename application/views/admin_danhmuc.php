@@ -22,21 +22,21 @@
 	<ul>
 
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-home icon"></span>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			</a>
 			<p style="color: white;">Bảng điều khiển</p>
+			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>order" style = "display: block;">
 				<span class=" glyphicon glyphicon-usd icon" ></span>
+				<p style="color: white;">Bán hàng</p>
 			</a>
-			<p style="color: white;">Bán hàng</p>
 		</li>
 		<li>
 			<a href="<?php echo base_url()?>product" style = "display: block;">
@@ -48,14 +48,15 @@
 		<li>
 			<a href="<?php echo base_url()?>customer" style = "display: block;">
 				<span class="  glyphicon glyphicon-heart icon" ></span>
+			
 			<p style="color: white;">Khách hàng</p>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>product">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
 			<p style="color: white;">Các sản phẩm</p>
+			</a>
 		</li>
 		<li>
 			<a href="">
@@ -125,7 +126,8 @@
 				<span class="glyphicon"></span>
 				Trở về
 				</a>
-  			</div>			<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
+  			</div>			
+  			<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
 
 				<a href="#login-box" class="btn btn-success lien-he login-window button orange">
 				<span class="glyphicon"></span>
@@ -141,21 +143,19 @@
 				      <tr>
 				        <th>ID</th>
 				        <th>Tên danh mục</th>
-				        <th>Mã loại danh mục</th>
 				        <th>Hoạt động</th>
 				      </tr>
 				    </thead>
 				    <tbody>
 				    <?php 
-					  				if(isset($catalog1)){
-					  					foreach ($catalog1 as $key) {
+					  				if(isset($danhmuc1)){
+					  					foreach ($danhmuc1 as $key) {
 									?>
 				      <tr>
 				        <td><?php echo $key->danhmuc_id?></td>
 				        <td><?php echo $key->tendanhmuc?></td>
-				        <td><?php echo $key->maloai_sp?></td>
-				        <td><a href="<?php echo base_url()?>catalog/edit/<?php echo $key->danhmuc_id?>">Sửa</a>
-				        <a href="<?php echo base_url()?>catalog/delete/<?php echo $key->danhmuc_id?>">Xóa</a>
+				        <td><a href="<?php echo base_url()?>danhmuc/edit/<?php echo $key->danhmuc_id?>">Sửa</a>
+				        <a href="<?php echo base_url()?>danhmuc/delete/<?php echo $key->danhmuc_id?>">Xóa</a>
 				        </td>
 				      </tr>
 				      <?php }}?>
@@ -177,7 +177,7 @@
             	$style = array(
             		'class' => 'login-content',
             		);
-            	echo form_open('catalog/add',$style);
+            	echo form_open('danhmuc/add',$style);
              ?>
                 <table>
                 	<tr>
@@ -190,10 +190,6 @@
                 		<td><label>Tên danh muc (*)</label></td>
                 		<td><input type="text" name="tendm"></td>
                 	</tr>
-                	<tr>
-                		<td><label>Mã loại danh mục (*)</label></td>
-                		<td><input type="text" name="maloaidm"></td>
-                	</tr>
                 </table>
                 <div class="text-center">
                 	<button class="btn btn-default" type="submit" style="margin: 10px;">
@@ -205,7 +201,7 @@
             <p>
             <a class="forgot" href="#">Quên mật khẩu?</a>
             </p>        
-            </form>
+            <?php echo form_close()?>
         </div>
 
 </body>
