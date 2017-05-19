@@ -157,7 +157,9 @@ if(isset($err)){
 				      <tr>
 				        <th>ID</th>
 				        <th>Tên chi tiết danh mục</th>
-				        <th>Hoạt động</th>
+				        <th>
+				        	<button type="submit" class="">Thêm</button>
+				        </th>
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -168,8 +170,8 @@ if(isset($err)){
 				      <tr>
 				        <td><?php echo $key->chitiet_dm_id?></td>
 				        <td><?php echo $key->ten_chitiet_dm?></td>
-				        <td><a href="#login-box" class="login-window">Sửa</a>
-				        <a href="<?php echo base_url()?>danhmuc/delete/<?php echo $key->danhmuc_id?>">Xóa</a>
+				        <td><button><a href="#login-box" class="login-window">Sửa</a></button>
+				        <button><a href="<?php echo base_url()?>danhmuc/delete/<?php echo $key->danhmuc_id?>">Xóa</a></button>
 				        </td>
 				      </tr>
 				      <?php }}?>

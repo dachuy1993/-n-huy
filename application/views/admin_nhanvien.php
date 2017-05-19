@@ -1,9 +1,3 @@
-<?php 
-if(isset($err)){
-	echo $err;
-	die();
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,7 +83,9 @@ if(isset($err)){
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				SẢN PHẨM
+				<div style="font-size: 25px;">
+					NHÂN VIÊN
+				</div>
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
@@ -125,92 +121,106 @@ if(isset($err)){
 				</div>
 			</div>
 		</div>
-		<?php 
-	  				if (isset($getinfo)) {
-	  					foreach ($getinfo as $key) {
-	  						$style = array('class' => 'form-group');
-	  						echo form_open('product/edit/'.$key->sanpham_id,$style);
-	  						?>
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0;">
-			<button type="submit" class="btn btn-default" style="margin: 20px; background: orange; float: right;">Lưu sản phẩm</button>
+			<div class="btn-group " role="group" aria-label="..." style="float: right; margin: 20px;">
+				<a href="#login-box" class="btn btn-success lien-he login-window button orange">
+				<span class="glyphicon"></span>
+					Thêm nhân viên
+				</a>
+  			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-6"> 
-			
-				<input type="file" name="userfile"><br>
-				<div style="border: 2px solid red ;padding: 10px;margin-left: 10px; ">
-					<img src="<?php echo base_url()?>public/img/<?php echo $key->Anh_sp?>" width="
-        100%">
-				</div>
-				
-			</div>
-			<div class="col-lg-6">
-			
-				
-					<table class="table_edit_sp">
-						<tr>
-							<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin sản phẩm</td>
-						</tr>
-						<tr>
-							<td>Tên sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="tensp" value="<?php echo $key->Ten_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Mã sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="masp" value="<?php echo $key->ma_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Số lượng</td>
-							<td>
-								<input class="form-control" type="number" name="soluong" value="<?php echo $key->Soluong_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Giá sản phẩm</td>
-							<td>
-								<input class="form-control" type="number" name="giasp" value="<?php echo $key->Gia_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Kích thước sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="kichthuoc" value="<?php echo $key->Kichthuoc_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Màu sắc</td>
-							<td>
-								<input class="form-control" type="text" name="mausac" value="<?php echo $key->Mausac_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Chất liệu</td>
-							<td>
-								<input class="form-control" type="text" name="chatlieu" value="<?php echo $key->Chatlieu_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Thời gian bảo hành</td>
-							<td>
-								<input class="form-control" type="text" name="baohanh" value="<?php echo $key->Baohanh_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Thông tin sản phẩm</td>
-							<td>
-								<textarea rows="15" name="thongtin" class="form-control"></textarea>
-							</td>
-						</tr>
-					</table>
-			</div>
+		<div>
+			<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Họ tên</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>
+        <th>Tài khoản</th>
+        <th>Mật khẩu</th>
+        <th>Hoạt động</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php 
+	  				if(isset($nhanvien1)){
+	  					foreach ($nhanvien1 as $key) {
+	  						
+					?>
+      <tr>
+        <td><?php echo $key->nhanvien_id?></td>
+        <td><?php echo $key->ho_ten?></td>
+        <td><?php echo $key->dia_chi?></td>
+        <td><?php echo $key->sdt?></td>
+        <td><?php echo $key->tai_khoan?></td>
+        <td><?php echo $key->mat_khau?></td>
+        <td><a href="<?php echo base_url()?>nhanvien/edit/<?php echo $key->nhanvien_id?>">Sửa</a>
+        <a href="<?php echo base_url()?>nhanvien/delete/<?php echo $key->nhanvien_id?>">Xóa</a>
+        </td>
+      </tr>
+      <?php }}?>
+    </tbody>
+  </table>
 		</div>
-		<?php }
-		}?>
 	</div>
 </div>
+	
+
+
+	</div>
+        <div id="login-box" class="login">
+            <p class="login_title"> Thêm nhân viên mới </p>
+            <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
+            <?php 
+            	$style = array(
+            		'class' => 'login-content',
+            		);
+            	echo form_open('nhanvien/add',$style);
+             ?>
+                <table>
+                	<tr>
+                		<td colspan="2"><label>
+
+						Thông tin nhân viên
+				</label></td>
+                	</tr>
+                	<tr>
+                		<td><label>Họ tên nhân viên (*)</label></td>
+                		<td><input type="text" name="Tennv" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Địa chỉ (*)</label></td>
+                		<td>
+                			<input type="text" name="Diachinv" required>
+                		</td>
+                	</tr>
+                	<tr>
+                		<td><label>Số điện thoại (*)</label></td>
+                		<td><input type="text" name="Sdt" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Tài khoản (*)</label></td>
+                		<td><input type="text" name="Taikhoan" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Mật khẩu (*)</label></td>
+                		<td><input type="text" name="Matkhau"></td>
+                	</tr>
+                	
+                </table>
+                <div class="text-center">
+                	<button class="btn btn-default" type="submit" style="margin: 10px;">
+                		<a href="">
+                			Lưu thông tin nhân viên
+                		</a> 
+                	</button>
+                </div>
+            <p>
+            <a class="forgot" href="#">Quên mật khẩu?</a>
+            </p>        
+            <?php echo form_close() ?>
+        </div>
+
 </body>
 </html>

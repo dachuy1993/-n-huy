@@ -142,7 +142,7 @@
         <th>ID</th>
         <th>Ảnh sản phẩm</th>
         <th>Tên sản phẩm</th>
-        <th>Mã loại sản phẩm</th>
+        <th>Mã sản phẩm</th>
         <th>Mã danh mục</th>
         <th>Số sản phẩm</th>
         <th>Giá sản phẩm</th>
@@ -165,7 +165,7 @@
         100%" height = "70px" style ="margin: 0 auto">
         </td>
         <td><?php echo $key->Ten_sp?></td>
-        <td><?php echo $key->maloai_sp?></td>
+        <td><?php echo $key->ma_sp?></td>
         <td><?php echo $key->danhmuc_id?></td>
         <td><?php echo $key->Soluong_sp?></td>
         <td><?php echo $key->Gia_sp?></td>
@@ -193,6 +193,7 @@
             <?php 
             	$style = array(
             		'class' => 'login-content',
+            		'enctype' =>'multipart/form-data'
             		);
             	echo form_open('product/add',$style);
              ?>
@@ -222,22 +223,13 @@
 						</td>
                 	</tr>
                 	<tr>
-                		<td><label>Loại sản phẩm (*)</label></td>
-                		<td>
-							<select name=mytextarea>
-							<option name=one value='1'> one </option>
-							<option name=two value='2'> two </option>
-							<option name=three value='3'> three </option>
-							<option name=two value='4'> two </option>
-							<option name=three value='5'> three </option>
-							</select>
-							
-						</td>
+                		<td><label>Mã sản phẩm (*)</label></td>
+                		<td><input type="text" name="masp"></td>
                 	</tr>
                 	<tr>
                 		<td><label>Ảnh sản phẩm (*)</label></td>
                 		<td>
-                			
+                			<input type="file" name="userfile">
                 		</td>
                 	</tr>
                 	<tr>
@@ -271,6 +263,10 @@
 							</select>
 					
                 		</td>
+                	</tr>
+                	<tr>
+                		<td><label>Thông tin sản phẩm</label></td>
+                		<td><input type="text" name="thongtin"></td>
                 	</tr>
                 </table>
                 <div class="text-center">

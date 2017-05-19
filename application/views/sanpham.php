@@ -41,17 +41,15 @@ include 'header.php';
 						<a href="<?php echo base_url()?>product/view/<?php echo $key->sanpham_id?>"><img src="<?php echo base_url()?>public/img/<?php echo $key->Anh_sp?>"></a>
 					</div>
 				</div>
-			</div>
+			</div> 
 			<div class="col-lg-6">
 				<p style="font-weight: bold;font-size: 14px;padding: 2px;">	Giá: <span style="color: red;font-size: 24px;"><?php echo number_format($key->Gia_sp)?></span><br/>
-					Bảo Hành: <?php echo $key->Baohanh_sp?><br/>
+					Mã sản phẩm: <?php echo $key->ma_sp?><br/>
 					Kích thước: <?php echo $key->Kichthuoc_sp?><br/>
+					Bảo Hành: <?php echo $key->Baohanh_sp?><br/>
 				</p>
 				
-				<a href="#login-box" class="btn btn-success lien-he login-window button">
-				<span class="glyphicon glyphicon-shopping-cart"></span>
-				Đặt hàng
-				</a>
+				<a href="<?php echo base_url()?>giohang" class = 'btn btn-default'>Đặt hàng</a>
 			</div>
 
 		</div>

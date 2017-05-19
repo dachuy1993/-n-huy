@@ -1,9 +1,4 @@
-<?php 
-if(isset($err)){
-	echo $err;
-	die();
-}
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +32,11 @@ if(isset($err)){
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
 			<p style="color: white;">Bảng điều khiển</p>
 			</a>
+			<ul class="sub-menu" style="z-index: 999999999;background: red; margin-left: 200px;">
+		        <li><a href="#">WordPress</a></li>
+		        <li><a href="#"><a href="https://thachpham.com/category/seo" data-wpel-link="internal">SEO</a></a></li>
+		        <li><a href="#">Hosting</a></li>
+		    </ul>
 		</li>
 		<li>
 			<a href="<?php echo base_url()?>order" style = "display: block;">
@@ -89,7 +89,9 @@ if(isset($err)){
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				SẢN PHẨM
+				<div style="font-size: 25px;">
+					HÓA ĐƠN BÁN
+				</div>
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
@@ -125,92 +127,102 @@ if(isset($err)){
 				</div>
 			</div>
 		</div>
-		<?php 
-	  				if (isset($getinfo)) {
-	  					foreach ($getinfo as $key) {
-	  						$style = array('class' => 'form-group');
-	  						echo form_open('product/edit/'.$key->sanpham_id,$style);
-	  						?>
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0;">
-			<button type="submit" class="btn btn-default" style="margin: 20px; background: orange; float: right;">Lưu sản phẩm</button>
+			<div class="btn-group " role="group" aria-label="..." style="float: right; margin: 20px;">
+				<a href="#login-box" class="btn btn-success lien-he login-window button orange">
+				<span class="glyphicon"></span>
+					Thêm hóa đơn bán
+				</a>
+  			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-6"> 
-			
-				<input type="file" name="userfile"><br>
-				<div style="border: 2px solid red ;padding: 10px;margin-left: 10px; ">
-					<img src="<?php echo base_url()?>public/img/<?php echo $key->Anh_sp?>" width="
-        100%">
-				</div>
-				
-			</div>
-			<div class="col-lg-6">
-			
-				
-					<table class="table_edit_sp">
-						<tr>
-							<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin sản phẩm</td>
-						</tr>
-						<tr>
-							<td>Tên sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="tensp" value="<?php echo $key->Ten_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Mã sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="masp" value="<?php echo $key->ma_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Số lượng</td>
-							<td>
-								<input class="form-control" type="number" name="soluong" value="<?php echo $key->Soluong_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Giá sản phẩm</td>
-							<td>
-								<input class="form-control" type="number" name="giasp" value="<?php echo $key->Gia_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Kích thước sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="kichthuoc" value="<?php echo $key->Kichthuoc_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Màu sắc</td>
-							<td>
-								<input class="form-control" type="text" name="mausac" value="<?php echo $key->Mausac_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Chất liệu</td>
-							<td>
-								<input class="form-control" type="text" name="chatlieu" value="<?php echo $key->Chatlieu_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Thời gian bảo hành</td>
-							<td>
-								<input class="form-control" type="text" name="baohanh" value="<?php echo $key->Baohanh_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Thông tin sản phẩm</td>
-							<td>
-								<textarea rows="15" name="thongtin" class="form-control"></textarea>
-							</td>
-						</tr>
-					</table>
-			</div>
+		<div>
+			<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Hóa đơn ID</th>
+        <th>Ngày lập hóa đơn</th>
+        <th>Tên sản phẩm</th>
+        <th>Ngày đặt hàng</th>
+        <th>Tên khách hàng</th>
+        <th>Tổng số tiền</th>
+        <th>Hoạt động</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<?php 
+			if(isset($hoadonban1)){
+				foreach ($hoadonban1 as $key) {
+					
+		?>
+      <tr>
+        <td><?php echo $key->hoadon_id?></td>
+        <td><?php echo $key->ngay_lap_hd?></td>
+        <td><?php echo $key->ten_sp?></td>
+        <td><?php echo $key->ngay_dat_hang?></td>
+        <td><?php echo $key->ten_kh?></td>
+        <td><?php echo $key->so_tien?></td>
+        <td><a href="">Sửa</a>
+        <a href="">Xóa</a>
+        </td>
+      </tr>
+      <?php }}?>
+    </tbody>
+  </table>
 		</div>
-		<?php }
-		}?>
 	</div>
 </div>
+        <!-- <div id="login-box" class="login">
+            <p class="login_title"> Thêm khách hàng mới </p>
+            <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
+            <?php 
+            	$style = array(
+            		'class' => 'login-content',
+            		);
+            	echo form_open('customer/add',$style);
+             ?>
+                <table>
+                	<tr>
+                		<td colspan="2"><label>
+
+						Thông tin khách hàng
+				</label></td>
+                	</tr>
+                	<tr>
+                		<td><label>Tên khách hàng (*)</label></td>
+                		<td><input type="text" name="Tenkh" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Địa chỉ email (*)</label></td>
+                		<td>
+                			<input type="email" name="Diachiemail" required>
+                		</td>
+                	</tr>
+                	<tr>
+                		<td><label>Số điện thoại (*)</label></td>
+                		<td><input type="text" name="Sdt" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Địa chỉ giao hàng (*)</label></td>
+                		<td><input type="text" name="Diachigiaohang" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Ghi chú (*)</label></td>
+                		<td><input type="text" name="Ghichu"></td>
+                	</tr>
+                	
+                </table>
+                <div class="text-center">
+                	<button class="btn btn-default" type="submit" style="margin: 10px;">
+                		<a href="">
+                			Lưu thông tin khách hàng
+                		</a> 
+                	</button>
+                </div>
+            <p>
+            <a class="forgot" href="#">Quên mật khẩu?</a>
+            </p>        
+            <?php echo form_close() ?>
+        </div> -->
+
 </body>
 </html>

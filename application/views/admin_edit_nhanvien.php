@@ -89,7 +89,7 @@ if(isset($err)){
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				SẢN PHẨM
+				NHÂN VIÊN
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
@@ -126,90 +126,54 @@ if(isset($err)){
 			</div>
 		</div>
 		<?php 
+		
 	  				if (isset($getinfo)) {
 	  					foreach ($getinfo as $key) {
-	  						$style = array('class' => 'form-group');
-	  						echo form_open('product/edit/'.$key->sanpham_id,$style);
+	  						echo form_open('nhanvien/edit/'.$key->nhanvien_id);
 	  						?>
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0;">
-			<button type="submit" class="btn btn-default" style="margin: 20px; background: orange; float: right;">Lưu sản phẩm</button>
+			<button type="submit" class="btn btn-default" style="margin: 20px; background: orange; float: right;">Lưu nhân viên</button>
 		</div>
 		<div class="row">
-			<div class="col-lg-6"> 
-			
-				<input type="file" name="userfile"><br>
-				<div style="border: 2px solid red ;padding: 10px;margin-left: 10px; ">
-					<img src="<?php echo base_url()?>public/img/<?php echo $key->Anh_sp?>" width="
-        100%">
-				</div>
-				
-			</div>
-			<div class="col-lg-6">
-			
-				
-					<table class="table_edit_sp">
-						<tr>
-							<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin sản phẩm</td>
-						</tr>
-						<tr>
-							<td>Tên sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="tensp" value="<?php echo $key->Ten_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Mã sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="masp" value="<?php echo $key->ma_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Số lượng</td>
-							<td>
-								<input class="form-control" type="number" name="soluong" value="<?php echo $key->Soluong_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Giá sản phẩm</td>
-							<td>
-								<input class="form-control" type="number" name="giasp" value="<?php echo $key->Gia_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Kích thước sản phẩm</td>
-							<td>
-								<input class="form-control" type="text" name="kichthuoc" value="<?php echo $key->Kichthuoc_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Màu sắc</td>
-							<td>
-								<input class="form-control" type="text" name="mausac" value="<?php echo $key->Mausac_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Chất liệu</td>
-							<td>
-								<input class="form-control" type="text" name="chatlieu" value="<?php echo $key->Chatlieu_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Thời gian bảo hành</td>
-							<td>
-								<input class="form-control" type="text" name="baohanh" value="<?php echo $key->Baohanh_sp?>">
-							</td>
-						</tr>
-						<tr>
-							<td>Thông tin sản phẩm</td>
-							<td>
-								<textarea rows="15" name="thongtin" class="form-control"></textarea>
-							</td>
-						</tr>
-					</table>
+			<div >
+				<table class="table_edit_sp">
+					<tr>
+						<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin nhân viên</td>
+					</tr>
+					<tr>
+						<td>Họ tên </td>
+						<td>
+							<input type="text" name="tennv" value="<?php echo $key->ho_ten?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Địa chỉ </td>
+						<td>
+							<input type="text" name="diachi" value="<?php echo $key->dia_chi?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Số điện thoại</td>
+						<td>
+							<input type="text" name="sodienthoai" value="<?php echo $key->sdt?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Tài khoản</td>
+						<td>
+							<input type="text" name="taikhoan" value="<?php echo $key->tai_khoan?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Mật khẩu</td>
+						<td>
+							<input type="text" name="matkhau" value="<?php echo $key->mat_khau?>">
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
-		<?php }
-		}?>
+		<?php }}?>
 	</div>
 </div>
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 18, 2017 lúc 10:53 CH
+-- Thời gian đã tạo: Th5 19, 2017 lúc 09:32 CH
 -- Phiên bản máy phục vụ: 10.1.21-MariaDB
 -- Phiên bản PHP: 7.1.1
 
@@ -29,37 +29,38 @@ SET time_zone = "+00:00";
 CREATE TABLE `chitietdanhmuc` (
   `chitiet_dm_id` int(11) NOT NULL,
   `danhmuc_id` int(2) NOT NULL,
-  `ten_chitiet_dm` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+  `ten_chitiet_dm` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ma_sp` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `chitietdanhmuc`
 --
 
-INSERT INTO `chitietdanhmuc` (`chitiet_dm_id`, `danhmuc_id`, `ten_chitiet_dm`) VALUES
-(1, 2, 'BỘ BÀN GHẾ'),
-(2, 2, 'SẬP GỤ'),
-(3, 2, 'ĐỒNG HỒ CÂY'),
-(4, 2, 'KỆ TI VI'),
-(5, 2, 'TỦ RƯỢU'),
-(6, 3, 'TỦ QUẦN ÁO'),
-(7, 3, 'GIƯỜNG'),
-(8, 3, 'BÀN PHẤN'),
-(9, 3, 'ĐỒ TRANG TRÍ PHÒNG NGỦ'),
-(10, 4, 'BỘ BÀN ĂN'),
-(11, 4, 'TỦ BẾP'),
-(12, 5, 'BAN THỜ'),
-(13, 5, 'SẬP THỜ'),
-(14, 5, 'HOÀNH PHI CÂU ĐỐI'),
-(15, 5, 'TỦ THỜ'),
-(16, 5, 'ĐỒ THỜ KHÁC'),
-(17, 6, 'BÀN GHẾ VĂN PHÒNG'),
-(18, 6, 'TỦ TÀI LIỆU'),
-(19, 6, 'QUẦY THU NGÂN'),
-(20, 6, 'VÁCH NGĂN'),
-(21, 7, 'TRANH GỖ'),
-(22, 7, 'BÀN GHẾ GỐC CÂY'),
-(23, 7, 'TƯỢNG GỖ');
+INSERT INTO `chitietdanhmuc` (`chitiet_dm_id`, `danhmuc_id`, `ten_chitiet_dm`, `ma_sp`) VALUES
+(1, 2, 'BỘ BÀN GHẾ', 'KBG'),
+(2, 2, 'SẬP GỤ', 'KSG'),
+(3, 2, 'ĐỒNG HỒ CÂY', 'KDH'),
+(4, 2, 'KỆ TI VI', 'KTV'),
+(5, 2, 'TỦ RƯỢU', 'KTR'),
+(6, 3, 'TỦ QUẦN ÁO', 'NTA'),
+(7, 3, 'GIƯỜNG', 'NG'),
+(8, 3, 'BÀN PHẤN', 'KBP'),
+(9, 3, 'ĐỒ TRANG TRÍ PHÒNG NGỦ', 'NTT'),
+(10, 4, 'BỘ BÀN ĂN', 'ABA'),
+(11, 4, 'TỦ BẾP', 'ATB'),
+(12, 5, 'BAN THỜ', 'TBT'),
+(13, 5, 'SẬP THỜ', 'TST'),
+(14, 5, 'HOÀNH PHI CÂU ĐỐI', 'THP'),
+(15, 5, 'TỦ THỜ', 'TTT'),
+(16, 5, 'ĐỒ THỜ KHÁC', 'TDT'),
+(17, 6, 'BÀN GHẾ VĂN PHÒNG', 'VBG'),
+(18, 6, 'TỦ TÀI LIỆU', 'VTL'),
+(19, 6, 'QUẦY THU NGÂN', 'TQT'),
+(20, 6, 'VÁCH NGĂN', 'TVN'),
+(21, 9, 'TRANH GỖ', 'DTG'),
+(22, 9, 'BÀN GHẾ GỐC CÂY', 'DBG'),
+(23, 9, 'TƯỢNG GỖ', 'DGT');
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,8 @@ INSERT INTO `danhmuc` (`danhmuc_id`, `tendanhmuc`) VALUES
 (3, 'PHÒNG NGỦ'),
 (4, 'PHÒNG ĂN'),
 (5, 'PHÒNG THỜ'),
-(6, 'NỘI THẤT VĂN PHÒNG');
+(6, 'NỘI THẤT VĂN PHÒNG'),
+(9, 'ĐỒ GỖ TRANG TRÍ');
 
 -- --------------------------------------------------------
 
@@ -196,18 +198,23 @@ CREATE TABLE `sanpham` (
   `Kichthuoc_sp` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `Mausac_sp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Chatlieu_sp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `maloai_sp` int(50) NOT NULL,
+  `ma_sp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `danhmuc_id` int(2) NOT NULL,
-  `Baohanh_sp` varchar(500) COLLATE utf8_unicode_ci NOT NULL
+  `Baohanh_sp` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `Thong_tin_sp` mediumtext COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`sanpham_id`, `Ten_sp`, `Anh_sp`, `Gia_sp`, `Soluong_sp`, `Kichthuoc_sp`, `Mausac_sp`, `Chatlieu_sp`, `maloai_sp`, `danhmuc_id`, `Baohanh_sp`) VALUES
-(6, 'tu', 'giuong2.png', 5000000, 2, '1x5x4', 'v', 'g', 2, 2, '24'),
-(7, 'ban', 'giuong3.png', 300000, 5, '2x3x4', 'b', 'g', 3, 2, '18');
+INSERT INTO `sanpham` (`sanpham_id`, `Ten_sp`, `Anh_sp`, `Gia_sp`, `Soluong_sp`, `Kichthuoc_sp`, `Mausac_sp`, `Chatlieu_sp`, `ma_sp`, `danhmuc_id`, `Baohanh_sp`, `Thong_tin_sp`) VALUES
+(6, 'Tủ áo', 'giuong2.png', 5000000, 2, '1x5x8', 'v', 'g', 'NTA', 2, '24', ''),
+(7, 'Bàn phấn', 'giuong3.png', 300000, 5, '2x3x4', 'b', 'g', 'NBP01', 2, '18', ''),
+(11, 'Bàn ghế uống nước', '', 12, 2, '2x2x2', 'đỏ', 'gụ', 'KBG01', 3, '12', ''),
+(12, 'Bàn ăn', '', 25, 2, '3x3x3', 'đen', 'trắc', 'ABA01', 4, '10', ''),
+(13, 'tủ thờ', '', 12, 5, '20', 'đỏ', 'gụ', '', 0, 'one', ''),
+(14, '123', 'do-go-my-nghe-tam-da.jpg', 3, 3, '3', '3', '3', '', 0, 'one', '');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -268,7 +275,7 @@ ALTER TABLE `chitietdanhmuc`
 -- AUTO_INCREMENT cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
-  MODIFY `danhmuc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `danhmuc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT cho bảng `dondh`
 --
@@ -293,7 +300,7 @@ ALTER TABLE `nhanvien`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `sanpham_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `sanpham_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

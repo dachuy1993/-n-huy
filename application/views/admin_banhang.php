@@ -88,7 +88,7 @@
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
 					<ul>
-						<li>
+						<li style="margin: 0 5px;">
 							<div class="input-group">
 					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
@@ -96,12 +96,12 @@
 					      		</span>
 					    	</div>
 						</li>
-						<li>
+						<li style="margin:  0 5px;">
 							<a href="">
 								<span class=" glyphicon glyphicon-bell"><sup>0</sup></span>
 							</a>
 						</li>
-						<li>
+						<li style="margin: 0 20px 0 5px;">
 							<div class="dropdown">
 								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    	<a href="">

@@ -25,6 +25,22 @@ class Product_model extends CI_Model
 			return $get->result();
 		}else return false;	
 	}
+	function get_dm($danhmuc_id){
+		$this->db->where('danhmuc_id',$danhmuc_id);
+		$get = $this->db->get('sanpham');
+		if($get->num_rows() > 0){
+			return $get->result();
+		}else return false;	
+	}
+	function get_ctdm($ma_sp)
+	{
+		$this->db->where('ma_sp',$ma_sp);
+		$get = $this->db->get('chitietdanhmuc');
+		if($get->num_rows()>0){
+			return $get->result();
+		}
+		else return false;
+	}
 	function add($data){
 		$add = $this->db->insert('sanpham',$data);
 		if($add){
