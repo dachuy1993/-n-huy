@@ -156,7 +156,7 @@
     <tbody>
     <?php 
 	  				if(isset($product1)){
-	  					foreach ($product1 as $key) {
+	  					foreach ($product1 as $key) { 
 					?>
       <tr>
         <td><?php echo $key->sanpham_id?></td>

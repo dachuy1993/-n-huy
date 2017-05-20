@@ -36,7 +36,7 @@
 		function view($sanpham_id){ 
 			$danhmuc = $this->Danhmuc_model->get();
 			if($danhmuc){
-				$data['danhmuc'] = $danhmuc;
+				$data['danhmuc'] = $danhmuc; 
 			}
 
 			$product = $this->Product_model->get();
@@ -51,6 +51,15 @@
 				$data['err'] = "sản phầm này k tồn tại";
 			}
 			$this->load->view('sanpham',$data);
+		}
+		function view1($sanpham_id)
+		{
+			$danhmuc = $this->Danhmuc_model->get();
+			$getinfo = $this->Product_model->getinfo($sanpham_id);
+			if ($getinfo) {
+				$data['getinfo'] = $getinfo;
+			}
+			$this->load->view('giohang',$data);
 		}
 		function add()
 		{
@@ -154,6 +163,63 @@
 			$this->load->view('catalog',$data);
 
 		}
-		
+		function buy($sanpham_id)
+		{
+			$getinfo = $this->Product_model->getinfo($sanpham_id);
+			if($getinfo){
+				foreach ($getinfo as $key) {};
+				$cart = array(
+					'id'=>$key->sanpham_id,
+					'name'=>$key->Ten_sp,
+					'price' =>$key->Gia_sp,
+					'qty' =>1,
+					);
+					
+				$this->load->library('cart');
+				if ($this->cart->insert($cart)) {
+					// $cart = $this->cart->contents();
+					// var_dump($cart);
+					redirect('giohang');
+				}
+			}
+		}
+		function remove($rowid)
+		{
+			$this->load->library('cart');
+			if ($rowid==="all")
+                {
+                    $this->cart->destroy();
+                }
+            else
+                {
+                    $data = array(
+                        'rowid' => $rowid,
+                        'qty' => 0
+                    );
+                $this->cart->update($data);
+                }
+            redirect('giohang');
+		}
+		function update_cart()
+		{
+			$this->load->library('cart');
+			$cart_info = $_POST['cart'] ;
+            foreach( $cart_info as $id => $cart)
+                {
+                    $rowid = $cart['rowid'];
+                    $price = $cart['price'];
+                    $amount = $price * $cart['qty'];
+                    $qty = $cart['qty'];
+                    
+                    $data = array(
+                    'rowid' => $rowid,
+                    'price' => $price,
+                    'amount' => $amount,
+                    'qty' => $qty
+                    );       
+                    $this->cart->update($data);
+                }
+           redirect('giohang');
+        }
 	}
  ?>
