@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 19, 2017 lúc 09:32 CH
+-- Thời gian đã tạo: Th5 24, 2017 lúc 11:41 CH
 -- Phiên bản máy phục vụ: 10.1.21-MariaDB
 -- Phiên bản PHP: 7.1.1
 
@@ -65,6 +65,38 @@ INSERT INTO `chitietdanhmuc` (`chitiet_dm_id`, `danhmuc_id`, `ten_chitiet_dm`, `
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `chitietdondh`
+--
+
+CREATE TABLE `chitietdondh` (
+  `chitietdondh_id` int(11) NOT NULL,
+  `Dondh_id` int(3) NOT NULL,
+  `Ten_sp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Gia_sp` int(11) NOT NULL,
+  `Anh_sp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Soluongmua` int(11) NOT NULL,
+  `Kichthuoc_sp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Mausac_sp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Chatlieu_sp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Baohanh_sp` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitietdondh`
+--
+
+INSERT INTO `chitietdondh` (`chitietdondh_id`, `Dondh_id`, `Ten_sp`, `Gia_sp`, `Anh_sp`, `Soluongmua`, `Kichthuoc_sp`, `Mausac_sp`, `Chatlieu_sp`, `Baohanh_sp`) VALUES
+(1, 1, 'Tủ thờ', 15000000, '', 3, '33x5x3', 'đỏ', 'gụ', '15 năm'),
+(2, 1, 'Giường', 20000000, '', 3, '15x52x2', 'đỏ', 'trắc', '10 năm'),
+(3, 30, 'Tủ áo', 5000000, 'giuong2.png', 1, '1x5x8', 'v', 'g', '24'),
+(4, 31, 'Tủ áo', 5000000, 'giuong2.png', 1, '1x5x8', 'v', 'g', '24'),
+(5, 32, 'Tủ áo', 5000000, 'giuong2.png', 1, '1x5x8', 'v', 'g', '24'),
+(6, 33, 'Tủ áo', 5000000, 'giuong2.png', 1, '1x5x8', 'v', 'g', '24'),
+(7, 33, 'Bàn phấn', 300000, 'giuong3.png', 1, '2x3x4', 'b', 'g', '18');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `danhmuc`
 --
 
@@ -93,13 +125,13 @@ INSERT INTO `danhmuc` (`danhmuc_id`, `tendanhmuc`) VALUES
 
 CREATE TABLE `dondh` (
   `Dondh_id` int(11) NOT NULL,
-  `Ten_sp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `Ngay_lap` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Tong_gia` int(15) NOT NULL,
   `Ten_kh` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `Sodt` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `Diachi_email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Diachi_giaohang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Ghi_chu` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Ghi_chu` text COLLATE utf8_unicode_ci NOT NULL,
   `Tinh_trang` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -107,32 +139,10 @@ CREATE TABLE `dondh` (
 -- Đang đổ dữ liệu cho bảng `dondh`
 --
 
-INSERT INTO `dondh` (`Dondh_id`, `Ten_sp`, `Ngay_lap`, `Tong_gia`, `Ten_kh`, `Sodt`, `Diachi_giaohang`, `Ghi_chu`, `Tinh_trang`) VALUES
-(1, '', '2017-05-08 16:00:00', 200000000, 'Trần văn luyện', '', '', 'Đi bằng máy bay', 'Chưa chuyển hàng'),
-(2, '', '2017-05-01 16:00:00', 150000000, 'Vũ Đức Hiển', '', '', 'Chuyển bằng tàu thủy', 'Đã chuyển hàng');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `hoadonban`
---
-
-CREATE TABLE `hoadonban` (
-  `hoadon_id` int(11) NOT NULL,
-  `ngay_lap_hd` datetime NOT NULL,
-  `ten_sp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ngay_dat_hang` datetime NOT NULL,
-  `ten_kh` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `so_tien` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `hoadonban`
---
-
-INSERT INTO `hoadonban` (`hoadon_id`, `ngay_lap_hd`, `ten_sp`, `ngay_dat_hang`, `ten_kh`, `so_tien`) VALUES
-(1, '2017-05-18 00:00:00', 'tủ thờ', '2017-05-16 00:00:00', 'Huyền trang', 50000000),
-(2, '2017-05-17 00:00:00', 'tủ áo', '2017-05-14 00:00:00', 'Lan anh', 100000000);
+INSERT INTO `dondh` (`Dondh_id`, `Ngay_lap`, `Tong_gia`, `Ten_kh`, `Sodt`, `Diachi_email`, `Diachi_giaohang`, `Ghi_chu`, `Tinh_trang`) VALUES
+(1, '2017-05-08 16:00:00', 200000000, 'Trần văn luyện', '', '', '', 'Đi bằng máy bay', 'Chưa chuyển hàng'),
+(32, '2017-05-24 19:35:21', 0, '1dđ', '015222', 'huy@dd', 'hưng yên44444', 'hhhh', ''),
+(33, '2017-05-24 19:37:47', 0, 'Ngọc đức lan anhdddđ', '015222', 'huy@dd', 'hưng yêndddddđ', 'ddđ', '');
 
 -- --------------------------------------------------------
 
@@ -156,8 +166,9 @@ CREATE TABLE `khachhang` (
 INSERT INTO `khachhang` (`Khachhang_id`, `Ten_kh`, `Diachi_email`, `Sdt`, `Diachi_giaohang`, `Ghichu`) VALUES
 (8, 'Trần Ngọc hải', 'duc.94@gmail.com', '095685485', 'Nam ĐỊnh', ''),
 (9, 'Nguyễn Đắc Huy', 'dac.huy.9x@gmail.com', '0123456789', 'ha noi', 'Chuyển máy bay'),
-(10, 'Trần văn luyện', 'luyen@gmaul.com', '555', 'hưng yên', '555'),
-(11, 'Nguyễn Đắc Huy hip', 'luyen@gmaul.com', '095685485', 'hưng yên', '555');
+(14, 'huyhip', 'luyen@gmaul.com', '095685485', 'giường', '25x36x2'),
+(15, 'Nguyễn Đắc Huy', 'dac.huy.9x@gmail.com', '0966599493', 'giường', '25x36x2'),
+(16, 'Nguyễn Đắc Huy 22222', 'dac.huy.9x@gmail.com', '0966599493', 'ha noi', 'Hưng yên');
 
 -- --------------------------------------------------------
 
@@ -209,10 +220,10 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`sanpham_id`, `Ten_sp`, `Anh_sp`, `Gia_sp`, `Soluong_sp`, `Kichthuoc_sp`, `Mausac_sp`, `Chatlieu_sp`, `ma_sp`, `danhmuc_id`, `Baohanh_sp`, `Thong_tin_sp`) VALUES
-(6, 'Tủ áo', 'giuong2.png', 5000000, 2, '1x5x8', 'v', 'g', 'NTA', 2, '24', ''),
-(7, 'Bàn phấn', 'giuong3.png', 300000, 5, '2x3x4', 'b', 'g', 'NBP01', 2, '18', ''),
-(11, 'Bàn ghế uống nước', '', 12, 2, '2x2x2', 'đỏ', 'gụ', 'KBG01', 3, '12', ''),
-(12, 'Bàn ăn', '', 25, 2, '3x3x3', 'đen', 'trắc', 'ABA01', 4, '10', ''),
+(6, 'Tủ áo', 'giuong2.png', 5000000, 1, '1x5x8', 'v', 'g', 'NTA', 3, '24', ''),
+(7, 'Bàn phấn', 'giuong3.png', 300000, 4, '2x3x4', 'b', 'g', 'NBP', 3, '18', ''),
+(11, 'Bàn ghế uống nước', '', 12, 2, '2x2x2', 'đỏ', 'gụ', 'KBG', 2, '12', ''),
+(12, 'Bàn ăn', '', 25, 2, '3x3x3', 'đen', 'trắc', 'ABA', 4, '10', ''),
 (13, 'tủ thờ', '', 12, 5, '20', 'đỏ', 'gụ', '', 0, 'one', ''),
 (14, '123', 'do-go-my-nghe-tam-da.jpg', 3, 3, '3', '3', '3', '', 0, 'one', '');
 
@@ -227,6 +238,12 @@ ALTER TABLE `chitietdanhmuc`
   ADD PRIMARY KEY (`chitiet_dm_id`);
 
 --
+-- Chỉ mục cho bảng `chitietdondh`
+--
+ALTER TABLE `chitietdondh`
+  ADD PRIMARY KEY (`chitietdondh_id`);
+
+--
 -- Chỉ mục cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
@@ -237,12 +254,6 @@ ALTER TABLE `danhmuc`
 --
 ALTER TABLE `dondh`
   ADD PRIMARY KEY (`Dondh_id`);
-
---
--- Chỉ mục cho bảng `hoadonban`
---
-ALTER TABLE `hoadonban`
-  ADD PRIMARY KEY (`hoadon_id`);
 
 --
 -- Chỉ mục cho bảng `khachhang`
@@ -272,25 +283,25 @@ ALTER TABLE `sanpham`
 ALTER TABLE `chitietdanhmuc`
   MODIFY `chitiet_dm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
+-- AUTO_INCREMENT cho bảng `chitietdondh`
+--
+ALTER TABLE `chitietdondh`
+  MODIFY `chitietdondh_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
-  MODIFY `danhmuc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `danhmuc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT cho bảng `dondh`
 --
 ALTER TABLE `dondh`
-  MODIFY `Dondh_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT cho bảng `hoadonban`
---
-ALTER TABLE `hoadonban`
-  MODIFY `hoadon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Dondh_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `Khachhang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Khachhang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
 --

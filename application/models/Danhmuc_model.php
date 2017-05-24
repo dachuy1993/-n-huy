@@ -18,7 +18,7 @@ class Danhmuc_model extends CI_Model
 		if($get->num_rows() > 0){
 			return $get->result();
 		}else return false;
-	}
+	} 
 	function edit($danhmuc_id,$edit){
 		$this->db->where('danhmuc_id',$danhmuc_id);
 		$edit = $this->db->update('danhmuc',$edit);

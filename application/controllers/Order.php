@@ -1,6 +1,6 @@
 <?php 
 	/**
-	* 
+	*  
 	*/
 	class order extends CI_Controller
 	{
@@ -14,6 +14,7 @@
 					$data['order1'] = $order;
 				}
 				$this->load->view('admin_banhang',$data);
+
 			}else{
 				redirect('admin');
 			}
@@ -27,23 +28,21 @@
 			else{
 				$data['err'] = "sản phầm này k tồn tại";
 			}
-			$this->load->view('dondh',$data);
+			$this->load->view('dathang',$data);
 		}
 		function add()
 		{
-			$ten_sp = $this->input->post('tensp');
-			$ngay_mua = $this->input->post('ngaymua');
+			
 			$gia_sp = $this->input->post('giasp');
 			$ten_kh = $this->input->post('tenkh');
 			$sdt = $this->input->post('sodt');
 			$diachi_gh = $this->input->post('diachigh');
 			$ghi_chu = $this->input->post('ghichu');
 			$trang_thai = $this->input->post('mytextarea');
-			if(isset($ten_sp) && isset($ngay_mua) && isset($gia_sp) && isset($ten_kh) && isset($sdt) && isset($diachi_gh) && isset($ghi_chu) && isset($trang_thai)){
+			if( isset($gia_sp) && isset($ten_kh) && isset($sdt) && isset($diachi_gh) && isset($ghi_chu) && isset($trang_thai)){
 				//chay len sua
 				$data = array(
-					'Ten_sp' => $ten_sp,
-					'Ngay_lap' => $ngay_mua,
+					// 'Ngay_lap' => $ngay_mua,
 					'Tong_gia' => $gia_sp,
 					'Ten_kh' =>$ten_kh,
 					'Sodt' => $sdt,
@@ -106,6 +105,80 @@
 			$this->load->view('catalog',$data);
 
 		}
+
 		
+		//full code them hoa don
+    public function save_order(){
+        if($this->input->post('ghichu')){
+            $ghichu = $this->input->post('ghichu');
+        }else{$ghichu = "";}
+        $email = $this->input->post('email');
+        $name_kh = $this->input->post('name');
+        $phone = $this->input->post('phonenumber');
+        $address = $this->input->post('address');
+        $city = $this->input->post('city');
+        $money = $this->session->userdata('money');
+        $ship = 40000;
+        $data = array(
+            'email' => $email,
+            'name' => $name_kh,
+            'phone' => $phone,
+            'address' => $address,
+            'city' => $city,
+            'money' => $money,
+            'ship' => $ship,
+            'ghichu' => $ghichu,
+            'active' => 0,
+        );
+        $insert_order = $this->User_models->insert_order($data); //them tt kh
+        if($insert_order == false){
+            $err= "Saving order Fail!";
+            $err['err'] = $err;
+            $this->load->view('thanhtoan',$err);
+        }else {
+            foreach ($insert_order as $item){}
+            $mahoadon = $item->id;
+            if($cart = $this->cart->contents()){//show dât cart 
+                foreach ($cart as $item){
+                    $product = $item['name'];
+                    $img = $item['img'];
+                    $qty = $item['qty'];
+                    $price = $item['price'];
+                    $moneypro = $item['subtotal'];
+                    $data_product = array(
+                        'mahoadon' => $mahoadon,
+                        'name' => $product,
+                        'img' => $img,
+                        'qty' => $qty,
+                        'price' => $price,
+                        'subtotal' => $moneypro,
+                    );
+                    $this->User_models->set_order($data_product);
+                    $id = $item['id'];//id sp da ban
+                    $get_number = $this->Admin_models->get_single($id);//lay dl sp
+                    foreach ($get_number as $row){}
+                    $number_new = $row->number - $qty;
+                    $data_product_new = array(
+                        'number' => $number_new,
+                    );
+                    $this->Admin_models->edit($id,$data_product_new);
+                }
+            }
+            $session = array(
+                'mahoadon' => $mahoadon,
+            );
+            $this->session->set_userdata($session);
+            $this->cart->destroy();
+            $this->session->unset_userdata('money');
+            $this->session->unset_userdata('count');
+            redirect('thanks');
+        }
+    }
 	}
  ?>
+
+
+
+
+
+

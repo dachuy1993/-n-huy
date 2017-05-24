@@ -87,6 +87,10 @@
 				<td>Tên sản phẩm</td>
 				<td>Giá sản phẩm</td>
 				<td>Số sản phẩm</td>
+				<td>Kích thước</td>
+				<td>Màu sắc</td>
+				<td>Chất liệu</td>
+				<td>Bảo hành</td>
 				<td>Thành tiền</td>
 				<td>Hoạt động</td>
 			</tr>
@@ -99,36 +103,41 @@
 	  					foreach ($cart as $key) {
 	  						$money +=$key['subtotal'];
 	  						$stt +=1;
-	  						$img = $this->Product_model->getinfo($key['id']);
-	  						if(isset($img)){
-	  							foreach ($img as $title) {
-	  								# code...
-	  							}
-	  						}
+	  						// $img = $this->Product_model->getinfo($key['id']);
+	  						// if(isset($img)){
+	  						// 	foreach ($img as $title) {
+	  						// 		# code...
+	  						// 	}
+	  						// }
 	  						  echo form_hidden('cart[' . $key['id'] . '][id]', $key['id']);
 	  						
             echo form_hidden('cart[' . $key['id'] . '][rowid]', $key['rowid']);
             echo form_hidden('cart[' . $key['id'] . '][name]', $key['name']);
             echo form_hidden('cart[' . $key['id'] . '][price]', $key['price']);
             echo form_hidden('cart[' . $key['id'] . '][qty]', $key['qty']);
+
 					?>
 			<tr>
 				<td><?php echo $stt?></td>
 				<td>
-	        	<img src="<?php echo base_url()?>public/img/<?php echo $title->Anh_sp?>" width="
+	        	<img src="<?php echo base_url()?>public/img/<?php echo $key['img']?>" width="
 	        100%" height = "70px" style ="margin: 0 auto">
 	        	</td>
 	        	<td><?php echo $key['name']?></td>
-	        	<td><?php echo number_format($key['price'])?> VNĐ</td>
+	        	<td><?php echo number_format($key['price'])?> <sup>vnđ</sup></td>
 	        	<td><?php echo form_input('cart[' . $key['id'] . '][qty]', $key['qty'], 'maxlength="3" size="1" style="text-align: right"'); ?></td>
-	        	<td><?php echo number_format($key['subtotal']) ?> VNĐ</td>
+	        	<td><?php echo $key['kt']?></td>
+	        	<td><?php echo $key['ms']?></td>
+	        	<td><?php echo $key['cl']?></td>
+	        	<td><?php echo $key['bh']?></td>
+	        	<td><?php echo number_format($key['subtotal']) ?> <sup>vnđ</sup></td>
 	        	<td><a href="<?php echo base_url()?>product/remove/<?php echo $key['rowid']?>" class="btn btn-default">Xóa</a></td>
 			</tr>
 			
         	<?php }}?>
         	<tr>
         		<td colspan="3" style="text-align: center;">Tổng tiền là: <?php echo number_format($money) ?> VNĐ</td>
-        		<td colspan="4">
+        		<td colspan="8">
         			<a href="<?php echo base_url()?>product/remove/all" class="btn btn-default">Xóa giỏ hàng</a>
         			 <input class ='btn btn-info'  type="submit" value="Update giỏ hàng"/>
         <?php echo form_close(); ?>
@@ -147,7 +156,11 @@
 	  						echo $key->Ten_sp;}}
 	  						?></p>
             <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
-            <form method="post" class="login-content" action="#">
+            <!-- <form method="post" class="login-content" action="#"> -->
+            <?php 
+            $style = array('class'=>'login-content');
+            echo form_open('giohang/save',$style);
+             ?>
                 <table>
                 	<tr>
                 		<td colspan="2"><label>
@@ -156,7 +169,7 @@ Vui lòng cung cấp đầy đủ thông tin sau. Chúng tôi sẽ gọi điện
                 	</tr>
                 	<tr>
                 		<td><label>Họ và tên (*)</label></td>
-                		<td><input type="text" name="hoten"></td>
+                		<td><input type="text" name="hoten"><?php echo $money;?></td>
                 	</tr>
                 	<tr>
                 		<td><label>Địa chỉ email (*)</label></td>
@@ -171,15 +184,27 @@ Vui lòng cung cấp đầy đủ thông tin sau. Chúng tôi sẽ gọi điện
                 		<td><input type="text" name="diachi"></td>
                 	</tr>
                 	<tr>
+                		<td><label>Tổng giá trị là: </label></td>
+                		<td><?php echo $money;?></td>
+                		<!-- <td><input type="text" name="tongtien" value="<?php echo $money;?>"></td> -->
+                	</tr>
+                	<tr>
                 		<td><label>Ghi chú</label></td>
-                		<td><textarea rows="10"></textarea></td>
+                		<td><textarea rows="10" name="mytextarea"></textarea></td>
                 	</tr>
                 </table>
                 <div class="text-center">
-                	<button class="button submit-button" type="button">Đặt hàng ngay</button>
+                	<button class="button submit-button" type="submit">Đặt hàng ngay</button>
                 </div>
             <p>
-            <a class="forgot" href="#">Quên mật khẩu?</a>
-            </p>        
-            </form>
+            <ul class="dv" style="font-size: 12px;">
+            	<li><a href="<?php echo base_url()?>Chinhsachvanchuyen">Chính sách vận chuyển</a></li>
+            	<li><a href="<?php echo base_url()?>Chinhsachbaohanh">Chính sách bảo hành</a></li>
+            	<li><a href="<?php echo base_url()?>Hình thức thanh toán">Hình thức thanh toán</a></li>
+            	<li><a href="<?php echo base_url()?>Doitrahang">Đổi trả hàng, hoàn tiền</a></li>
+            </ul>
+            </p>         
+            <?php 
+            echo form_close();
+             ?>
         </div>

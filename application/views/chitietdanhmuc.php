@@ -25,7 +25,7 @@ include 'header.php';
 	  			<h3 class="home-cat-name" style="color:#85C126; font-size: 16px; text-transform: uppercase; ">
 	  			<img src="public/img/oto.png" width="30px;">
 	  			<?php 
-	  			if(isset($getinfo)){
+	  			if(isset($getinfo)){ 
 	  				foreach ($getinfo as $key1) {
 	  				
 	  			?>
@@ -37,8 +37,8 @@ include 'header.php';
 	  				<!-- product -->
 	  				<?php 
 
-	  				if(isset($getctdm)){
-	  					foreach ($getctdm as $key) {
+	  				if(isset($sanpham)){
+	  					foreach ($sanpham as $key) {
 					?>
 					<div class="col-lg-4"><!-- chia làm 3 sp trên 1 dòng -->
 	  						<div class = "sp-list">
@@ -57,7 +57,7 @@ include 'header.php';
 	  					</div>
 					<?php
 	  					}
-	  				}
+	  				}else echo 11;
 	  				?>
   					<!-- end -->
 	  				</div>

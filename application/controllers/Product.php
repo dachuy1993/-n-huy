@@ -173,6 +173,11 @@
 					'name'=>$key->Ten_sp,
 					'price' =>$key->Gia_sp,
 					'qty' =>1,
+					'img'=>$key->Anh_sp,
+					'kt' =>$key->Kichthuoc_sp,
+					'ms' =>$key->Mausac_sp,
+					'cl' =>$key->Chatlieu_sp,
+					'bh' =>$key->Baohanh_sp,
 					);
 					
 				$this->load->library('cart');

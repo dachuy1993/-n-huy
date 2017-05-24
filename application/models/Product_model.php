@@ -25,6 +25,14 @@ class Product_model extends CI_Model
 			return $get->result();
 		}else return false;	
 	}
+	function get_sp($abc)
+	{
+		$this->db->where('ma_sp',$abc);
+		$getdm =$this->db->get('sanpham');
+		if($getdm->num_rows() > 0){
+			return $getdm->result();
+		}else return false;	
+	}
 	function get_dm($danhmuc_id){
 		$this->db->where('danhmuc_id',$danhmuc_id);
 		$get = $this->db->get('sanpham');

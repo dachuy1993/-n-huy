@@ -46,22 +46,44 @@
 		function add()
 		{
 			// echo 1;
-			$ten = $this->input->post('Tenkh');
+			$tenkh = $this->input->post('Tenkh');
 			$diachiemail = $this->input->post('Diachiemail');
 			$sdt = $this->input->post('Sdt');
+			$tensp = $this->input->post('Tensp');
+			$soluong = $this->input->post('Soluong');
 			$diachigiaohang = $this->input->post('Diachigiaohang');
-			$ghichu = $this->input->post('Ghichu');
-			if(isset($ten) && isset($diachiemail) && isset($sdt) && isset($ghichu)){
+			$kichthuoc = $this->input->post('Kichthuoc');
+			$chatlieu = $this->input->post('Chatlieu');
+			$mausac = $this->input->post('Mausac');
+			$ghichu = $this->input->post('noidung');
+			if(isset($tenkh) && isset($sdt) && isset($tensp) && isset($diachigiaohang) && isset($kichthuoc) && isset($chatlieu)){
 				//chay len sua
 				$data = array(
-					'Ten_kh' => $ten,
+					'Ten_kh' => $tenkh,
 					'Diachi_email' => $diachiemail,
 					'Sdt' => $sdt,
 					'Diachi_giaohang' =>$diachigiaohang,
 					'Ghichu' => $ghichu,
 					);
 				$insert = $this->Customer_model->add($data);
+				$data1 = array(
+					'Ten_kh' =>$tenkh,
+					'Sodt' =>$sdt,
+					'Diachi_email' =>$diachiemail,
+					'Diachi_giaohang' =>$diachigiaohang,
+					'Ghi_chu' =>$ghichu,
+					'Tinh_trang' => "Xác nhận",
+					);
+				$insert1 = $this->Order_model->add($data1);
 				redirect('customer');
+				$data2 = array(
+					'Ten_sp' =>$tensp,
+					'Soluongmua' =>$soluong,
+					'Kichthuoc_sp' =>$kichthuoc,
+					'Chatlieu_sp' =>$chatlieu,
+					'Mausac_sp' =>$mausac,
+					);
+				$insert2 = $this->Chitiet_dondh_model->add($data2);
 			}
 		}
 		function delete($khachhang_id)

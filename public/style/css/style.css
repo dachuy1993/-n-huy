@@ -360,4 +360,11 @@ a, a:visited, a:active{
  top: 0;
  display: none;
 }
-
+.dv{
+    list-style: none;
+}
+.dv li{
+    /*padding: 10px;*/
+    display: inline;
+    padding: 0 2px;
+} 

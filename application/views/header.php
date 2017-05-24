@@ -11,8 +11,11 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-fixed-top">
+
 <section id="header">
 <div class="row max">
 	<div class="col-lg-6">
@@ -49,7 +52,7 @@
 			<li><a href="">GIỚI THIỆU</a></li>
 			<?php 
 			if(isset($danhmuc)){
-				foreach ($danhmuc as $key) {
+				foreach ($danhmuc as $key) { 
 			?>
 			<li><a href="<?php echo base_url()?>danhmuc/view/<?php echo $key->danhmuc_id?>"><?php echo $key->tendanhmuc ?></a>
 				<ul>
@@ -69,15 +72,19 @@
 			</li>
 			<?php
 				}
-
 			}
-
 			 ?>
-			 <li><a href="">ĐẶT HÀNG</a></li>
+			 <li>
+				<a href="#login-box" class=" login-window">
+				ĐẶT HÀNG
+				</a>
+  			</li>
 		</ul>
 	</div>
 </section>
-<section class = "max">
+	
+</nav>
+<section class = "max" style="margin-top:197px ">
 	<div class="slide">
             <div id="slideshow" class="cycle-slideshow"
             data-cycle-fx="scrollHorz"
@@ -99,3 +106,126 @@
         </div>
 
 </section>
+
+        <div id="login-box" class="login">
+            <p class="login_title"> Thêm khách hàng mới </p>
+            <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
+            <?php 
+            	$style = array(
+            		'class' => 'login-content',
+            		);
+            	echo form_open('customer/add',$style);
+             ?>
+                <table>
+                	<tr>
+                		<td colspan="2"><label>
+
+						Thông tin sản phẩm đặt hàng
+				</label></td>
+                	</tr>
+                	<tr>
+                		<td><label>Tên khách hàng (*)</label></td>
+                		<td><input type="text" name="Tenkh" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Địa chỉ email (*)</label></td>
+                		<td>
+                			<input type="email" name="Diachiemail" required>
+                		</td>
+                	</tr>
+                	<tr>
+                		<td><label>Số điện thoại (*)</label></td>
+                		<td><input type="text" name="Sdt" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Tên sản phẩm (*)</label></td>
+                		<td><input type="text" name="Tensp" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Địa chỉ giao hàng (*)</label></td>
+                		<td><input type="text" name="Diachigiaohang" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Kích thước sản phẩm (*)</label></td>
+                		<td><input type="text" name="Kichthuoc" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Chất liệu sản phẩm (*)</label></td>
+                		<td><input type="text" name="Chatlieu" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Màu sắc sản phẩm (*)</label></td>
+                		<td><input type="text" name="Mausac" required></td>
+                	</tr>
+                	<tr>
+                		<td><label>Số lượng sản phẩm (*)</label></td>
+                		<td><input type="text" name="Soluong" required></td>
+                	</tr>
+                	<tr>
+						<td>Nội dung chi tiết của sản phẩm</td>
+						<td><textarea name="noidung" cols="10" required></textarea></td>
+					</tr>
+                </table><tr>
+			<td>Hình ảnh nếu có</td>
+		</tr>
+		<tr>
+			<td>
+				<!-- <input type="file" accept="image/*" onchange="loadFile(event)"> -->
+			
+			</td>
+			
+		</tr>
+	</table>
+	
+			<div style="text-align:center;">
+			<!-- view img -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+			<input type="file" multiple id="gallery-photo-add">
+			<div class="gallery">
+						<script>
+						  $(function() {
+			    // Multiple images preview in browser
+			    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+			        if (input.files) {
+			            var filesAmount = input.files.length;
+
+			            for (i = 0; i < filesAmount; i++) {
+			                var reader = new FileReader();
+
+			                reader.onload = function(event) {
+			                    $($.parseHTML('<img width="200px" height="200px">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+			                }
+
+			                reader.readAsDataURL(input.files[i]);
+			            }
+			        }
+
+			    };
+
+			    $('#gallery-photo-add').on('change', function() {
+			        imagesPreview(this, 'div.gallery');
+			    });
+			});
+						</script>
+			</div>
+			</div>  
+
+
+                <div class="text-center">
+                	<button class="btn btn-default" type="submit" style="margin: 10px;">
+                		<a href="">
+                			GỬI
+                		</a> 
+                	</button>
+                </div>
+            <p>
+            <ul class="dv" style="font-size: 12px;">
+            	<li><a href="<?php echo base_url()?>Chinhsachvanchuyen">Chính sách vận chuyển</a></li>
+            	<li><a href="<?php echo base_url()?>Chinhsachbaohanh">Chính sách bảo hành</a></li>
+            	<li><a href="<?php echo base_url()?>Hình thức thanh toán">Hình thức thanh toán</a></li>
+            	<li><a href="<?php echo base_url()?>Doitrahang">Đổi trả hàng, hoàn tiền</a></li>
+            </ul>
+            </p>         
+            <?php echo form_close() ?>
+        </div>

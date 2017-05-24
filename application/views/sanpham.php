@@ -49,7 +49,7 @@ include 'header.php';
 					Bảo Hành: <?php echo $key->Baohanh_sp?><br/>
 				</p>
 				
-				<a href="<?php echo base_url()?>product/buy/<?php echo $key->sanpham_id?>" class = 'btn btn-default'>Đặt hàng</a>
+				<a href="<?php echo base_url()?>product/buy/<?php echo $key->sanpham_id?>" class = 'btn btn-default'>Mua hàng</a>
 			</div>
 
 		</div>

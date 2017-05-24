@@ -4,7 +4,7 @@
 */
 class Customer_model extends CI_Model
 {
-	
+	 
 	function get(){
 		$get = $this->db->get('khachhang');
 		if($get->num_rows() > 0){

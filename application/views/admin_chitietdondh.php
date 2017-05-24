@@ -29,7 +29,7 @@
 		<li>
 			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			<p style="color: white;">Bảng điều khiển</p>
+				<p style="color: white;">Bảng điều khiển</p>
 			</a>
 		</li>
 		<li>
@@ -53,9 +53,9 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>product">
+			<a href="<?php echo base_url()?>nhanvien">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			<p style="color: white;">Các sản phẩm</p>
+				<p style="color: white;">Nhân viên</p>
 			</a>
 		</li>
 		<li>
@@ -64,18 +64,7 @@
 			</a>
 			<p style="color: white;">Các sản phẩm</p>
 		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
+		
 	</ul>
 </div>
 
@@ -83,7 +72,7 @@
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				ĐƠN ĐẶT HÀNG
+				CHI TIẾT ĐƠN HÀNG
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
@@ -135,39 +124,39 @@
 				</a>
   			</div>
 		</div>
-		<p class="text-center" style="font-size: 20px; color: blue;">CÁC ĐƠN MUA HÀNG</p>
+		<p class="text-center" style="font-size: 20px; color: blue;">CHI TIẾT ĐƠN MUA HÀNG</p>
 		<div class="col-md-12"  style="height: 250px;overflow-x: hidden;">
 			<table class="table table-bordered" >
 			    <thead>
 			      <tr>
-			      	<td>Xem chi tiết</td>
-			        <th>ID</th>
-			        <th>Ngày mua</th>
-			        <th>Tổng giá trị</th>
-			        <th>Tên khách hàng</th>
-			        <th>Số điện thoại</th>
-			        <th>Địa chỉ giao hàng</th>
-			        <th>Ghi chú</th>
-			        <th>Trạng thái</th>
+			      	<td>STT</td>
+			        <th>Tên sản phẩm</th>
+			        <th>Ảnh sản phẩm</th>
+			        <th>Giá sản phẩm</th>
+			        <th>Kích thước</th>
+			        <th>Màu sắc</th>
+			        <th>Chất liệu</th>
+			        <th>Số lượng</th>
+			        <th>Bảo hành</th>
 			        <td>Hoạt động</td>
-			      </tr>
-			    </thead> 
+			      </tr> 
+			    </thead>
 			    <tbody>
 					    <?php 
-			  				if(isset($order1)){
-			  					foreach ($order1 as $key) {
+			  				if(isset($chitiet1)){
+			  					foreach ($chitiet1 as $key) {
 							?>
 			      	<tr>
-			      		<td><a href="<?php echo base_url()?>chitiet_dondh/view/<?php echo $key->Dondh_id?>">Xem chi tiết đơn hàng</a></td>
-			      		<td><?php echo $key->Dondh_id?></td>
-				        <td><?php echo $key->Ngay_lap?></td>
-				        <td><?php echo $key->Tong_gia?></td>
-				        <td><?php echo $key->Ten_kh?></td>
-				        <td><?php echo $key->Sodt?></td>
-				        <td><?php echo $key->Diachi_giaohang?></td>
-				        <td><?php echo $key->Ghi_chu?></td>
-				        <td><?php echo $key->Tinh_trang?></td>
-				        <td>
+			      		<td>1</td>
+			      		<td><?php echo $key->Ten_sp?></td>
+				        <td><?php echo $key->Anh_sp?></td>
+				        <td><?php echo $key->Gia_sp?></td>
+				        <td><?php echo $key->Kichthuoc_sp?></td>
+				        <td><?php echo $key->Mausac_sp?></td>
+				        <td><?php echo $key->Chatlieu_sp?></td>
+				        <td><?php echo $key->Soluongmua?></td>
+				        <td><?php echo $key->Baohanh_sp?></td>
+				        <!-- <td>
 						<?php 
 					        if($key->Tinh_trang === "Chưa chuyển hàng" ){
 				    	?>
@@ -180,7 +169,7 @@
 					        	}
 				    	?>
 				         
-				        </td>
+				        </td> -->
 
 				        
 			      </tr>
@@ -188,78 +177,8 @@
 			    </tbody>
 		 	</table>
 		</div>
-		
-	</div>
+		</div>
 </div>
-	
-
-
-	<!-- </div> -->
-        <div id="login-box" class="login">
-            <p class="login_title"> Thêm đơn đặt hàng </p>  
-            <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
-            <?php 
-            	$style = array(
-            		'class' => 'login-content',
-            		);
-            	echo form_open('order/add',$style);
-             ?>
-                <table>
-                	<tr>
-                		<td colspan="2"><label>
-
-						Thông tin đơn đặt hàng
-				</label></td>
-                	</tr>
-                	<!-- <tr>
-                		<td><label>Tên sản phẩm (*)</label></td>
-                		<td><input type="text" name="tensp"></td>
-                	</tr> -->
-                <!-- 	<tr>
-                		<td><label>Ngày mua (*)</label></td>
-                		<td><input type="text" name="ngaymua"></td>
-                	</tr> -->
-                	<tr>
-                		<td><label>Giá sản phẩm (*)</label></td>
-                		<td><input type="text" name="giasp"></td>
-                	</tr>
-                	<tr>
-                		<td><label>Tên khách hàng (*)</label></td>
-                		<td><input type="text" name="tenkh"></td>
-                	</tr>
-                	<tr>
-                		<td><label>Số điện thoại(*)</label></td>
-                		<td><input type="text" name="sodt"></td>
-                	</tr>
-                	<tr>
-                		<td><label>Địa chỉ giao hàng (*)</label></td>
-                		<td><input type="text" name="diachigh"></td>
-                	</tr>
-                	<tr>
-                		<td><label>Ghi chú (*)</label></td>
-                		<td><input type="text" name="ghichu"></td>
-                	</tr>
-                	<tr>
-                		<td><label>Trạng thái (*)</label></td>
-                		<td>
-                			<form name=myform>
-							<select name=mytextarea>
-							<option name=one value=one> Đang chờ xử lý</option>
-							<option name=two value=two> Hoàn thành </option>
-							</select>
-							</form>
-                		</td>
-                	</tr>
-                </table>
-                <div class="text-center">
-                	<button class="button submit-button" type="submit" style="width: 50%;">Lưu thông tin đơn đặt hàng</button>
-                </div>
-            <p>
-            <a class="forgot" href="#">Quên mật khẩu?</a>
-            </p>         
-            <?php echo form_close() ?>       
-        </div>
-        
 
 </body>
 </html>
