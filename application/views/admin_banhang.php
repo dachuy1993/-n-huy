@@ -27,9 +27,9 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>admin">
+			<a href="<?php echo base_url()?>Dieukhien">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			<p style="color: white;">Bảng điều khiển</p>
+				<p style="color: white;">Bảng điều khiển</p>
 			</a>
 		</li>
 		<li>
@@ -53,29 +53,18 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>product">
+			<a href="<?php echo base_url()?>nhanvien">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			<p style="color: white;">Các sản phẩm</p>
+				<p style="color: white;">Nhân viên</p>
 			</a>
 		</li>
 		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
+			<a href="<?php echo base_url()?>Admin_kho">
+				<span class=" glyphicon glyphicon-book icon" ></span> 
 			</a>
-			<p style="color: white;">Các sản phẩm</p>
+			<p style="color: white;">Quản lý kho</p>
 		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
+		
 	</ul>
 </div>
 
@@ -83,7 +72,7 @@
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				ĐƠN ĐẶT HÀNG
+				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">ĐƠN ĐẶT HÀNG</p>
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
@@ -105,13 +94,13 @@
 							<div class="dropdown">
 								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    	<a href="">
-								    		<span class=" glyphicon glyphicon-user">huy</span>
+								    		<span class=" glyphicon glyphicon-user"><?php if(isset($user)){echo $user;} ?></span>
 								    	</a>
 								    <span class="caret"></span>
 								  </button>
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 								    <li><a href="#">Chế độ xem khách hàng</a></li>
-								    <li><a href="<?php echo base_url()?>admin/logout">Đăng xuất</a></li>
+								    <li><a href="<?php echo base_url()?>admin/logout">Đăng xuất</a></li> 
 								  </ul>
 							</div>
 						</li>
@@ -122,7 +111,7 @@
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
 			<div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
 
-				<a href="<?php echo base_url()?>hoadonban" class="btn btn-info lien-he login-window button orange">
+				<a href="<?php echo base_url()?>Order/hoadonban" class="btn btn-info lien-he login-window button orange">
 				<span class="glyphicon"></span>
 				Hóa đơn bán hàng
 				</a>
@@ -141,13 +130,13 @@
 			    <thead>
 			      <tr>
 			      	<td>Xem chi tiết</td>
-			        <th>ID</th>
-			        <th>Ngày mua</th>
-			        <th>Tổng giá trị</th>
+			        <th>STT</th>
+			        <th>Mã hóa đơn</th>
+			        <th>Ngày lập hóa đơn</th>
 			        <th>Tên khách hàng</th>
-			        <th>Số điện thoại</th>
-			        <th>Địa chỉ giao hàng</th>
-			        <th>Ghi chú</th>
+			        <th>Ngày đặt hàng</th>
+			        <th>Trạng thái</th>
+			        <th>Số tiền</th>
 			        <th>Trạng thái</th>
 			        <td>Hoạt động</td>
 			      </tr>
@@ -155,7 +144,7 @@
 			    <tbody>
 					    <?php 
 			  				if(isset($order1)){
-			  					foreach ($order1 as $key) {
+			  					foreach ($order1 as $key) { 
 							?>
 			      	<tr>
 			      		<td><a href="<?php echo base_url()?>chitiet_dondh/view/<?php echo $key->Dondh_id?>">Xem chi tiết đơn hàng</a></td>

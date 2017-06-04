@@ -27,7 +27,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>admin">
+			<a href="<?php echo base_url()?>Dieukhien">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
 				<p style="color: white;">Bảng điều khiển</p>
 			</a>
@@ -59,17 +59,17 @@
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>Admin_kho">
 				<span class=" glyphicon glyphicon-book icon" ></span>
 			</a>
-			<p style="color: white;">Các sản phẩm</p>
+			<p style="color: white;">Quản lý kho</p>
 		</li>
 		
 	</ul>
 </div>
 
 <div class="menu-right">
-	
+	<?php if(isset($user)){echo $user;} ?>
 </div>
 
 </body>

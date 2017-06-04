@@ -30,7 +30,7 @@ include 'header.php';
 	  			<?php 
 	  				if (isset($getinfo)) {
 	  					foreach ($getinfo as $key) {
-	  						echo $key->Ten_sp;
+	  						echo $key->Ten_sp." 0".$key->sanpham_id;
 	  						?>
 	</h3>
 	<div>

@@ -74,12 +74,18 @@
 			}
 
 			 ?>
-			 <li><a href="">ĐẶT HÀNG</a></li>
+			 <li>
+				<a href="#login-box" class=" login-window">
+				ĐẶT HÀNG
+				</a>
+  			</li>
+  			<li><a href="<?php echo base_url()?>giohang">GIỎ HÀNG</a></li> 
 		</ul>
 	</div>
 </section>
 <div>
-	<table class="table table-bordered" style="text-align:center; width:900px;margin-top:50px;">
+	<table class="table table-bordered" style="text-align:center; width:900px;margin-top:50px; margin: 50px auto;">
+	<caption style="text-align: center;font-size: 30px;color: blue;">Giỏ hàng của bạn</caption>
 		<thead>
 			<tr>
 				<td>STT</td>
@@ -169,11 +175,11 @@ Vui lòng cung cấp đầy đủ thông tin sau. Chúng tôi sẽ gọi điện
                 	</tr>
                 	<tr>
                 		<td><label>Họ và tên (*)</label></td>
-                		<td><input type="text" name="hoten"><?php echo $money;?></td>
+                		<td><input type="text" name="hoten"></td>
                 	</tr>
                 	<tr>
                 		<td><label>Địa chỉ email (*)</label></td>
-                		<td><input type="email" name="email"></td>
+                		<td><input type="email" name="email"></td> 
                 	</tr>
                 	<tr>
                 		<td><label>Số điện thoại (*)</label></td>
@@ -208,3 +214,4 @@ Vui lòng cung cấp đầy đủ thông tin sau. Chúng tôi sẽ gọi điện
             echo form_close();
              ?>
         </div>
+

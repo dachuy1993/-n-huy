@@ -20,7 +20,7 @@
 <div class="row max">
 	<div class="col-lg-6">
 		<h1>
-			<a href="#">
+			<a href="<?php echo base_url()?>">
 				<img src="<?php echo base_url()?>public/img/logo.png">
 			</a>
 		</h1>
@@ -44,12 +44,12 @@
 	</div>
 </div>
 
-</section>
-<section id="menu">
+</section> 
+<section id="menu"> 
 	<div class="main_menu" style="font-weight: bold;font-size: 13px;">
 		<ul>
 			<li><a href="<?php echo base_url()?>">TRANG CHỦ</a></li>
-			<li><a href="">GIỚI THIỆU</a></li>
+			<li><a href="<?php echo base_url()?>Gioithieu">GIỚI THIỆU</a></li>
 			<?php 
 			if(isset($danhmuc)){
 				foreach ($danhmuc as $key) { 
@@ -79,6 +79,7 @@
 				ĐẶT HÀNG
 				</a>
   			</li>
+  			<li><a href="<?php echo base_url()?>giohang">GIỎ HÀNG</a></li>
 		</ul>
 	</div>
 </section>
@@ -97,8 +98,9 @@
 
                     <img src="<?php echo base_url(); ?>public/img/slide2.jpg" alt="tainghe" class="img_slide">
 
-
                     <img src="<?php echo base_url(); ?>public/img/slide3.jpg" alt="smartwatch" class="img_slide">
+                    
+                    <img src="<?php echo base_url(); ?>public/img/banghe6.jpg" alt="smartwatch" class="img_slide">
 
             </div>
             <img id="prev" src="<?php echo base_url(); ?>public/img/prev.png" alt="prev">
@@ -120,8 +122,9 @@
                 	<tr>
                 		<td colspan="2"><label>
 
-						Thông tin sản phẩm đặt hàng
-				</label></td>
+							Thông tin sản phẩm đặt hàng 
+							</label>
+						</td>
                 	</tr>
                 	<tr>
                 		<td><label>Tên khách hàng (*)</label></td>
@@ -146,36 +149,28 @@
                 		<td><input type="text" name="Diachigiaohang" required></td>
                 	</tr>
                 	<tr>
-                		<td><label>Kích thước sản phẩm (*)</label></td>
-                		<td><input type="text" name="Kichthuoc" required></td>
-                	</tr>
-                	<tr>
                 		<td><label>Chất liệu sản phẩm (*)</label></td>
                 		<td><input type="text" name="Chatlieu" required></td>
                 	</tr>
                 	<tr>
                 		<td><label>Màu sắc sản phẩm (*)</label></td>
                 		<td><input type="text" name="Mausac" required></td>
-                	</tr>
-                	<tr>
-                		<td><label>Số lượng sản phẩm (*)</label></td>
-                		<td><input type="text" name="Soluong" required></td>
-                	</tr>
-                	<tr>
-						<td>Nội dung chi tiết của sản phẩm</td>
-						<td><textarea name="noidung" cols="10" required></textarea></td>
+                	</tr>                	<tr>
+						<td><label>Các yêu cầu đặc biệt</label></td>
+						<td><textarea name="noidung" cols="15" required></textarea></td>
 					</tr>
-                </table><tr>
-			<td>Hình ảnh nếu có</td>
-		</tr>
-		<tr>
-			<td>
-				<!-- <input type="file" accept="image/*" onchange="loadFile(event)"> -->
-			
-			</td>
-			
-		</tr>
-	</table>
+	                </table>
+	                <tr>
+						<td>Hình ảnh nếu có</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- <input type="file" accept="image/*" onchange="loadFile(event)"> -->
+						
+						</td>
+						
+					</tr>
+				</table>	
 	
 			<div style="text-align:center;">
 			<!-- view img -->

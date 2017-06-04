@@ -1,97 +1,184 @@
-//full code them hoa don
-    public function save_order(){
-        if($this->input->post('ghichu')){
-            $ghichu = $this->input->post('ghichu');
-        }else{$ghichu = "";}
-        $email = $this->input->post('email');
-        $name_kh = $this->input->post('name');
-        $phone = $this->input->post('phonenumber');
-        $address = $this->input->post('address');
-        $city = $this->input->post('city');
-        $money = $this->session->userdata('money');
-        $ship = 40000;
-        $data = array(
-            'email' => $email,
-            'name' => $name_kh,
-            'phone' => $phone,
-            'address' => $address,
-            'city' => $city,
-            'money' => $money,
-            'ship' => $ship,
-            'ghichu' => $ghichu,
-            'active' => 0,
-        );
-        $insert_order = $this->User_models->insert_order($data);
-        if($insert_order == false){
-            $err= "Saving order Fail!";
-            $err['err'] = $err;
-            $this->load->view('thanhtoan',$err);
-        }else {
-            foreach ($insert_order as $item){}
-            $mahoadon = $item->id;
-            if($cart = $this->cart->contents()){
-                foreach ($cart as $item){
-                    $product = $item['name'];
-                    $img = $item['img'];
-                    $qty = $item['qty'];
-                    $price = $item['price'];
-                    $moneypro = $item['subtotal'];
-                    $data_product = array(
-                        'mahoadon' => $mahoadon,
-                        'name' => $product,
-                        'img' => $img,
-                        'qty' => $qty,
-                        'price' => $price,
-                        'subtotal' => $moneypro,
-                    );
-                    $this->User_models->set_order($data_product);
-                    $id = $item['id'];
-                    $get_number = $this->Admin_models->get_single($id);
-                    foreach ($get_number as $row){}
-                    $number_new = $row->number - $qty;
-                    $data_product_new = array(
-                        'number' => $number_new,
-                    );
-                    $this->Admin_models->edit($id,$data_product_new);
-                }
-            }
-            $session = array(
-                'mahoadon' => $mahoadon,
-            );
-            $this->session->set_userdata($session);
-            $this->cart->destroy();
-            $this->session->unset_userdata('money');
-            $this->session->unset_userdata('count');
-            redirect('thanks');
-        }
-    }
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    trong model
-    //full code them hoa don to
-     public function insert_order($data){
-        $query = $this->db->insert('tb_hoadon',$data);
-        if($query){
-            $this->db->select_max('id');
-            $id = $this->db->get('tb_hoadon');
-            if($id->num_rows() > 0){
-                return  $id->result();
-            }
-        }else return false;
-    }
-    //end
-    //hoa don chiu tiet
-    public function set_order($data){
-        $query = $this->db->insert('tb_chitiet_hoadon',$data);
-        if($query){
-            return true;
-        }else return false;
-    }
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script type="text/javascript" src = "<?php echo base_url()?>public/style/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/style/css/style.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
+</head>
+<body>
 
 
-    public function edit($id,$data){
-        $this->db->where('id',$id);
-        $query = $this->db->update('tb_product',$data);
-        if(isset($query)){
-            return true;
-        }else return false;
-    }
+    
+<div class=" menu-left">
+
+    <ul>
+
+        <li>
+            <a href="<?php echo base_url()?>admin">
+                <span class=" glyphicon glyphicon-home icon"></span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>admin">
+                <span class=" glyphicon glyphicon-dashboard icon"></span>
+                <p style="color: white;">Bảng điều khiển</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>order" style = "display: block;">
+                <span class=" glyphicon glyphicon-usd icon" ></span>
+                <p style="color: white;">Bán hàng</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>product" style = "display: block;">
+                <span class=" glyphicon glyphicon-book icon" ></span>
+            
+            <p style="color: white;">Các sản phẩm</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>customer" style = "display: block;">
+                <span class="  glyphicon glyphicon-heart icon" ></span>
+            
+            <p style="color: white;">Khách hàng</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>nhanvien">
+                <span class=" glyphicon glyphicon-book icon" ></span>
+                <p style="color: white;">Nhân viên</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>Admin_kho">
+                <span class=" glyphicon glyphicon-book icon" ></span>
+            </a>
+            <p style="color: white;">Quản lý kho</p>
+        </li>
+        
+    </ul>
+</div>
+
+<div class="menu-right">
+    <div>
+        <div class="row">
+            <div class="col-lg-5">
+                <p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">NHẬP KHO SẢN PHẨM MỚI</p>
+            </div>
+            <div class="col-lg-7">
+                <div class="icon-user"  style="float: right;">
+                    <ul>
+                        <li>
+                            <div class="input-group">
+                                <input type="text" class="form-control timkiem" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">Tìm Kiếm</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class=" glyphicon glyphicon-bell"><sup>0</sup></span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <a href="">
+                                            <span class=" glyphicon glyphicon-user"><?php if(isset($user)){echo $user;} ?></span>
+                                        </a>
+                                    <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Chế độ xem khách hàng</a></li>
+                                    <li><a href="<?php echo base_url()?>admin/logout">Đăng xuất</a></li>
+                                  </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
+            <div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
+
+                <a href="<?php echo base_url()?>danhmuc" class="btn btn-info lien-he login-window button orange">
+                <span class="glyphicon"></span>
+                Xuất kho
+                </a>
+            </div>
+            <div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
+
+                <a href="<?php echo base_url()?>danhmuc" class="btn btn-info lien-he login-window button orange">
+                <span class="glyphicon"></span>
+                Nhập kho
+                </a>
+            </div>
+            <div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
+
+                <a href="#login-box" class="btn btn-success lien-he login-window button orange">
+                <span class="glyphicon"></span>
+                Thêm sản phẩm
+                </a>
+            </div>
+        </div>
+        <div>
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th style="text-align: center;">STT</th>
+        <th style="text-align: center;">Tên sản phẩm</th>
+        <th style="text-align: center;">Ảnh sản phẩm</th>
+        <th style="text-align: center;">Giá nhập</th>
+        <th style="text-align: center;">Giá bán></th>
+        <th style="text-align: center;">Số lượng xuất</th>
+        <th style="text-align: center;">Kích thước</th>
+        <th style="text-align: center;">Màu sắc</th>
+        <th style="text-align: center;">Chất liệu</th>
+        <th style="text-align: center;">Mã sản phẩm</th>
+        <th style="text-align: center;">Danh mục id</th>
+        <th style="text-align: center;">Bảo hành</th>
+        <th style="text-align: center;">Hoạt động</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php   
+                    if(isset($getinfo)){
+                        foreach ($getinfo as $key) { 
+                    ?>
+      <tr>
+        <td style="text-align: center;"><?php echo $key->kho_id?></td>
+        <td style="text-align: center;"><?php echo $key->ten_sp?></td>
+        <td style="text-align: center;"><input type="file" name="userfile"></td> 
+        <td style="text-align: center;"><?php echo number_format($key->gia_nhap)?></td>
+        <?php $gia = ($key->gia_nhap) * 1.1?>
+        <td style="text-align: center;"><input class="form-control" type="text" name="giaban" value="<?php echo number_format($gia)?>"></td>
+        <td style="text-align: center;"><input class="form-control" type="text" name="soluong" value="<?php echo $key->so_luong?>"></td>
+        <td style="text-align: center;"><input class="form-control" type="text" name="kichthuoc"></td>
+        <td style="text-align: center;"><input class="form-control" type="text" name="mausac"></td>
+        <td style="text-align: center;"><input class="form-control" type="text" name="chatlieu"></td>
+        <td style="text-align: center;"><input class="form-control" type="text" name="masanpham"></td>
+        <td style="text-align: center;"><input class="form-control" type="text" name="danhmuc"></td>
+        <td style="text-align: center;"><input class="form-control" type="text" name="baohanh"></td>
+        <td style="text-align: center;"><a href="">Xác nhận</a>
+        </td>
+      </tr>
+      <?php }}?>
+    </tbody>
+  </table>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

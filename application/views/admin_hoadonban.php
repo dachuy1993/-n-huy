@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,15 +27,10 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>admin">
+			<a href="<?php echo base_url()?>Dieukhien">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			<p style="color: white;">Bảng điều khiển</p>
+				<p style="color: white;">Bảng điều khiển</p>
 			</a>
-			<ul class="sub-menu" style="z-index: 999999999;background: red; margin-left: 200px;">
-		        <li><a href="#">WordPress</a></li>
-		        <li><a href="#"><a href="https://thachpham.com/category/seo" data-wpel-link="internal">SEO</a></a></li>
-		        <li><a href="#">Hosting</a></li>
-		    </ul>
 		</li>
 		<li>
 			<a href="<?php echo base_url()?>order" style = "display: block;">
@@ -59,29 +53,18 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>product">
+			<a href="<?php echo base_url()?>nhanvien">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			<p style="color: white;">Các sản phẩm</p>
+				<p style="color: white;">Nhân viên</p>
 			</a>
 		</li>
 		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
+			<a href="<?php echo base_url()?>Admin_kho">
+				<span class=" glyphicon glyphicon-book icon" ></span> 
 			</a>
-			<p style="color: white;">Các sản phẩm</p>
+			<p style="color: white;">Quản lý kho</p>
 		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
+		
 	</ul>
 </div>
 
@@ -89,14 +72,12 @@
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				<div style="font-size: 25px;">
-					HÓA ĐƠN BÁN
-				</div>
+				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">HÓA ĐƠN BÁN</p>
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
 					<ul>
-						<li>
+						<li style="margin: 0 5px;">
 							<div class="input-group">
 					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
@@ -104,22 +85,22 @@
 					      		</span>
 					    	</div>
 						</li>
-						<li>
+						<li style="margin:  0 5px;">
 							<a href="">
 								<span class=" glyphicon glyphicon-bell"><sup>0</sup></span>
 							</a>
 						</li>
-						<li>
+						<li style="margin: 0 20px 0 5px;">
 							<div class="dropdown">
 								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    	<a href="">
-								    		<span class=" glyphicon glyphicon-user">huy</span>
+								    		<span class=" glyphicon glyphicon-user"><?php if(isset($user)){echo $user;} ?></span>
 								    	</a>
 								    <span class="caret"></span>
 								  </button>
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 								    <li><a href="#">Chế độ xem khách hàng</a></li>
-								    <li><a href="#">Đăng xuất</a></li>
+								    <li><a href="<?php echo base_url()?>admin/logout">Đăng xuất</a></li>
 								  </ul>
 							</div>
 						</li>
@@ -127,102 +108,140 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" style="background: #ccc;margin: 20px 0 20px 0;">
-			<div class="btn-group " role="group" aria-label="..." style="float: right; margin: 20px;">
+		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
+			<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
+
 				<a href="#login-box" class="btn btn-success lien-he login-window button orange">
 				<span class="glyphicon"></span>
-					Thêm hóa đơn bán
+				Thêm đơn mua hàng
 				</a>
   			</div>
 		</div>
-		<div>
-			<table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Hóa đơn ID</th>
-        <th>Ngày lập hóa đơn</th>
-        <th>Tên sản phẩm</th>
-        <th>Ngày đặt hàng</th>
-        <th>Tên khách hàng</th>
-        <th>Tổng số tiền</th>
-        <th>Hoạt động</th>
-      </tr>
-    </thead>
-    <tbody>
-    	<?php 
-			if(isset($hoadonban1)){
-				foreach ($hoadonban1 as $key) {
-					
-		?>
-      <tr>
-        <td><?php echo $key->hoadon_id?></td>
-        <td><?php echo $key->ngay_lap_hd?></td>
-        <td><?php echo $key->ten_sp?></td>
-        <td><?php echo $key->ngay_dat_hang?></td>
-        <td><?php echo $key->ten_kh?></td>
-        <td><?php echo $key->so_tien?></td>
-        <td><a href="">Sửa</a>
-        <a href="">Xóa</a>
-        </td>
-      </tr>
-      <?php }}?>
-    </tbody>
-  </table>
+		<p class="text-center" style="font-size: 20px; color: blue;">HÓA ĐƠN BÁN HÀNG</p>
+		<div class="col-md-12"  style="height: 250px;overflow-x: hidden;">
+			<table class="table table-bordered" >
+			    <thead>
+			      <tr>
+			      	<td>Xem chi tiết</td>
+			        <th>ID</th>
+			        <th>Ngày mua</th>
+			        <th>Tổng giá trị</th>
+			        <th>Tên khách hàng</th>
+			        <th>Số điện thoại</th>
+			        <th>Địa chỉ giao hàng</th>
+			        <th>Ghi chú</th>
+			        <th>Trạng thái</th>
+			        <td>Hoạt động</td>
+			      </tr>
+			    </thead> 
+			    <tbody>
+					    <?php 
+			  				if(isset($order1)){
+			  					foreach ($order1 as $key) { 
+							?>
+			      	<tr>
+			      		<td><a href="<?php echo base_url()?>chitiet_dondh/view/<?php echo $key->Dondh_id?>">Xem chi tiết đơn hàng</a></td>
+			      		<td><?php echo $key->Dondh_id?></td>
+				        <td><?php echo $key->Ngay_lap?></td>
+				        <td><?php echo $key->Tong_gia?></td>
+				        <td><?php echo $key->Ten_kh?></td>
+				        <td><?php echo $key->Sodt?></td>
+				        <td><?php echo $key->Diachi_giaohang?></td>
+				        <td><?php echo $key->Ghi_chu?></td>
+				        <td><?php echo $key->Tinh_trang?></td>
+				        <td>
+						<?php 
+					        if($key->Tinh_trang === "Chưa chuyển hàng" ){
+				    	?>
+				    	<a href="<?php echo base_url()?>order/edit/<?php echo $key->Dondh_id?>">giao hàng</a>
+				    	<?php
+				        	}else{
+						?>
+						<a href="<?php echo base_url()?>order/delete/<?php echo $key->Dondh_id?>">Xóa</a>
+						<?php
+					        	}
+				    	?>
+				         
+				        </td>
+
+				        
+			      </tr>
+	      			<?php }}?>
+			    </tbody>
+		 	</table>
 		</div>
+		
 	</div>
 </div>
-        <!-- <div id="login-box" class="login">
-            <p class="login_title"> Thêm khách hàng mới </p>
+	
+
+
+	<!-- </div> -->
+        <div id="login-box" class="login">
+            <p class="login_title"> Thêm đơn đặt hàng </p>  
             <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
             <?php 
             	$style = array(
             		'class' => 'login-content',
             		);
-            	echo form_open('customer/add',$style);
+            	echo form_open('order/add',$style);
              ?>
                 <table>
                 	<tr>
                 		<td colspan="2"><label>
 
-						Thông tin khách hàng
+						Thông tin đơn đặt hàng
 				</label></td>
+                	</tr>
+                	<!-- <tr>
+                		<td><label>Tên sản phẩm (*)</label></td>
+                		<td><input type="text" name="tensp"></td>
+                	</tr> -->
+                <!-- 	<tr>
+                		<td><label>Ngày mua (*)</label></td>
+                		<td><input type="text" name="ngaymua"></td>
+                	</tr> -->
+                	<tr>
+                		<td><label>Giá sản phẩm (*)</label></td>
+                		<td><input type="text" name="giasp"></td>
                 	</tr>
                 	<tr>
                 		<td><label>Tên khách hàng (*)</label></td>
-                		<td><input type="text" name="Tenkh" required></td>
+                		<td><input type="text" name="tenkh"></td>
                 	</tr>
                 	<tr>
-                		<td><label>Địa chỉ email (*)</label></td>
-                		<td>
-                			<input type="email" name="Diachiemail" required>
-                		</td>
-                	</tr>
-                	<tr>
-                		<td><label>Số điện thoại (*)</label></td>
-                		<td><input type="text" name="Sdt" required></td>
+                		<td><label>Số điện thoại(*)</label></td>
+                		<td><input type="text" name="sodt"></td>
                 	</tr>
                 	<tr>
                 		<td><label>Địa chỉ giao hàng (*)</label></td>
-                		<td><input type="text" name="Diachigiaohang" required></td>
+                		<td><input type="text" name="diachigh"></td>
                 	</tr>
                 	<tr>
                 		<td><label>Ghi chú (*)</label></td>
-                		<td><input type="text" name="Ghichu"></td>
+                		<td><input type="text" name="ghichu"></td>
                 	</tr>
-                	
+                	<tr>
+                		<td><label>Trạng thái (*)</label></td>
+                		<td>
+                			<form name=myform>
+							<select name=mytextarea>
+							<option name=one value=one> Đang chờ xử lý</option>
+							<option name=two value=two> Hoàn thành </option>
+							</select>
+							</form>
+                		</td>
+                	</tr>
                 </table>
                 <div class="text-center">
-                	<button class="btn btn-default" type="submit" style="margin: 10px;">
-                		<a href="">
-                			Lưu thông tin khách hàng
-                		</a> 
-                	</button>
+                	<button class="button submit-button" type="submit" style="width: 50%;">Lưu thông tin đơn đặt hàng</button>
                 </div>
             <p>
             <a class="forgot" href="#">Quên mật khẩu?</a>
-            </p>        
-            <?php echo form_close() ?>
-        </div> -->
+            </p>         
+            <?php echo form_close() ?>       
+        </div>
+        
 
 </body>
 </html>

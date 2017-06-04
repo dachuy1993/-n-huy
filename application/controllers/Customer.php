@@ -6,8 +6,10 @@
 	{
 		function index ()
 		{
+			$user = $this->session->userdata('user'); 
 			$data = array();
 			$customer = $this->Customer_model->get();
+			$data['user'] = $user;
 			if ($customer) {
 				$data['customer1'] = $customer;
 			}
@@ -74,16 +76,17 @@
 					'Ghi_chu' =>$ghichu,
 					'Tinh_trang' => "Xác nhận",
 					);
-				$insert1 = $this->Order_model->add($data1);
-				redirect('customer');
+				$insert1 = $this->Order_model->add($data1); 
 				$data2 = array(
 					'Ten_sp' =>$tensp,
 					'Soluongmua' =>$soluong,
 					'Kichthuoc_sp' =>$kichthuoc,
 					'Chatlieu_sp' =>$chatlieu,
 					'Mausac_sp' =>$mausac,
-					);
+					);  
 				$insert2 = $this->Chitiet_dondh_model->add($data2);
+
+				redirect('home');
 			}
 		}
 		function delete($khachhang_id)

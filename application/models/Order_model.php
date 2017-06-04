@@ -20,7 +20,7 @@ class Order_model extends CI_Model
 	}
 	function add($data)
 	{
-		$add = $this->db-> insert('dondh', $data);
+		$add = $this->db-> insert('dondh', $data); 
 		if($add){
 			//lay id max lam mhd
 			$this->db->select_max('Dondh_id');

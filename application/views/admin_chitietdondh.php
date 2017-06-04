@@ -59,10 +59,10 @@
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>Admin_kho">
 				<span class=" glyphicon glyphicon-book icon" ></span>
 			</a>
-			<p style="color: white;">Các sản phẩm</p>
+			<p style="color: white;">Quản lý kho</p>
 		</li>
 		
 	</ul>
@@ -72,7 +72,7 @@
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				CHI TIẾT ĐƠN HÀNG
+				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">CHI TIẾT ĐƠN ĐẶT HÀNG</p>
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
@@ -94,7 +94,7 @@
 							<div class="dropdown">
 								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    	<a href="">
-								    		<span class=" glyphicon glyphicon-user">huy</span>
+								    		<span class=" glyphicon glyphicon-user"><?php if(isset($user)){echo $user;} ?></span>
 								    	</a>
 								    <span class="caret"></span>
 								  </button>
@@ -116,13 +116,18 @@
 				Hóa đơn bán hàng
 				</a>
   			</div>
+  			<?php
+			  				if(isset($chitiet1)){
+			  					foreach ($chitiet1 as $key) { 
+							?>
 			<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
 
-				<a href="#login-box" class="btn btn-success lien-he login-window button orange">
+				<a href="<?php echo base_url()?>Admin_kho/xuatkho/<?php echo $key->Dondh_id?>" class="btn btn-success lien-he login-window button orange">
 				<span class="glyphicon"></span>
-				Thêm đơn mua hàng
+				Phiếu xuất kho
 				</a>
-  			</div>
+  			</div> 
+  			<?php }}?> 
 		</div>
 		<p class="text-center" style="font-size: 20px; color: blue;">CHI TIẾT ĐƠN MUA HÀNG</p>
 		<div class="col-md-12"  style="height: 250px;overflow-x: hidden;">
@@ -140,7 +145,7 @@
 			        <th>Bảo hành</th>
 			        <td>Hoạt động</td>
 			      </tr> 
-			    </thead>
+			    </thead> 
 			    <tbody>
 					    <?php 
 			  				if(isset($chitiet1)){

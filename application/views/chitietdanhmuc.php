@@ -6,7 +6,7 @@ include 'header.php';
  <div class="row max color" >
   <div class="col-lg-3">
   		<section class="menu_height">
-  			<div>
+  			<div> 
   				<h3>CHUYÊN MỤC TƯ VẤN</h3> 
   				<div>
   					<ul id="menu-sidebar" class="menu">
@@ -25,8 +25,8 @@ include 'header.php';
 	  			<h3 class="home-cat-name" style="color:#85C126; font-size: 16px; text-transform: uppercase; ">
 	  			<img src="public/img/oto.png" width="30px;">
 	  			<?php 
-	  			if(isset($getinfo)){ 
-	  				foreach ($getinfo as $key1) {
+	  			if(isset($getctdm)){ 
+	  				foreach ($getctdm as $key1) {
 	  				
 	  			?>
 	  			<?php echo $key1->ten_chitiet_dm?>
@@ -42,15 +42,15 @@ include 'header.php';
 					?>
 					<div class="col-lg-4"><!-- chia làm 3 sp trên 1 dòng -->
 	  						<div class = "sp-list">
-	  							<div class="sp-view">
+	  							<div class="sp-view"> 
 			  						<a href="<?php echo base_url()?>product/view/<?php echo $key->sanpham_id?>"><img src="<?php echo base_url()?>public/img/<?php echo $key->Anh_sp?>"></a>
 			  					</div>
-			  					<h2 class="name"><a href="/sanpham.php" style="color: black;"><?php echo $key->Ten_sp ?></a></h2>
+			  					<h2 class="name"><a href="/sanpham.php" style="color: black;"><?php echo $key->Ten_sp." 0"."$key->sanpham_id" ?></a></h2>
 			  					<div style="display: table; width: 100%">
-				  					<p class="giasp" style="float: left;"><?php echo number_format($key->Gia_sp)?></p>
-			  						<a href="#" class = "btn btn-success lien_he">
+				  					<p class="giasp" style="float: left; font-size: 20px;"><?php echo number_format($key->Gia_sp)?> vnđ</p>
+			  						<a href="<?php echo base_url()?>product/view/<?php echo $key->sanpham_id?>" class = "btn btn-success lien_he" style="float: right;">
 			  							<span class="glyphicon glyphicon-shopping-cart"></span>
-			  							Đặt mua
+			  							Đặt mua 
 			  						</a>
 			  					</div>
 	  						</div>

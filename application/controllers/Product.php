@@ -9,7 +9,8 @@
 			$user = $this->session->userdata('user');
 			if(isset($user)){
 				$data = array();
-				$product = $this->Product_model->get();
+				$product = $this->Product_model->get_list();
+				$data['user'] = $user;
 				if ($product) {
 					$data['product1'] = $product;
 				}
@@ -33,8 +34,8 @@
 				redirect('admin'); 
 			}
 		}
-		function view($sanpham_id){ 
-			$danhmuc = $this->Danhmuc_model->get();
+		function view($sanpham_id){  
+			$danhmuc = $this->Danhmuc_model->get(); 
 			if($danhmuc){
 				$data['danhmuc'] = $danhmuc; 
 			}
@@ -65,22 +66,24 @@
 		{
 			// echo 1;
 			$tensp = $this->input->post('Ten');
+			// $anhsp = $this->input->post('userfile');
+			$madm = $this->input->post('mytextarea');
 			$giasp = $this->input->post('Giaban');
 			$soluong = $this->input->post('Soluong');
 			$kichthuoc = $this->input->post('Kichthuoc');
 			$mausac = $this->input->post('Mausac');
 			$chatlieu = $this->input->post('Chatlieu');
-			$baohanh = $this->input->post('mytextarea');
+			$baohanh = $this->input->post('mytextarea1');
 			$thongtin = $this->input->post('thongtin');
 			$masp = $this->input->post('masp');
-			if(isset($tensp) && isset($giasp) && isset($soluong) && isset($kichthuoc) && isset($mausac) && isset($chatlieu) && isset($baohanh)){
+			if(isset($tensp) && isset($madm) && isset($giasp) && isset($soluong) && isset($kichthuoc) && isset($chatlieu) && isset($baohanh) && isset($masp)){
 				//chay len sua
 				$config['upload_path']          = './public/img/';
                 $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 100;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
-
+                // $config['max_size']             = 100;
+                // $config['max_width']            = 1024;
+                // $config['max_height']           = 768;
+ 
                 $this->load->library('upload', $config);
 
                 if ( ! $this->upload->do_upload('userfile'))
@@ -95,6 +98,8 @@
                         $anhsp = $data['upload']['file_name']; 
 					$data = array(
 					'Ten_sp' => $tensp,
+					'danhmuc_id' => $madm,
+					'ma_sp' =>$masp,
 					'Gia_sp' => $giasp,
 					'Anh_sp' =>$anhsp,
 					'Soluong_sp' => $soluong,
@@ -102,6 +107,7 @@
 					'Mausac_sp' => $mausac,
 					'Chatlieu_sp' =>$chatlieu,
 					'Baohanh_sp' => $baohanh,
+					'Thong_tin_sp' =>$thongtin,
 					);
 				$insert = $this->Product_model->add($data);
 				redirect('product'); 
@@ -110,14 +116,27 @@
 				
 			}
 		}
+		function editlx($sanpham_id)
+		{
+			$getinfo = $this->Product_model->getinfo($sanpham_id);
+			$lx = $luot_xem;
+			if (isset($lx)) {
+				$edit = array(
+					'Luot_xem' =>$lx,
+					);
+				$edit = $this->Product_model->edit($sanpham_id,$edit);
+			}
+			
+
+		}
 		function edit($sanpham_id) 
 		{
 			$getinfo = $this->Product_model->getinfo($sanpham_id);
 			$ten_sp = $this->input->post('tensp');
 			$ma_sp = $this->input->post('masp');
 			$so_luong = $this->input->post('soluong');
-			$gia_sp = $this->input->post('giasp');
-			$kich_thuoc = $this->input->post('kichthuoc');
+			$gia_sp = $this->input->post('giasp'); 
+			$kich_thuoc = $this->input->post('kichthuoc'); 
 			$mau_sac = $this->input->post('mausac');
 			$chat_lieu = $this->input->post('chatlieu');
 			$bao_hanh = $this->input->post('baohanh');
@@ -133,7 +152,7 @@
 					'Chatlieu_sp' => $chat_lieu,
 					'ma_sp' => $ma_sp,
 					'Baohanh_sp' =>$bao_hanh,
-					'Thong_tin_sp'=>$thongtin,
+					'Thong_tin_sp'=>$thong_tin,
 					);
 				$edit = $this->Product_model->edit($sanpham_id,$edit);
 				redirect('product');

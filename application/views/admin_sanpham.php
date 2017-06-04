@@ -29,7 +29,7 @@
 		<li>
 			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			<p style="color: white;">Bảng điều khiển</p>
+				<p style="color: white;">Bảng điều khiển</p>
 			</a>
 		</li>
 		<li>
@@ -53,29 +53,18 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>product">
+			<a href="<?php echo base_url()?>nhanvien">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			<p style="color: white;">Các sản phẩm</p>
+				<p style="color: white;">Nhân viên</p>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>Admin_kho">
 				<span class=" glyphicon glyphicon-book icon" ></span>
 			</a>
-			<p style="color: white;">Các sản phẩm</p>
+			<p style="color: white;">Quản lý kho</p>
 		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
+		
 	</ul>
 </div>
 
@@ -83,7 +72,7 @@
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				SẢN PHẨM
+				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">SẢN PHẨM</p>
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
@@ -105,7 +94,7 @@
 							<div class="dropdown">
 								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    	<a href="">
-								    		<span class=" glyphicon glyphicon-user">huy</span>
+								    		<span class=" glyphicon glyphicon-user"><?php if(isset($user)){echo $user;} ?></span>
 								    	</a>
 								    <span class="caret"></span>
 								  </button>
@@ -139,7 +128,7 @@
 			<table class="table table-bordered">
     <thead>
       <tr>
-        <th>ID</th>
+        <th>STT</th>
         <th>Ảnh sản phẩm</th>
         <th>Tên sản phẩm</th>
         <th>Mã sản phẩm</th>
@@ -149,30 +138,38 @@
         <th>Kích thước sản phẩm</th>
         <th>Màu sắc sản phẩm</th>
         <th>Chất liệu sản phẩm</th>
+        <th>Thông tin sản phẩm</th>
         <th>Bảo hành sản phẩm</th>
-        <th>Hoạt động</th>
+        <th>Lượt mua</th>
+        <th>Lượt xem</th>
+        <th>Hoạt động</th> 
       </tr>
-    </thead>
+    </thead><?php $stt = 0;?>
     <tbody>
     <?php 
 	  				if(isset($product1)){
 	  					foreach ($product1 as $key) { 
+	  						$stt +=1;
 					?>
       <tr>
-        <td><?php echo $key->sanpham_id?></td>
+        <td style="text-align: center;"><?php echo $stt?></td>
+
         <td>
         	<img src="<?php echo base_url()?>public/img/<?php echo $key->Anh_sp?>" width="
         100%" height = "70px" style ="margin: 0 auto">
         </td>
-        <td><?php echo $key->Ten_sp?></td>
-        <td><?php echo $key->ma_sp?></td>
-        <td><?php echo $key->danhmuc_id?></td>
-        <td><?php echo $key->Soluong_sp?></td>
-        <td><?php echo $key->Gia_sp?></td>
-        <td><?php echo $key->Kichthuoc_sp?></td>
-        <td><?php echo $key->Mausac_sp?></td>
-        <td><?php echo $key->Chatlieu_sp?></td>
-        <td><?php echo $key->Baohanh_sp?></td>
+        <td style="text-align: center;"><?php echo $key->Ten_sp." 0".$key->sanpham_id?></td>
+        <td style="text-align: center;"><?php echo $key->ma_sp?></td>
+        <td style="text-align: center;"><?php echo $key->danhmuc_id?></td>
+        <td style="text-align: center;"><?php echo $key->Soluong_sp?></td>  
+        <td style="text-align: center;"><?php echo $key->Gia_sp?></td>
+        <td style="text-align: center;"><?php echo $key->Kichthuoc_sp?></td>
+        <td style="text-align: center;"><?php echo $key->Mausac_sp?></td>
+        <td style="text-align: center;"><?php echo $key->Chatlieu_sp?></td>
+        <td style="text-align: center;"><?php echo $key->Thong_tin_sp?></td>
+        <td style="text-align: center;"><?php echo $key->Baohanh_sp?></td>
+        <td style="text-align: center;"><?php echo $key->Luot_mua?></td>
+        <td style="text-align: center;"><?php echo $key->Luot_xem?></td>
         <td><a href="<?php echo base_url()?>product/edit/<?php echo $key->sanpham_id?>">Sửa</a>
         <a href="<?php echo base_url()?>product/delete/<?php echo $key->sanpham_id?>">Xóa</a>
         </td>
@@ -197,12 +194,13 @@
             		);
             	echo form_open('product/add',$style);
              ?>
-                <table>
+                <table> 
                 	<tr>
                 		<td colspan="2"><label>
 
-						Thông tin sản phẩm
-				</label></td>
+							Thông tin sản phẩm
+							</label>
+						</td>
                 	</tr>
                 	<tr>
                 		<td><label>Tên sản phẩm (*)</label></td>
@@ -212,12 +210,12 @@
                 		<td><label>Mã loại danh mục (*)</label></td>
                 		<td>
 							<select name=mytextarea>
-							<option name=one value='1'>Phòng khách</option>
-							<option name=two value='2'>Phòng ngủ</option>
-							<option name=three value='3'>Phòng ăn</option>
-							<option name=four value='4'>Phòng thờ</option>
-							<option name=five value='5'>Nội thất văn phòng</option>
-							<option name=six value='6'>Đồ gỗ trang trí</option>
+							<option name=one value='2'>Phòng khách</option>
+							<option name=two value='3'>Phòng ngủ</option>
+							<option name=three value='4'>Phòng ăn</option>
+							<option name=four value='5'>Phòng thờ</option>
+							<option name=five value='6'>Nội thất văn phòng</option>
+							<option name=six value='9'>Đồ gỗ trang trí</option>
 							</select>
 							
 						</td>
@@ -256,10 +254,11 @@
                 		<td><label>Bảo hành (*)</label></td>
                 		<td>
                 			
-							<select name=mytextarea>
-							<option name=one value=one> 12 tháng </option>
-							<option name=two value=two> 24 tháng </option>
-							<option name=three value=three> 36 tháng </option>
+							<select name=mytextarea1>
+							<option name=one value="3 năm"> 3 năm </option> 
+							<option name=two value="5 năm"> 5 năm </option>
+							<option name=three value="7 năm"> 7 năm </option>
+							<option name=four value="10 năm"> 10 năm </option>
 							</select>
 					
                 		</td>
@@ -270,7 +269,7 @@
                 	</tr>
                 </table>
                 <div class="text-center">
-                	<button class="button submit-button" type="submit">Lưu thông tin khách hàng</button>
+                	<button class="button submit-button" type="submit" style="width: 50%;">Lưu thông tin sản phẩm</button>
                 </div>
             <p>
             <a class="forgot" href="#">Quên mật khẩu?</a>

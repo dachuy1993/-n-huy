@@ -134,9 +134,10 @@
 	color: red;
 }
 .name{
-	font-size: 20px;
+	font-size: 15px;
 	text-align: left;
-	line-height: 10px;
+	line-height: 30px;
+    font-weight: bold;
 }
 .dat-mua{
 	 float: right;
@@ -368,3 +369,11 @@ a, a:visited, a:active{
     display: inline;
     padding: 0 2px;
 } 
+.footer{
+    list-style: none;
+}
+.footer li{
+    /*padding: 10px;*/
+    display: inline;
+    padding: 0 2px;
+}

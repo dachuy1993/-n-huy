@@ -4,7 +4,7 @@
 */
 class Product_model extends CI_Model
 {
-	
+	 
 	function get(){
 		$get = $this->db->get('sanpham');
 		if($get->num_rows() > 0){
@@ -21,7 +21,7 @@ class Product_model extends CI_Model
 	function getspcatalog($maloai_sp){
 		$this->db->where('maloai_sp',$maloai_sp);
 		$get = $this->db->get('sanpham');
-		if($get->num_rows() > 0){
+		if($get->num_rows() > 0){ 
 			return $get->result();
 		}else return false;	
 	}
@@ -40,6 +40,22 @@ class Product_model extends CI_Model
 			return $get->result();
 		}else return false;	
 	}
+	function get_dm_home($danhmuc_id){
+		$this->db->order_by('sanpham_id','DESC');
+		$this->db->limit(6);
+		$this->db->where('danhmuc_id',$danhmuc_id);
+		$get = $this->db->get('sanpham');
+		if($get->num_rows() > 0){
+			return $get->result();
+		}else return false;	
+	}
+	function get_list(){
+		$this->db->order_by('Soluong_sp','ASC');
+		$get = $this->db->get('sanpham');
+		if($get->num_rows() > 0){
+			return $get->result();
+		}else return false;
+	}
 	function get_ctdm($ma_sp)
 	{
 		$this->db->where('ma_sp',$ma_sp);
@@ -55,7 +71,8 @@ class Product_model extends CI_Model
 			return true; 
 		}else return false; 
 
-	}function edit($sanpham_id,$edit){
+	}
+	function edit($sanpham_id,$edit){
 		$this->db->where('sanpham_id',$sanpham_id);
 		$edit = $this->db->update('sanpham',$edit);
 		if($edit){
@@ -68,7 +85,7 @@ class Product_model extends CI_Model
 		$delete = $this->db->delete('sanpham');
 		if($delete){
 			return true;
-		}else return false;
+		}else return false; 
 	}
 }
 

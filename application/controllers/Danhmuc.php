@@ -4,42 +4,23 @@
 */
 class danhmuc extends CI_Controller
 {
-	
-	// function __construct(argument)
-	// {
-	// 	$danhmuc = $this->Danhmuc_model->get();
-			
-			
-	// 		if($danhmuc){
-	// 			$data['danhmuc'] = $danhmuc;
-	// 		}
-	// }
-
-
 		function index ()
 		{
+			$user = $this->session->userdata('user'); 
 			$data = array();
 			$danhmuc = $this->Danhmuc_model->get();
+			$data['user'] = $user;
 			if ($danhmuc) {
 				$data['danhmuc1'] = $danhmuc;
 			}
 			$this->load->view('admin_danhmuc',$data);
 		}
-		// function index_ct ()
-		// {
-		// 	$data = array();
-		// 	$danhmuc = $this->Chitiet_dm_model->get();
-		// 	if ($danhmuc) {
-		// 		$data['danhmuc1'] = $danhmuc;
-		// 	}
-		// 	$this->load->view('admin_edit_danhmuc',$data);
-		// }
 		function view($danhmuc_id)
 		{
 			$danhmuc = $this->Danhmuc_model->get();
 			$getdm = $this->Product_model->get_dm($danhmuc_id);
 			if($getdm){
-				$data['getdm'] = $getdm;
+				$data['getdm'] = $getdm;  
 			}
 			if($danhmuc){
 				$data['danhmuc'] = $danhmuc;

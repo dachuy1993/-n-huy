@@ -1,6 +1,6 @@
 <?php 
 /**
-* 
+*  
 */
 class Chitiet_dondh_model extends CI_Model
 {

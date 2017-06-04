@@ -6,17 +6,23 @@
 	{
 		function index ()
 		{
-			$user = $this->session->userdata('user');
-			if(isset($user)){
+			$user = $this->session->userdata('user'); 
 				$data = array();
 				$product = $this->Product_model->get();
-				if ($product) {
-					$data['product1'] = $product;
+				if(isset($user))
+				{
+					$data['user'] = $user;
+					$this->load->view('admin', $data); 
 				}
-				$this->load->view('admin',$data);
-			}else{
-				redirect('admin/login');
-			}
+				
+				// if ($product) {
+				// 	$data['product1'] = $product;
+				// 	$this->load->view('admin',$data);
+				// }
+				
+				else{
+					redirect('admin/login');
+				}
 		}
 		function kh ()
 		{
@@ -51,7 +57,7 @@
 		}
 		function logout(){
 			$this->session->sess_destroy();
-			redirect('admin');
+			redirect('admin'); 
 		}
 	}
  ?>

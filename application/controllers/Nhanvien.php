@@ -10,6 +10,7 @@
 			$user = $this->session->userdata('user');
 			if(isset($user)){
 				$nhanvien = $this->Nhanvien_model->get();
+				$data['user'] = $user;
 				if ($nhanvien) {
 					$data['nhanvien1'] = $nhanvien;
 				}
@@ -18,7 +19,10 @@
 			redirect('admin/login');
 			}
 		}
-		
+		function view($nhanvien_id)
+		{
+			
+		}
 		function edit($nhanvien_id)
 		{
 			// echo 1;

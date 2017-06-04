@@ -22,6 +22,7 @@ class giohang extends CI_Controller
 	}
 	function save()
 	{
+		$money = 0;
 		$this->load->library('cart');
 		$hoten = $this->input->post('hoten');
 		$email = $this->input->post('email');
@@ -29,7 +30,10 @@ class giohang extends CI_Controller
 		// $tongtien = $this->input->post('tongtien');
 		$diachi = $this->input->post('diachi');
 		$ghichu = $this->input->post('mytextarea');
-
+		$cart = $this->cart->contents();
+		if(isset($cart)){
+			foreach ($cart as $key) {
+				$money +=$key['subtotal'];}
 		if(isset($hoten) && isset($email) && isset($sdt) && isset($diachi) && isset($ghichu))
 		{
 
@@ -38,16 +42,17 @@ class giohang extends CI_Controller
 				'Diachi_email' => $email,
 				'Sodt' => $sdt,
 				'Diachi_giaohang' => $diachi,
-				// 'Tong_gia' =>$tongtien,
+				'Tong_gia' =>$money,
 				'ghi_chu' => $ghichu,
 			);
-			$insert = $this->Order_model->add($data); 
+			$insert = $this->Order_model->add($data);  
 			if($insert == false)
 			{
 				$err= "Saving order Fail!";
 	            $err['err'] = $err;
 	            $this->load->view('giohang',$err);
 			}
+			
 			else
 			{
 				foreach ($insert as $item) {}
@@ -92,5 +97,6 @@ class giohang extends CI_Controller
 
 		}
 	}
+}
 }
  ?>

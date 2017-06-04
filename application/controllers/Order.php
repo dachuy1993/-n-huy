@@ -6,19 +6,39 @@
 	{
 		function index ()
 		{
+
 			$user = $this->session->userdata('user');
 			if(isset($user)){
 				$data = array();
 				$order = $this->Order_model->get();
+				$data['user'] = $user;
 				if ($order) {
 					$data['order1'] = $order;
 				}
+				$data['user'] = $user;
 				$this->load->view('admin_banhang',$data);
 
 			}else{
 				redirect('admin');
 			}
 			// redirect('home');
+		}
+		function hoadonban()
+		{
+			$user = $this->session->userdata('user');
+			if(isset($user)){
+				$data = array();
+				$order = $this->Order_model->get();
+				$data['user'] = $user;
+				if ($order) {
+					$data['order1'] = $order;
+				}
+				$data['user'] = $user;
+				$this->load->view('admin_hoadonban',$data);
+
+			}else{
+				redirect('admin');
+			}
 		}
 		function view($order_id){
 			$getinfo = $this->Order_model->getinfo($order_id);

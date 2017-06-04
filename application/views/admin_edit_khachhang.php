@@ -22,8 +22,7 @@ if(isset($err)){
 <body>
 
 
-	
-<div class=" menu-left">
+	<div class=" menu-left">
 
 	<ul>
 
@@ -35,7 +34,7 @@ if(isset($err)){
 		<li>
 			<a href="<?php echo base_url()?>admin">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
-			<p style="color: white;">Bảng điều khiển</p>
+				<p style="color: white;">Bảng điều khiển</p>
 			</a>
 		</li>
 		<li>
@@ -59,29 +58,18 @@ if(isset($err)){
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>product">
+			<a href="<?php echo base_url()?>nhanvien">
 				<span class=" glyphicon glyphicon-book icon" ></span>
-			<p style="color: white;">Các sản phẩm</p>
+				<p style="color: white;">Nhân viên</p>
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="<?php echo base_url()?>Admin_kho">
 				<span class=" glyphicon glyphicon-book icon" ></span>
 			</a>
-			<p style="color: white;">Các sản phẩm</p>
+			<p style="color: white;">Quản lý kho</p>
 		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
-		<li>
-			<a href="">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Các sản phẩm</p>
-		</li>
+		
 	</ul>
 </div>
 
@@ -89,7 +77,7 @@ if(isset($err)){
 	<div>
 		<div class="row">
 			<div class="col-lg-5">
-				KHÁCH HÀNG
+				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">KHÁCH HÀNG</p>
 			</div>
 			<div class="col-lg-7">
 				<div class="icon-user"  style="float: right;">
@@ -111,7 +99,7 @@ if(isset($err)){
 							<div class="dropdown">
 								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    	<a href="">
-								    		<span class=" glyphicon glyphicon-user">huy</span>
+								    		<span class=" glyphicon glyphicon-user"><?php if(isset($user)){echo $user;} ?></span>
 								    	</a>
 								    <span class="caret"></span>
 								  </button>
