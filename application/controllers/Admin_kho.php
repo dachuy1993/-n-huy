@@ -10,7 +10,7 @@ class Admin_kho extends CI_Controller
 			$data = array();
 			$user = $this->session->userdata('user');
 			if(isset($user)){
-				$kho = $this->Kho_model->get();
+				$kho = $this->Product_model->get();
 				$data['user'] = $user;
 				if ($kho) {
 					$data['kho1'] = $kho;
@@ -56,35 +56,40 @@ class Admin_kho extends CI_Controller
 			}
 		}
 
-	function nhapkhomoi()
-		{
-		$data = array();
-			$user = $this->session->userdata('user');
+	// function nhapkhomoi()
+	// 	{
+	// 	$data = array();
+	// 		$user = $this->session->userdata('user');
 			
-			if(isset($user)){
-				// $nhapkho = $this->Product_model->get();
-				$getinfo = $this->Kho_model->get();
-				$data['user'] = $user;
-				// if ($nhapkho) {
-					// $data['kho1'] = $nhapkho;
-				
-				if($getinfo){
-				$data['getinfo'] = $getinfo;
-				} 
-				else{
-					$data['err'] = "sản phầm này k tồn tại";
-				}
-				$this->load->view('Admin_nhapkho',$data);
-			}else{
-			redirect('admin/login');
-			}
-		}
-	function nhapkhocu($kho_id)
+	// 		if(isset($user)){
+	// 			// $nhapkho = $this->Product_model->get();
+	// 			$getinfo = $this->Kho_model->get();
+	// 			$data['user'] = $user;
+	// 			// if ($nhapkho) {
+	// 				// $data['kho1'] = $nhapkho;
+	// 			//end
+	// 			$danhmuc = $this->Danhmuc_model->get();
+	// 			if ($danhmuc) {
+	// 				$data['danhmuc2'] = $danhmuc;
+	// 			}
+	// 			//hocphi
+	// 			if($getinfo){
+	// 			$data['getinfo'] = $getinfo;
+	// 			} 
+	// 			else{
+	// 				$data['err'] = "sản phầm này k tồn tại";
+	// 			}
+	// 			$this->load->view('Admin_nhapkho',$data);
+	// 		}else{
+	// 		redirect('admin/login');
+	// 		}
+		// }
+	function nhapkhocu($sanpham_id)
 		{
 		$data=array();
 		$user = $this->session->userdata('user');
 			if(isset($user)){
-				$getinfo = $this->Kho_model->getinfo($kho_id);
+				$getinfo = $this->Product_model->getinfo($sanpham_id);
 				$data['user'] = $user;
 				if($getinfo){
 				$data['getinfo'] = $getinfo;
@@ -146,36 +151,26 @@ class Admin_kho extends CI_Controller
 				}
 			}
 		}
-	function editsl($kho_id)
-	{
-			$getinfo = $this->Kho_model->getinfo($kho_id);
-			foreach ($getinfo as $key) {};
-			$soluongcu = $key->So_luong;
-			$gianhapcu = $key->Gia_nhap;
-
-			$gianhap = $this->input->post('gianhap');
-			$soluong = $this->input->post('soluong');
-			if(isset($gianhap) && isset($soluong))
-			{
-				$tong = $soluong + $soluongcu;
-				$gianhapmoi = ($gianhapcu * $soluongcu + $gianhap * $soluong)/$tong;
-				
-				$edit = array(
-					'Gia_nhap' =>$gianhapmoi,
-					'So_luong' => $soluongcu + $soluong,
-					);
-				$edit = $this->Kho_model->edit($kho_id,$edit);
-				redirect('Admin_kho');
-			}
-			if($getinfo){
-				$data['getinfo'] = $getinfo;
-			}
-			else{
-				$data['err'] = "sản phầm này k tồn tại";
-			}
-			$this->load->view('Admin_nhapkhocu',$data);
-
-		}
 	
-}
+		function get_masp1()
+		{
+			$danhmuc_id = $this->input->post('danhmuc_id');
+			$masp = $this->Chitiet_dm_model->get_masp($danhmuc_id);
+			if(count($masp)>0)
+			{
+				$masp_select_box = ' ';
+				$masp_select_box = '<option value="">Select chi tiết ok</option>';
+				foreach ($masp as $key) {
+				$masp_select_box .='<option value="'.$key->danhmuc_id.'">'.$key->ma_sp.'</option>';
+				}
+			}
+			else
+			{
+				$masp_select_box = 'huy';
+			}
+			echo json_encode($masp_select_box);
+		}
+	}
+	
+
 ?>

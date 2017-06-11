@@ -1,5 +1,5 @@
 
-	<div class="dv" >
+	<div class="dv table col-md-12 col-lg-12 main_footer" >
 		<ul> 
 			<li><a href="<?php echo base_url()?>">TRANG CHỦ</a></li>
 			<li><a href="<?php echo base_url()?>hinhthucthanhtoan">HÌNH THỨC THANH TOÁN</a></li>
@@ -9,3 +9,4 @@
 		</ul>
 	</div>
 </body>
+</html>

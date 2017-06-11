@@ -10,10 +10,13 @@
 			$user = $this->session->userdata('user');
 			if(isset($user)){
 				$data = array();
-				$order = $this->Order_model->get();
+				$order = $this->Order_model->hdb('0');
 				$data['user'] = $user;
 				if ($order) {
 					$data['order1'] = $order;
+				}$order1 = $this->Order_model->hdb('2');
+				if ($order1) {
+					$data['order2'] = $order1;
 				}
 				$data['user'] = $user;
 				$this->load->view('admin_banhang',$data);
@@ -23,6 +26,24 @@
 			}
 			// redirect('home');
 		}
+		// function hoadonban()
+		// {
+		// 	$user = $this->session->userdata('user');
+		// 	if(isset($user)){
+		// 		$data = array();
+		// 		$order = $this->Order_model->get();
+		// 		$data['user'] = $user;
+		// 		if ($order) {
+		// 			$data['order1'] = $order;
+		// 		}
+		// 		$data['user'] = $user;
+		// 		$this->load->view('admin_hoadonban',$data);
+
+		// 	}else{
+		// 		redirect('admin');
+		// 	}
+		// }
+		
 		function hoadonban()
 		{
 			$user = $this->session->userdata('user');
@@ -73,6 +94,30 @@
 				$insert = $this->Order_model->add($data);
 				redirect('order');
 			}
+		}
+		function giaohang($Dondh_id)
+		{
+			$getinfo = $this->Order_model->getinfo($Dondh_id);
+			$edit = array(
+				'Tinh_trang' =>'1',
+				);
+			$edit = $this->Order_model->edit($Dondh_id,$edit);
+			$get_sl = $this->Chitiet_dondh_model->getinfo_ddh($Dondh_id);
+			$get = $this->Product_model->get();
+			foreach ($get as $key) 
+			{	
+					foreach ($get_sl as $key1) {
+						if($key->sanpham_id == $key1->sanpham_id){
+							$update = array(
+								'Soluong_kho' => $key->Soluong_kho - $key1->Soluongmua,
+								);
+							$this->Product_model->edit($key->sanpham_id,$update);
+						}		
+					}
+				}
+
+			redirect('order');
+			// $this->load->db->
 		}
 		function edit($Dondh_id)
 		{

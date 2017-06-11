@@ -17,7 +17,7 @@
 <nav class="navbar navbar-fixed-top">
 
 <section id="header">
-<div class="row max">
+<div class="row max" style="">
 	<div class="col-lg-6">
 		<h1>
 			<a href="<?php echo base_url()?>">
@@ -40,10 +40,8 @@
 				</a>
 			</h1>
     	</div>
-
 	</div>
 </div>
-
 </section> 
 <section id="menu"> 
 	<div class="main_menu" style="font-weight: bold;font-size: 13px;">
@@ -85,7 +83,7 @@
 </section>
 	
 </nav>
-<section class = "max" style="margin-top:197px ">
+<section class = "max" style="margin-top:177px ">
 	<div class="slide">
             <div id="slideshow" class="cycle-slideshow"
             data-cycle-fx="scrollHorz"
@@ -94,11 +92,11 @@
             data-cycle-next = "#next"
             data-cycle-prev = "#prev">
 
-                    <img src="<?php echo base_url(); ?>public/img/slide1.jpg" alt="iphone" class="img_slide">
+                    <img src="<?php echo base_url(); ?>public/img/do-go-my-nghe-tam-da.jpg" alt="iphone" class="img_slide">
 
-                    <img src="<?php echo base_url(); ?>public/img/slide2.jpg" alt="tainghe" class="img_slide">
+                    <img src="<?php echo base_url(); ?>public/img/banphan3.jpg" alt="tainghe" class="img_slide">
 
-                    <img src="<?php echo base_url(); ?>public/img/slide3.jpg" alt="smartwatch" class="img_slide">
+                    <img src="<?php echo base_url(); ?>public/img/tranhgo5.jpg" alt="smartwatch" class="img_slide">
                     
                     <img src="<?php echo base_url(); ?>public/img/banghe6.jpg" alt="smartwatch" class="img_slide">
 
@@ -108,16 +106,44 @@
         </div>
 
 </section>
+<div class="row max color" >
+  <div class="col-lg-3" style="padding-top: 20px; "> 
+  		<section class="menu_height">
+  			<div style="background: #a0d783;border: 1px #2abc79 solid -moz-border-radius: 5px;
+					-webkit-border-radius: 5px;">
+  				<div style="width: 203px; height: 30px; background: url(<?php echo base_url() ?>public/img/sidebar-h3.png); color: white;">
+  					<p style="text-align: center;padding: 5px; padding-left: 30px;">CHUYÊN MỤC TƯ VẤN</p> 
+  				</div>
+  				<div style="padding-top: 20px;">
+  				
+  					<ul id="menu-sidebar" class="menu" > 
+  						<?php 
+  							if(isset($noidung1))
+  							{
+  								foreach ($noidung1 as $key) {
+  							
+  						?>
+  						<li style="list-style: none; color: black;">
+  							<a href="<?php echo base_url()?>Noidung/viewtt/<?php echo $key->noidung_id?>" style = "color: black;"><?php echo $key->ten_tieu_de?></a><?php echo " ".substr(date($key->thoi_gian),0,10)?> 
+
+  						</li>
+  						<?php }}?>
+  					</ul>
+  				</div>
+  			</div>
+  		</section>
+  </div>
+  
 
         <div id="login-box" class="login">
-            <p class="login_title"> Thêm khách hàng mới </p>
+            <p class="login_title"> Đặt sản phẩm mới </p>
             <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
             <?php 
             	$style = array(
             		'class' => 'login-content',
             		);
             	echo form_open('customer/add',$style);
-             ?>
+             ?> 
                 <table>
                 	<tr>
                 		<td colspan="2"><label>
@@ -145,17 +171,6 @@
                 		<td><input type="text" name="Tensp" required></td>
                 	</tr>
                 	<tr>
-                		<td><label>Địa chỉ giao hàng (*)</label></td>
-                		<td><input type="text" name="Diachigiaohang" required></td>
-                	</tr>
-                	<tr>
-                		<td><label>Chất liệu sản phẩm (*)</label></td>
-                		<td><input type="text" name="Chatlieu" required></td>
-                	</tr>
-                	<tr>
-                		<td><label>Màu sắc sản phẩm (*)</label></td>
-                		<td><input type="text" name="Mausac" required></td>
-                	</tr>                	<tr>
 						<td><label>Các yêu cầu đặc biệt</label></td>
 						<td><textarea name="noidung" cols="15" required></textarea></td>
 					</tr>
@@ -218,7 +233,7 @@
             <ul class="dv" style="font-size: 12px;">
             	<li><a href="<?php echo base_url()?>Chinhsachvanchuyen">Chính sách vận chuyển</a></li>
             	<li><a href="<?php echo base_url()?>Chinhsachbaohanh">Chính sách bảo hành</a></li>
-            	<li><a href="<?php echo base_url()?>Hình thức thanh toán">Hình thức thanh toán</a></li>
+            	<li><a href="<?php echo base_url()?>Hinhthucthanhtoan">Hình thức thanh toán</a></li>
             	<li><a href="<?php echo base_url()?>Doitrahang">Đổi trả hàng, hoàn tiền</a></li>
             </ul>
             </p>         

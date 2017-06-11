@@ -28,6 +28,14 @@ class Chitiet_dondh_model extends CI_Model
 			return $get->result();
 		}else return false;
 	}
+	function getinfo_ddh($dondh_id)
+	{
+		$this->db->where('Dondh_id',$dondh_id);
+		$get = $this->db->get('chitietdondh');
+		if($get->num_rows() > 0){
+			return $get->result();
+		}else return false;
+	}
 	function add($data){
 		$add = $this->db->insert('chitietdondh',$data);
 		if($add){

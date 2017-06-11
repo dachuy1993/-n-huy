@@ -32,6 +32,15 @@ class Order_model extends CI_Model
 		}
 		else return false; 
 	}
+	function hdb($tinhtrang)
+	{
+		$hdb = $this->db->where('Tinh_trang',$tinhtrang);
+		$get = $this->db->get('dondh');
+		if($get->num_rows()>0){
+			return $get->result();
+
+		}else return false;
+	}
 	function edit($dondh_id,$edit){
 		$this->db->where('Dondh_id',$dondh_id);
 		$edit = $this->db->update('dondh',$edit);
@@ -74,5 +83,16 @@ class Order_model extends CI_Model
             return true;
         }else return false;
     }
-
- }
+    // function dem_ct($dondh_id)
+    // {
+    // 	$count = 
+    // }
+    function get_ddh_end($limit){
+		$this->db->order_by('Dondh_id','DESC');
+		$this->db->limit($limit);
+		$get = $this->db->get('dondh');
+		if($get->num_rows() > 0){
+			return $get->result(); 
+		}else return false;
+ 	}
+}

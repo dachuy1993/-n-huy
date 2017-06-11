@@ -27,7 +27,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>admin">
+			<a href="<?php echo base_url()?>dieukhien">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
 				<p style="color: white;">Bảng điều khiển</p>
 			</a>
@@ -99,7 +99,7 @@
 								    <span class="caret"></span>
 								  </button>
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								    <li><a href="#">Chế độ xem khách hàng</a></li>
+								    <li><a href="<?php echo base_url()?>nhanvien/change">Thay đổi thông tin</a></li>
 								    <li><a href="<?php echo base_url()?>admin/logout">Đăng xuất</a></li> 
 								  </ul>
 							</div>
@@ -132,5 +132,52 @@
 				</a>
   			</div>
 		</div>
-	</div>
-</div>
+		<div class="col-lg-12">
+			<div class="col-lg-4">
+			
+				<div>
+					<tr>
+						<td>Ngày bắt đầu</td>
+						<td><input type="date" name="ngaybd"></td>
+					</tr><br/><br/>
+					<tr>
+						<td>Ngày kết thúc</td>
+						<td><input type="date" name="ngaykt"></td>
+					</tr><br/><br/>
+					<p>Thống kê doanh thu</p><br/>
+					<p>120k</p>
+				</div>
+				
+				<div>
+					<p>Lần đặt hàng cuối cùng</p>
+					<div>
+						<table class="table">
+							<thead>
+								<td>Khách hàng</td>
+								<td>Số điện thoại</td>
+								<td>Thành tiền</td>
+							</thead>
+							<?php 
+								if(isset($order1))
+								{
+									$number = 0;
+									
+									foreach ($order1 as $key) {
+									
+								?>
+							<tbody>
+								<td><?php echo $key->Ten_kh?></td>
+								<td><?php echo $key->Sodt?></td>
+								<td><?php echo $key->Tong_gia?></td>
+								<?php }?>
+							</tbody>
+							<?php }?>
+						</table>
+					</div>
+				</div>
+				 
+			</div>
+			<div class="col-lg-8">
+				<?php echo 'duc'?>
+			</div>
+		</div>

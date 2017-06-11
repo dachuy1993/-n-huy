@@ -22,6 +22,11 @@ class Gioithieu extends CI_Controller
 				if ($gioithieu) {
 					$data['gioithieu1'] = $gioithieu;
 				}
+				$noidung = $this->Noidung_model->get();
+			
+			if ($noidung) {
+				$data['noidung1'] = $noidung;
+			}
 				$this->load->view('gioithieu',$data);
 			}else{
 			redirect('admin/login'); 

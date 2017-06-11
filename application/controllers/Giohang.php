@@ -44,6 +44,7 @@ class giohang extends CI_Controller
 				'Diachi_giaohang' => $diachi,
 				'Tong_gia' =>$money,
 				'ghi_chu' => $ghichu,
+				'Tinh_trang' =>'0',
 			);
 			$insert = $this->Order_model->add($data);  
 			if($insert == false)
@@ -59,6 +60,7 @@ class giohang extends CI_Controller
 				$mahoadon = $item->Dondh_id;
 				if($cart = $this->cart->contents()){//show dât cart 
                 foreach ($cart as $item){
+                	$sanpham_id = $item['id'];
                     $product = $item['name'];
                     $img = $item['img'];
                     $qty = $item['qty'];
@@ -69,6 +71,7 @@ class giohang extends CI_Controller
                     $cl = $item['cl'];
                     $bh = $item['bh'];
                     $data_product = array(
+                    	'sanpham_id' => $sanpham_id,
                         'Dondh_id' => $mahoadon,
                         'Ten_sp' => $product,
                         'Anh_sp' => $img,
@@ -84,6 +87,12 @@ class giohang extends CI_Controller
                     $id = $item['id'];
                     $get_number = $this->Product_model->getinfo($id);
                     foreach ($get_number as $row) {};
+                    $lmua_new = $row->Luot_mua + $qty;
+                    $data_lm_new = array(
+                    	'Luot_mua' =>$lmua_new,
+                    );
+                    $this->Product_model->edit($id,$data_lm_new);
+
                     $number_new = $row->Soluong_sp - $qty;
                     $data_product_new = array(
                         'Soluong_sp' => $number_new,

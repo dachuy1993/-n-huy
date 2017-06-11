@@ -37,8 +37,16 @@
 		function view($sanpham_id){  
 			$danhmuc = $this->Danhmuc_model->get(); 
 			if($danhmuc){
-				$data['danhmuc'] = $danhmuc; 
+				$data['danhmuc'] = $danhmuc;  
 			}
+
+			$getinfo1 = $this->Product_model->getinfo($sanpham_id);
+			foreach ($getinfo1 as $key) {}
+			$lxc = $key->Luot_xem;
+			$edit = array(
+				'Luot_xem' => $lxc + '1',
+				);
+			$edit = $this->Product_model->edit($sanpham_id,$edit);
 
 			$product = $this->Product_model->get();
 			if($product){ 
@@ -47,9 +55,14 @@
 			$getinfo = $this->Product_model->getinfo($sanpham_id);
 			if($getinfo){
 				$data['getinfo'] = $getinfo;
-			}
+			} 
 			else{
 				$data['err'] = "sản phầm này k tồn tại";
+			}
+			$noidung = $this->Noidung_model->get();
+			
+			if ($noidung) {
+				$data['noidung1'] = $noidung;
 			}
 			$this->load->view('sanpham',$data);
 		}
@@ -61,6 +74,40 @@
 				$data['getinfo'] = $getinfo;
 			}
 			$this->load->view('giohang',$data);
+		}
+		function xuatkho($dondh_id)
+		{
+		$data = array();
+			$user = $this->session->userdata('user');
+			if(isset($user)){
+			$getinfo = $this->Chitiet_dondh_model->getinfo($dondh_id);
+			$gettt = $this->Order_model->getinfo($dondh_id);
+			$get2 = $this->Chitiet_dondh_model->getchitiet($dondh_id);
+			$data['user'] = $user;
+			if(isset($get2))
+			{
+				$data['gettt2'] = $get2;
+				}
+				else{
+					$data['err'] = "sản phầm này k tồn tại";
+				}
+			}
+			
+			if($gettt)
+			{
+					$data['gettt1'] = $gettt; 
+				
+			 
+			if($getinfo){
+					$data['getinfo'] = $getinfo;
+				}
+				else{
+					$data['err'] = "sản phầm này k tồn tại";
+				}
+			$this->load->view('Admin_xuatkho',$data);
+			}else{
+			redirect('admin/login');
+			}
 		}
 		function add()
 		{
@@ -116,19 +163,19 @@
 				
 			}
 		}
-		function editlx($sanpham_id)
-		{
-			$getinfo = $this->Product_model->getinfo($sanpham_id);
-			$lx = $luot_xem;
-			if (isset($lx)) {
-				$edit = array(
-					'Luot_xem' =>$lx,
-					);
-				$edit = $this->Product_model->edit($sanpham_id,$edit);
-			}
+		// function editlx($sanpham_id)
+		// {
+		// 	$getinfo = $this->Product_model->getinfo($sanpham_id);
+		// 	$lx = $luot_xem;
+		// 	if (isset($lx)) {
+		// 		$edit = array(
+		// 			'Luot_xem' =>$lx,
+		// 			);
+		// 		$edit = $this->Product_model->edit($sanpham_id,$edit);
+		// 	}
 			
 
-		}
+		// }
 		function edit($sanpham_id) 
 		{
 			$getinfo = $this->Product_model->getinfo($sanpham_id);
@@ -192,11 +239,13 @@
 					'name'=>$key->Ten_sp,
 					'price' =>$key->Gia_sp,
 					'qty' =>1,
+					'number' => $key->Soluong_sp,
 					'img'=>$key->Anh_sp,
 					'kt' =>$key->Kichthuoc_sp,
 					'ms' =>$key->Mausac_sp,
 					'cl' =>$key->Chatlieu_sp,
 					'bh' =>$key->Baohanh_sp,
+					'sp' =>$key->sanpham_id,
 					);
 					
 				$this->load->library('cart');
@@ -245,5 +294,54 @@
                 }
            redirect('giohang');
         }
+
+        function editsl($sanpham_id)
+	{
+			$getinfo = $this->Product_model->getinfo($sanpham_id);
+			foreach ($getinfo as $key) {};
+			$soluongcu = $key->Soluong_kho;
+			$gianhapcu = $key->Gia_nhap;
+
+			$gianhap = $this->input->post('gianhap'); 
+			$soluong = $this->input->post('soluong');
+			if(isset($gianhap) && isset($soluong))
+			{
+				$tong = $soluong + $soluongcu;
+				$gianhapmoi = ($gianhapcu * $soluongcu + $gianhap * $soluong)/$tong;
+				
+				$edit = array(
+					'Gia_nhap' =>$gianhapmoi,
+					'Soluong_kho' => $soluongcu + $soluong,
+					);
+				$edit = $this->Product_model->edit($sanpham_id,$edit);
+				redirect('Admin_kho');
+			}
+			if($getinfo){
+				$data['getinfo'] = $getinfo;
+			}
+			else{
+				$data['err'] = "sản phầm này k tồn tại";
+			}
+			$this->load->view('Admin_nhapkhocu',$data);
+
+		}
+		function get_masp1()
+		{
+			$danhmuc_id = $this->input->post('danhmuc_id');
+			$masp = $this->Chitiet_dm_model->get_masp($danhmuc_id);
+			if(count($masp)>0)
+			{
+				$masp_select_box = ' ';
+				$masp_select_box = '<option value="">Select chi tiết ok</option>';
+				foreach ($masp as $key) {
+				$masp_select_box .='<option value="'.$key->danhmuc_id.'">'.$key->ma_sp.'</option>';
+				}
+			}
+			else
+			{
+				$masp_select_box = 'huy';
+			}
+			echo json_encode($masp_select_box);
+		}
 	}
  ?>

@@ -2,7 +2,7 @@
 include 'header.php';
  ?>
 
-<section id="wapper"></section>
+<!-- <section id="wapper"></section>
  <div class="row max color" >
   <div class="col-lg-3">
   		<section class="menu_height">
@@ -18,7 +18,7 @@ include 'header.php';
   				</div>
   			</div>
   		</section>
-  </div>
+  </div> -->
   <div class="col-lg-9">
 	  	<div class="home-main row">
 	  		<div class="home-taxonomi">

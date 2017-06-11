@@ -8,6 +8,12 @@
 		function index ()
 		{
 			$data = array();
+			//get danhmuc
+			$danhmuc = $this->Danhmuc_model->get();
+			if ($danhmuc) {
+				$data['danhmuc2'] = $danhmuc;
+			}
+			//end
 			$user = $this->session->userdata('user');
 			if(isset($user)){
 				$kho = $this->Kho_model->get();
@@ -17,8 +23,8 @@
 				}
 			}
 			$this->load->library('cart');
-			$cart = $this->cart->contents();
-			$data['cart'] = $cart;
+			$cart1 = $this->cart->contents();
+			$data['cart1'] = $cart1;
 			$this->load->view('Admin_nhapkho',$data);
 		}
 		function view($dondh_id) 
@@ -33,20 +39,23 @@
 			$this->load->view('admin_xuatkho',$data);
 			 
 		}
-		function add($sanpham_id)
+		function add()
 		{					
+			$id = $this->session->userdata('id');
+			if(!isset($id)){
+				$id = -1;
+			}
 			$tensp = $this->input->post('tensp');
-			// $anhsp = $this->input->post('userfile');
-			$madm = $this->input->post('mytextarea');
+			$anhsp = $this->input->post('userfile');
+			$madm = $this->input->post('danhmuc');
 			$gianhap = $this->input->post('gianhap');
-			$giaban = $this->input->post('giaban');
 			$soluong = $this->input->post('soluongnhap');
 			$kichthuoc = $this->input->post('kichthuoc');
 			$mausac = $this->input->post('mausac');
 			$chatlieu = $this->input->post('chatlieu');
-			$baohanh = $this->input->post('mytextarea1');
-			$masp = $this->input->post('masanpham');
-			if(isset($tensp) && isset($madm) && isset($gianhap) && isset($giaban) && isset($soluong) && isset($kichthuoc) && isset($chatlieu) && isset($baohanh) && isset($masp))
+			$baohanh = $this->input->post('baohanh');
+			$masp = $this->input->post('masp');
+			if(isset($tensp) )
 			{
 				//chay len sua
 				$config['upload_path']          = './public/img/';
@@ -67,27 +76,31 @@
                 {
                         $data['upload'] = $this->upload->data();
                         $anhsp = $data['upload']['file_name']; 
-					$cart = array(
-					'Ten_sp' => $tensp,
-					'danhmuc_id' => $madm,
-					'ma_sp' =>$masp,
-					'Gia_sp' => $giasp,
+					$cart1 = array(
+					'name' => $tensp,
+					'Danhmuc_id' => $madm,
+					'id' =>$id,
+					'masanpham'=>$masp,
+					'price' => $gianhap,
 					'Anh_sp' =>$anhsp,
-					'Soluong_sp' => $soluong,
+					'qty' => $soluong,
 					'Kichthuoc_sp' =>$kichthuoc,
 					'Mausac_sp' => $mausac,
 					'Chatlieu_sp' =>$chatlieu,
-					'Baohanh_sp' => $baohanh,
-					'Thong_tin_sp' =>$thongtin,
+					'Baohanh' => $baohanh,
 					);
-				$this->load->library('cart');
-				if ($this->cart->insert($cart)) {
-					// $cart = $this->cart->contents();
-					// var_dump($cart);
-					redirect('Admin_nhapkho');
+					$this->load->library('cart');
+					if ($this->cart->insert($cart1)) 
+						{
+							$id--;
+							$this->session->set_userdata('id',$id);
+						$cart1 = $this->cart->contents();
+						var_dump($cart1);
+						redirect('Admin_nhapkho');
+						}
+					else echo 2;
 				}
 			}
 		}
-	}
 }
 ?>

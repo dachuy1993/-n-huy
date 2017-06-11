@@ -32,6 +32,7 @@ class Noidung_model extends CI_Model
 		}else return false; 
 
 	}
+	
 	function delete($noidung_id){
 		$this->db->where('noidung_id',$noidung_id);
 		$delete = $this->db->delete('noidung');

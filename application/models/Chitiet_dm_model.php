@@ -48,5 +48,14 @@ class Chitiet_dm_model extends CI_Model
 	// 	}else return false;
 
 	// }
+	function get_masp($danhmuc_id)
+	{
+		$this->db->where('danhmuc_id',$danhmuc_id);
+		$query = $this->db->get('chitietdanhmuc');
+		if($query->num_rows()>0){
+			return $query ->result();
+		}else return false;
 	}
+}
+	 
 ?>

@@ -136,9 +136,10 @@
 	        	<td><?php echo $key['ms']?></td>
 	        	<td><?php echo $key['cl']?></td>
 	        	<td><?php echo $key['bh']?></td>
+	        	<!-- <td><?php echo $key['sp']?></td> -->
 	        	<td><?php echo number_format($key['subtotal']) ?> <sup>vnđ</sup></td>
 	        	<td><a href="<?php echo base_url()?>product/remove/<?php echo $key['rowid']?>" class="btn btn-default">Xóa</a></td>
-			</tr>
+			</tr> 
 			
         	<?php }}?>
         	<tr>

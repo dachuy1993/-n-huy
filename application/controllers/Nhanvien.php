@@ -19,9 +19,18 @@
 			redirect('admin/login');
 			}
 		}
-		function view($nhanvien_id)
+		function change($nhanvien_id)
 		{
+			$getinfo = $this->Nhanvien_model->getinfo($nhanvien_id);
 			
+			if($getinfo){
+				$data['getinfo'] = $getinfo;
+			}
+			else
+			{
+				$data['err'] = 'Nhân viên này không tồn tại';
+			}
+			$this->load->view('admin_thaydoithongtin');
 		}
 		function edit($nhanvien_id)
 		{

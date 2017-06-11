@@ -46,10 +46,10 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>customer" style = "display: block;">
+			<a href="<?php echo base_url()?>Noidung" style = "display: block;">
 				<span class="  glyphicon glyphicon-heart icon" ></span>
 			
-			<p style="color: white;">Khách hàng</p>
+			<p style="color: white;">Nội dung</p>
 			</a>
 		</li>
 		<li>
@@ -111,7 +111,7 @@
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
 			<div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
 
-				<a href="<?php echo base_url()?>Order/hoadonban" class="btn btn-info lien-he login-window button orange">
+				<a href="<?php echo base_url()?>Hoadonban" class="btn btn-info lien-he login-window button orange">
 				<span class="glyphicon"></span>
 				Hóa đơn bán hàng
 				</a>
@@ -129,41 +129,78 @@
 			<table class="table table-bordered" >
 			    <thead>
 			      <tr>
+			      	<th>STT</th>
 			      	<td>Xem chi tiết</td>
-			        <th>STT</th>
-			        <th>Mã hóa đơn</th>
-			        <th>Ngày lập hóa đơn</th>
-			        <th>Tên khách hàng</th>
 			        <th>Ngày đặt hàng</th>
-			        <th>Trạng thái</th>
+			        <th>Tên khách hàng</th>
+			        <th>Số điện thoại</th>
 			        <th>Số tiền</th>
+			        <th>Ghi chú</th>
 			        <th>Trạng thái</th>
 			        <td>Hoạt động</td>
 			      </tr>
 			    </thead> 
+			    <?php $stt = 0;?>
 			    <tbody>
-					    <?php 
+					<?php 
+					    
 			  				if(isset($order1)){
 			  					foreach ($order1 as $key) { 
+			  						$stt+=1;
 							?>
 			      	<tr>
+			      		<td><?php echo $stt?></td>
 			      		<td><a href="<?php echo base_url()?>chitiet_dondh/view/<?php echo $key->Dondh_id?>">Xem chi tiết đơn hàng</a></td>
-			      		<td><?php echo $key->Dondh_id?></td>
 				        <td><?php echo $key->Ngay_lap?></td>
-				        <td><?php echo $key->Tong_gia?></td>
 				        <td><?php echo $key->Ten_kh?></td>
 				        <td><?php echo $key->Sodt?></td>
-				        <td><?php echo $key->Diachi_giaohang?></td>
-				        <td><?php echo $key->Ghi_chu?></td>
-				        <td><?php echo $key->Tinh_trang?></td>
+				        <td><?php echo $key->Tong_gia?></td>
+				  		<td><?php echo $key->Ghi_chu?></td>
+				        <td><?php echo "Chờ giao hàng"?></td>
 				        <td>
 						<?php 
-					        if($key->Tinh_trang === "Chưa chuyển hàng" ){
+					        if($key->Tinh_trang === "0" ){
+				    	?>
+				    	<a href="<?php echo base_url()?>order/giaohang/<?php echo $key->Dondh_id?>">giao hàng</a>
+				    	<?php
+				        	}
+				        	if($key->Tinh_trang === "2"){
+						?>
+						<a href="<?php echo base_url()?>order/delete/<?php echo $key->Dondh_id?>">Xác nhận</a>
+						<a href="<?php echo base_url()?>order/delete/<?php echo $key->Dondh_id?>">Xóa</a>
+						<?php
+					        	}
+				    	?>
+				         
+				        </td>
+
+				        
+			      </tr>
+	      			<?php }}?>
+	      			<?php 
+			  				if(isset($order2)){
+			  					foreach ($order2 as $key) { 
+			  						$stt+=1;
+							?>
+			      	<tr>
+			      		<td><?php echo $stt?></td>
+			      		<td><a href="<?php echo base_url()?>chitiet_dondh/view/<?php echo $key->Dondh_id?>">Xem chi tiết đơn hàng</a></td>
+				        <td><?php echo $key->Ngay_lap?></td>
+				        <td><?php echo $key->Ten_kh?></td>
+				        <td><?php echo $key->Sodt?></td>
+				        <td><?php echo $key->Tong_gia?></td>
+				  		<td><?php echo $key->Ghi_chu?></td>
+				        <td><?php echo "Hàng đặt riêng"?></td>
+				        <td>
+						<?php 
+					        if($key->Tinh_trang === "0" ){
 				    	?>
 				    	<a href="<?php echo base_url()?>order/edit/<?php echo $key->Dondh_id?>">giao hàng</a>
 				    	<?php
-				        	}else{
+				        	}
+				        	if($key->Tinh_trang === "2"){
 						?>
+						<a href="<?php echo base_url()?>order/delete/<?php echo $key->Dondh_id?>">Xác nhận</a>
 						<a href="<?php echo base_url()?>order/delete/<?php echo $key->Dondh_id?>">Xóa</a>
 						<?php
 					        	}

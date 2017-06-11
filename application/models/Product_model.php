@@ -46,7 +46,7 @@ class Product_model extends CI_Model
 		$this->db->where('danhmuc_id',$danhmuc_id);
 		$get = $this->db->get('sanpham');
 		if($get->num_rows() > 0){
-			return $get->result();
+			return $get->result(); 
 		}else return false;	
 	}
 	function get_list(){

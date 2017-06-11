@@ -7,7 +7,8 @@
 }
 #header{
 	background-color: black;
-	padding-bottom: 50px;
+	padding-bottom: 30px;
+    padding-top: 20px;
 }
 .main_menu{
 	max-width: 1200px;
@@ -98,6 +99,8 @@
 }
 .home-cat-name{
 	background: black;
+    -moz-border-radius-topleft:10px;
+-webkit-border-top-left-radius:10px;
 	/*width: 900px;*/
 	padding: 10px;
 }
@@ -160,6 +163,8 @@
 	font-size: 16px; 
 	text-transform: uppercase;
 	padding: 10px; 
+    -moz-border-radius: 5px;
+-webkit-border-radius: 5px;
 }
 .active1{
 	background: green;
@@ -377,3 +382,33 @@ a, a:visited, a:active{
     display: inline;
     padding: 0 2px;
 }
+.btn-default :hover {
+    background: #3aa52a;
+}
+.muahang{
+    width: 250px; 
+    height: 50px; 
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.green{
+    background: #50d727;
+    color: white;
+}
+.main_footer{
+    padding-top: 10px;
+    background-color: #67c62e;
+    width: 1200px;
+    text-align: center;
+    margin: 0 auto;
+    /*margin-left: 75px;*/
+}
+.main_footer ul li a{
+    color: white;
+
+}
+.main_footer ul li{
+    width: 200px;
+}
+

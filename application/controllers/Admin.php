@@ -44,10 +44,11 @@
 					'tai_khoan' => $user,
 					'mat_khau' => $pass,
 					);
-				$login = $this->Nhanvien_model->login($login);
+				$login = $this->Nhanvien_model->login($login); 
 				if($login){
 					$session = array(
 						'user' => $user,
+						'pass' =>$pass,
 						);
 					$this->session->set_userdata($session);
 					redirect('admin');

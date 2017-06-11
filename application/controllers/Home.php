@@ -17,6 +17,12 @@
 					$chitiet = $key->danhmuc_id;
 				}
 			}
+			$noidung = $this->Noidung_model->get();
+			
+			if ($noidung) {
+				$data['noidung1'] = $noidung;
+			}
+			
 			//danh muc
 			// $product = $this->Product_model->get();
 			// if ($product) {

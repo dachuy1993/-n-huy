@@ -1,71 +1,12 @@
- <!DOCTYPE html>
-<html>
-<head>
-	<title>Admin</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script type="text/javascript" src = "<?php echo base_url()?>public/style/js/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/style/css/style.css">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
-<script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
-</head>
-<body>
-
-<div>
-	<div class=" menu-left">
-
-		<ul>
-
-			<li>
-				<a href="<?php echo base_url()?>admin">
-					<span class=" glyphicon glyphicon-home icon"></span>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url()?>admin">
-					<span class=" glyphicon glyphicon-dashboard icon"></span>
-					<p style="color: white;">Bảng điều khiển</p>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url()?>order" style = "display: block;">
-					<span class=" glyphicon glyphicon-usd icon" ></span>
-					<p style="color: white;">Bán hàng</p>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url()?>product" style = "display: block;">
-					<span class=" glyphicon glyphicon-book icon" ></span>
-				
-				<p style="color: white;">Các sản phẩm</p>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url()?>customer" style = "display: block;">
-					<span class="  glyphicon glyphicon-heart icon" ></span>
-				
-				<p style="color: white;">Khách hàng</p>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url()?>nhanvien">
-					<span class=" glyphicon glyphicon-book icon" ></span>
-					<p style="color: white;">Nhân viên</p>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url()?>Admin_kho">
-					<span class=" glyphicon glyphicon-book icon" ></span>
-				</a>
-				<p style="color: white;">Quản lý kho</p>
-			</li>
-			
-		</ul>
-	</div>
+<?php 
+$id = $this->session->userdata('id');
+if(isset($id)){
+echo $id;
+}
+?>
+<?php 
+include 'admin_header.php';
+ ?>
 
 	<div class="menu-right">
 		<div>
@@ -110,11 +51,11 @@
 			<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
 				<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
 					<?php 
-            	$style = array(
+            	// $style = array(
             		// 'class' => 'login-content',
-            		'enctype' =>'multipart/form-data'
-            		);
-            	echo form_open('Admin_kho/add',$style);
+            		// 'enctype' =>'multipart/form-data'
+            		// );
+            	// echo form_open('Admin_kho/add',$style);
              ?>
              		<button><a href="<?php echo base_url()?>Admin_kho" style = 'color: black;'>Trở về</a></button>
 					<button type="submit">
@@ -129,103 +70,189 @@
 	  			</div>
 			</div>
 			<div>
-				
-				<table class="table table-bordered">
-				    <thead>
-				      <tr>
-				        <th style="text-align: center;">STT</th>
-				        <th style="text-align: center;">Tên sản phẩm</th>
-				        <th style="text-align: center;">Ảnh sản phẩm</th>
-				        <th style="text-align: center;">Giá nhập</th>
-				        <th style="text-align: center;">Giá bán></th>
-				        <th style="text-align: center;">Số lượng nhập</th>
-				        <th style="text-align: center;">Kích thước</th>
-				        <th style="text-align: center;">Màu sắc</th>
-				        <th style="text-align: center;">Chất liệu</th>
-				        <th style="text-align: center;">Mã sản phẩm</th>
-				        <th style="text-align: center;">Danh mục id</th>
-				        <th style="text-align: center;">Bảo hành</th>
-				      </tr>
-				    </thead>
+				<div style="margin: 0 auto; width: 520px;">
+				<table class="table table-bordered" >
+						<?php 
+		            	$style = array(
+		            		// 'class' => 'login-content',
+		            		'enctype' =>'multipart/form-data'
+		            		);
+		            	echo form_open('Admin_nhapkho/add',$style);
+		             ?>
+		             <tr>
+		             	<td colspan="2">Thông tin sản phẩm mới nhập</td>
+		             </tr>
+					<tr>
+						<td>Tên sản phẩm</td>
+						<td style="text-align: center;"><input class="form-control" type="text" name="tensp" required></td>
+					</tr>
+					<tr>
+						<td>Ảnh sản phẩm</td>
+						<td style="text-align: center;"><input class="form-control" type="file" name="userfile" required></td>
+					</tr>
+					<tr>
+						<td>Giá nhập</td>
+						<td style="text-align: center;"><input class="form-control" type="text" name="gianhap" required></td>
+					</tr>
+					<tr>
+						<td>Số lượng nhập</td>
+						<td style="text-align: center;"><input class="form-control" type="text" name="soluongnhap" required></td>
+					</tr>
+					<tr>
+						<td>Kích thước</td>
+						<td style="text-align: center;"><input class="form-control" type="text" name="kichthuoc" required></td>
+					</tr>
+					<tr>
+						<td>Màu sắc</td>
+						<td style="text-align: center;"><input class="form-control" type="text" name="mausac" required></td>
+					</tr>
+					<tr>
+						<td>Chất liệu</td>
+						<td style="text-align: center;"><input class="form-control" type="text" name="chatlieu" required></td>
+					</tr>
+					<tr>
+						<td>Danh muc</td>
+						<td style="text-align: center;">
+					        	<select name="danhmuc" id="danhmuc" class="form-control">
+					        		<option value="">-Chọn danh muc-</option>
+					        		<?php 
+					        			// $stt=0;
+					        			if($danhmuc2){ 
+					        				foreach ($danhmuc2 as $key) {
+					        				
+					        			?>
+					        			<option value="<?php echo $key->danhmuc_id?>"><?php echo $key->tendanhmuc?></option>
+					        			<?php }}?>
+					        	</select>
 
-	    			<tbody>
-	    				
-	      				<tr>
-					        <td style="text-align: center;"></td>
-					        <td style="text-align: center;"><input type="text" name="tensp"></td>
-					        <td style="text-align: center;"><input type="file" name="userfile"></td> 
-					        <td style="text-align: center;"><input type="text" name="gianhap"></ins></td>
-					        
-					        <td style="text-align: center;"><input type="text" name="giaban"></td>
-					        <td style="text-align: center;"><input  type="text" name="soluongnhap"></td>
-					        <td style="text-align: center;"><input class="form-control" type="text" name="kichthuoc"></td>
-					        <td style="text-align: center;"><input class="form-control" type="text" name="mausac"></td>
-					        <td style="text-align: center;"><input class="form-control" type="text" name="chatlieu"></td>
-					        <td style="text-align: center;"><input class="form-control" type="text" name="masanpham"></td>
-					        <td style="text-align: center;"><input class="form-control" type="text" name="danhmuc"></td>
-					        <td style="text-align: center;"><input class="form-control" type="text" name="baohanh"></td>
-	      				</tr>
-	      			
-	    			</tbody>
-	    			<tbody>
-					<?php 
-	  				if(isset($cart)){
-	  					echo form_open('product/update_cart');
-	  					foreach ($cart as $key) {
-	  						$money +=$key['subtotal'];
-	  						$stt +=1;
-	  						// $img = $this->Product_model->getinfo($key['id']);
-	  						// if(isset($img)){
-	  						// 	foreach ($img as $title) {
-	  						// 		# code...
-	  						// 	}
-	  						// }
-	  						  echo form_hidden('cart[' . $key['id'] . '][id]', $key['id']);
-	  						
-            echo form_hidden('cart[' . $key['id'] . '][rowid]', $key['rowid']);
-            echo form_hidden('cart[' . $key['id'] . '][name]', $key['name']);
-            echo form_hidden('cart[' . $key['id'] . '][price]', $key['price']);
-            echo form_hidden('cart[' . $key['id'] . '][qty]', $key['qty']);
+					        </td>
+					</tr>
+					<tr>
+						<td>Chi tiết danh muc</td>
+						<td style="text-align: center;">
+	
+			        			<select name="masp" id="masp" disabled="" class="form-control">
+			        				<option value="">-Chọn chi tiết dm1</option>
+			        			</select>
+					        </td>
+					</tr>
+					<tr>
+						<td>Bảo hành</td>
+						<td><input class="form-control" type="text" name="baohanh"></td>
+					</tr>
+					</table>
+				</div>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<td>STT</td>
+								<td>Tên sản phẩm</td>
+								<td>Ảnh sản phẩm</td>
+								<td>Giá nhập</td>
+								<td>Số lượng nhập</td>
+								<td>Kích thước</td>
+								<td>Màu sắc</td>
+								<td>Chất liệu</td>
+								<td>Danh mục</td>
+								<td>Chi tiết danh mục</td>
+								<td>Bảo hành</td>
+								<td>Thành tiền</td>
+							</tr>
+						</thead>
+		    			<tbody>
+		      				<?php
+		      				if(isset($cart1)){
+		      					$i = 1;
+	      						foreach($cart1 as $item){
+							?>
+							<tr>
+		      					<td><?php echo $i ?></td>
+		      					<td><?php echo $item['name'] ?></td>
+		      					<td><img src="<?php echo base_url()?>public/img/<?php echo $item['Anh_sp'] ?>" width="50px" height="50px"></td>
+		      					<td><?php echo $item['price'] ?></td>
+		      					<!-- <td><?php echo $item->name ?></td> -->
+		      					<td><?php echo $item['qty'] ?></td>
+		      					<td><?php echo $item['Kichthuoc_sp'] ?></td>
+		      					<td><?php echo $item['Mausac_sp'] ?></td>
+		      					<td><?php echo $item['Chatlieu_sp'] ?></td>
+		      					<td><?php echo $item['Danhmuc_id']?></td>
+		      					<td><?php echo $item['masanpham'] ?></td>
+		      					<td><?php echo $item['Baohanh']?></td>
+		      					<td><?php echo $item['subtotal'] ?></td>
+		      				</tr>
 
-					?>
-			<tr>
-				<td><?php echo $stt?></td>
-				<td>
-	        	<img src="<?php echo base_url()?>public/img/<?php echo $key['img']?>" width="
-	        100%" height = "70px" style ="margin: 0 auto">
-	        	</td>
-	        	<td><?php echo $key['name']?></td>
-	        	<td><?php echo number_format($key['price'])?> <sup>vnđ</sup></td>
-	        	<td><?php echo form_input('cart[' . $key['id'] . '][qty]', $key['qty'], 'maxlength="3" size="1" style="text-align: right"'); ?></td>
-	        	<td><?php echo $key['kt']?></td>
-	        	<td><?php echo $key['ms']?></td>
-	        	<td><?php echo $key['cl']?></td>
-	        	<td><?php echo $key['bh']?></td>
-	        	<td><?php echo number_format($key['subtotal']) ?> <sup>vnđ</sup></td>
-	        	<td><a href="<?php echo base_url()?>product/remove/<?php echo $key['rowid']?>" class="btn btn-default">Xóa</a></td>
-			</tr>
-			
-        	<?php }}?>
-        	<tr>
-        		<td colspan="3" style="text-align: center;">Tổng tiền là: <?php echo number_format($money) ?> VNĐ</td>
-        		<td colspan="8">
-        			<a href="<?php echo base_url()?>product/remove/all" class="btn btn-default">Xóa giỏ hàng</a>
-        			 <input class ='btn btn-info'  type="submit" value="Update giỏ hàng"/>
-        <?php echo form_close(); ?>
-        			<a href="#login-box" class="btn btn-success login-window" >Thanh toán</a></button>
-        			<button><a href="<?php echo base_url()?>Admin_nhapkho/add?>" style="color: black;">Thêm</a>
-				</button>
-        		</td>
-        	</tr>
-		</tbody>
-				
-	    			
+							<?php
+							$i++;
+	      						}
+	      					} ?>
+		    			</tbody>
+		    			<tbody>
+			        		<tr>
+			        	        <td colspan="8">
+				        			<a href="<?php echo base_url()?>product/remove/all" class="btn btn-default">Xóa giỏ hàng</a>
+				        			 <!-- <input class ='btn btn-info'  type="submit" value="Update giỏ hàng"/> -->
+				        
+				        			<a href="#login-box" class="btn btn-success login-window" >Thanh toán</a></button>
+				        			<button type="submit">Thêm
+				        			
+									</button>
+									<?php echo form_close();?>
+							    </td>
+			        		</tr>
+						</tbody>
 	  			</table>
 			</div>
-			
+			<?php
+			 // echo form_close(); 
+			 ?>
+
 		</div>
 	</div>
 </div>
+<!-- <script language=”javascript”>
+ $(document).ready(function() {
+  $('#danhmuc').change(function() {
+   giatri = $('#danhmuc').val();
+   $post("admin_laychitietdm.php",{id:id},function($data)){
+   	
+   }
+  });
+ });
+</script> -->
+<script src="<?php echo base_url() ?>public/style/js/jquery.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo base_url() ?>public/style/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('#danhmuc').on('change', function(){
+    			var danhmuc_id = $(this).val();
+    			if(danhmuc_id == '')
+    			{
+    				$('#masp').prop('disabled', true);
+    			}
+    			else
+    			{
+    				$('#masp').prop('disabled', false);
+
+    				jQuery.ajax({
+    					url:"<?php echo base_url()?>Admin_kho/get_masp1",
+    					type:"POST",
+    					data:{'danhmuc_id' : danhmuc_id},
+    					dataType: 'json',
+
+    					success: function(data){
+    						$('#masp').html(data);
+    					},
+    					error: function(){
+    						alert('Loi');
+    					}
+    				});
+    			}
+    		});
+    	}
+    	);
+    </script>
 </body>
 </html>

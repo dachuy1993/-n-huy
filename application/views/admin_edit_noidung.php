@@ -4,75 +4,9 @@ if(isset($err)){
 	die();
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Admin</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script type="text/javascript" src = "<?php echo base_url()?>public/style/js/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/style/css/style.css">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
-<script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
-</head>
-<body>
-
-
-	
-<div class=" menu-left">
-
-	<ul>
-
-		<li>
-			<a href="<?php echo base_url()?>admin">
-				<span class=" glyphicon glyphicon-home icon"></span>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>admin">
-				<span class=" glyphicon glyphicon-dashboard icon"></span>
-				<p style="color: white;">Bảng điều khiển</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>order" style = "display: block;">
-				<span class=" glyphicon glyphicon-usd icon" ></span>
-				<p style="color: white;">Bán hàng</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>product" style = "display: block;">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			
-			<p style="color: white;">Các sản phẩm</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>customer" style = "display: block;">
-				<span class="  glyphicon glyphicon-heart icon" ></span>
-			
-			<p style="color: white;">Khách hàng</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>nhanvien">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-				<p style="color: white;">Nhân viên</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>Admin_kho">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Quản lý kho</p>
-		</li>
-		
-	</ul>
-</div>
+<?php 
+include 'admin_header.php';
+ ?>
 
 <div class="menu-right">
 	<div>
@@ -124,23 +58,35 @@ if(isset($err)){
 			<button type="submit" class="btn btn-default" style="margin: 20px; background: orange; float: right;">Lưu sản phẩm</button>
 		</div>
 		<div class="row">
-			<table class="table_edit_sp">
-				<tr>
-					<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin nội dung</td>
-				</tr>
-				<tr>
-					<td>Tên tiêu đề</td>
-					<td>
-						<input class="form-control" type="text" name="tennd" value="<?php echo $key->ten_tieu_de?>">
-					</td>
-				</tr>
-				<tr>
-					<td>Nội dung</td>
-					<td>
-						<textarea rows="30" name="noidung" class="form-control"><?php echo $key->noi_dung?></textarea>
-					</td>
-				</tr>
-			</table>
+			<div style="width: 1000px;margin: 0 auto;">
+				<table class="table_edit_sp">
+					<tr>
+						<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin nội dung</td>
+					</tr>
+					<tr>
+						<td  style="width: 150px;">Danh mục</td>
+						<td><select name="danhmuc">
+							<option value="Bài viết tư vấn">Bài viết tư vấn</option>
+							<option value="Giới thiệu">Giới thiệu</option>	
+							<option value="Chính sách vận chuyển">Chính sách vận chuyển</option>
+							<option value="Chính sách bảo hành">Chính sách bảo hành</option>
+							<option value="Hình thức thanh toán">Hình thức thanh toán</option>
+							<option value="Đổi trả hàng">Đổi trả hàng</option						</select></td>
+					</tr>
+					<tr>
+						<td>Tên tiêu đề</td>
+						<td>
+							<input class="form-control" type="text" name="tennd" value="<?php echo $key->ten_tieu_de?>">
+						</td>
+					</tr>
+					<tr>
+						<td>Nội dung</td>
+						<td>
+							<textarea rows="30" name="noidung" class="form-control"><?php echo $key->noi_dung?></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<?php }
 		}?>
