@@ -11,7 +11,10 @@ class Gioithieu extends CI_Controller
 			if($danhmuc){
 				$data['danhmuc'] = $danhmuc; 
 			}
-
+			$noidung = $this->Noidung_model->get_bv('Bài viết tư vấn');
+			if ($noidung) {
+				$data['noidung1'] = $noidung;
+			}
 			$product = $this->Product_model->get();
 			if($product){ 
 				$data['product'] = $product;
@@ -24,9 +27,6 @@ class Gioithieu extends CI_Controller
 				}
 				$noidung = $this->Noidung_model->get();
 			
-			if ($noidung) {
-				$data['noidung1'] = $noidung;
-			}
 				$this->load->view('gioithieu',$data);
 			}else{
 			redirect('admin/login'); 

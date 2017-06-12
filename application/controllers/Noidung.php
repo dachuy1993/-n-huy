@@ -20,21 +20,7 @@ class Noidung extends CI_Controller
 			redirect('admin/login');
 			}
 		}
-		function listnd()
-		{
-			$data = array();
-			$user = $this->session->userdata('user');
-			if(isset($user)){
-				$noidung = $this->Noidung_model->get();
-				$data['user'] = $user;
-				if ($noidung) {
-					$data['noidung1'] = $noidung;
-				}
-				$this->load->view('header',$data);
-			}else{
-			redirect('admin/login');
-			}
-		}
+		
 		function viewtt($noidung_id)
 		{
 			$getinfo = $this->Noidung_model->getinfo($noidung_id);

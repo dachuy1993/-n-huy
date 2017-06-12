@@ -117,7 +117,7 @@
   				<div style="padding-top: 20px;">
   				
   					<ul id="menu-sidebar" class="menu" > 
-  						<?php 
+  						<?php  
   							if(isset($noidung1))
   							{
   								foreach ($noidung1 as $key) {

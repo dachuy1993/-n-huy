@@ -16,8 +16,8 @@ include 'header.php';
     <div> 
       <div style="font-weight: bold;font-size: 15px; color: #52B244; ">
         <?php 
-            if (isset($getinfo)) {
-              foreach ($getinfo as $key) {
+            if (isset($noidung2)) {
+              foreach ($noidung2 as $key) {
                 echo $key->ten_tieu_de;
                 ?>
       </div>
@@ -29,6 +29,7 @@ include 'header.php';
 
     </div>
   </div>
+  
   <!-- 
   <?php
               }
@@ -61,46 +62,8 @@ include 'header.php';
             ?> -->
 
 </div>
-        <div id="login-box" class="login">
-            <p class="login_title"> Đặt mua <?php 
-            if (isset($getinfo)) {
-              foreach ($getinfo as $key) {
-                echo $key->Ten_sp;}}
-                ?></p>
-            <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window" alt="Close" /></a>
-            <form method="post" class="login-content" action="#">
-                <table>
-                  <tr>
-                    <td colspan="2"><label>
-
-Vui lòng cung cấp đầy đủ thông tin sau. Chúng tôi sẽ gọi điện thoại cho Anh/Chị để xác nhận và gửi sản phẩm đến địa chỉ Anh/Chị cung cấp.</label></td>
-                  </tr>
-                  <tr>
-                    <td><label>Họ và tên (*)</label></td>
-                    <td><input type="text" name="hoten"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Địa chỉ email (*)</label></td>
-                    <td><input type="email" name="email"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Số điện thoại (*)</label></td>
-                    <td><input type="text" name="sdt"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Địa chỉ giao hàng (*)</label></td>
-                    <td><input type="text" name="diachi"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Ghi chú</label></td>
-                    <td><textarea rows="10"></textarea></td>
-                  </tr>
-                </table>
-                <div class="text-center">
-                  <button class="button submit-button" type="button">Đặt hàng ngay</button>
-                </div>
-            <p>
-            <a class="forgot" href="#">Quên mật khẩu?</a>
-            </p>        
-            </form>
-        </div>
+        
+        <?php 
+include 'footer.php';
+ ?> 
+ 

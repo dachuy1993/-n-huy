@@ -33,6 +33,11 @@ class danhmuc extends CI_Controller
 			if($getdm){
 				$data['getdm'] = $getdm;  
 			}
+			$noidung = $this->Noidung_model->get_bv('Bài viết tư vấn');
+			
+			if ($noidung) {
+				$data['noidung1'] = $noidung;
+			}
 			if($danhmuc){
 				$data['danhmuc'] = $danhmuc;
 			}
@@ -42,11 +47,6 @@ class danhmuc extends CI_Controller
 			}
 			else{
 				$data['err'] = "danh mục này k tồn tại";
-			}
-			$noidung = $this->Noidung_model->get();
-			
-			if ($noidung) {
-				$data['noidung1'] = $noidung;
 			}
 			$this->load->view('danhmuc',$data);
 		}
@@ -100,7 +100,7 @@ class danhmuc extends CI_Controller
 			if($sanpham){
 				$data['sanpham'] = $sanpham;
 			}
-			$noidung = $this->Noidung_model->get();
+			$noidung = $this->Noidung_model->get_bv('Bài viết tư vấn');
 			
 			if ($noidung) {
 				$data['noidung1'] = $noidung;

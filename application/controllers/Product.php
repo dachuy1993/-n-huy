@@ -59,7 +59,7 @@
 			else{
 				$data['err'] = "sản phầm này k tồn tại";
 			}
-			$noidung = $this->Noidung_model->get();
+			$noidung = $this->Noidung_model->get_bv('Bài viết tư vấn');
 			
 			if ($noidung) {
 				$data['noidung1'] = $noidung;
@@ -180,6 +180,7 @@
 		{
 			$getinfo = $this->Product_model->getinfo($sanpham_id);
 			$ten_sp = $this->input->post('tensp');
+			$anh_sp = $this->input->post('userfile');
 			$ma_sp = $this->input->post('masp');
 			$so_luong = $this->input->post('soluong');
 			$gia_sp = $this->input->post('giasp'); 
@@ -200,6 +201,7 @@
 					'ma_sp' => $ma_sp,
 					'Baohanh_sp' =>$bao_hanh,
 					'Thong_tin_sp'=>$thong_tin,
+					'Anh_sp' =>$anh_sp,
 					);
 				$edit = $this->Product_model->edit($sanpham_id,$edit);
 				redirect('product');

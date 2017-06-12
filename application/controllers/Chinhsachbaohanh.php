@@ -16,10 +16,15 @@ class chinhsachbaohanh extends CI_Controller
 					$chitiet = $key->danhmuc_id;
 				}
 			}
-			$noidung = $this->Noidung_model->get();
+			$noidung = $this->Noidung_model->get_bv('Bài viết tư vấn');
 			
 			if ($noidung) {
 				$data['noidung1'] = $noidung;
+			}
+			$noidung = $this->Noidung_model->get_bv('Chính sách bảo hành');
+			
+			if ($noidung) {
+				$data['noidung2'] = $noidung;
 			}
 		$this->load->view('chinhsachbaohanh',$data);
 	}

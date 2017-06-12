@@ -32,7 +32,14 @@ class Noidung_model extends CI_Model
 		}else return false; 
 
 	}
-	
+	function get_bv($danh_muc)
+	{
+		$this->db->where('danh_muc',$danh_muc);
+		$get = $this->db->get('noidung');
+		if($get->num_rows() > 0){ 
+			return $get->result();
+		}else return false;
+	}
 	function delete($noidung_id){
 		$this->db->where('noidung_id',$noidung_id);
 		$delete = $this->db->delete('noidung');
