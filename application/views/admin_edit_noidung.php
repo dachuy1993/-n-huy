@@ -79,10 +79,10 @@ include 'admin_header.php';
 							<input class="form-control" type="text" name="tennd" value="<?php echo $key->ten_tieu_de?>">
 						</td>
 					</tr>
-					<tr>
+					<tr> 
 						<td>Nội dung</td>
 						<td>
-							<textarea rows="30" name="noidung" class="form-control"><?php echo $key->noi_dung?></textarea>
+							<textarea rows="30" name="noidung" class="form-control tinymce"><?php echo $key->noi_dung?></textarea>
 						</td>
 					</tr>
 				</table>

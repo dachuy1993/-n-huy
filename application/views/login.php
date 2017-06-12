@@ -20,12 +20,16 @@ echo form_open('admin/login');
  	<div style="float: left;">
 	 	<table>
 	 		<tr>
-	 			<td>Tên đăng nhập</td>
+	 			<td>Tên đăng nhập (*)</td>
 	 			<td><input type="text" name="user"></td>
 	 		</tr>
 	 		<tr>
-	 			<td>Mật khẩu</td>
+	 			<td>Mật khẩu (*)</td>
 	 			<td><input type="password" name="pass"></td>
+	 		</tr>
+	 		<tr>
+	 			<td></td>
+	 			<td><a href="<?php echo base_url()?>Admin_quenmk" style="">Quên mật khẩu</a></td>
 	 		</tr>
 	 		<tr>
 	 			<td></td>

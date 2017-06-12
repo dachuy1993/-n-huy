@@ -24,6 +24,7 @@
 					redirect('admin/login');
 				}
 		}
+		
 		function kh ()
 		{
 			$data = array();

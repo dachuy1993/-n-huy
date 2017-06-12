@@ -66,6 +66,12 @@
 			}
 			$this->load->view('sanpham',$data);
 		}
+		// function get_slsp($sanpham_id)
+		// {
+		// 	$getinfo = $this->Product_model->getinfo($sanpham_id);
+			
+		// }
+
 		function view1($sanpham_id)
 		{
 			$danhmuc = $this->Danhmuc_model->get();
@@ -345,5 +351,5 @@
 			}
 			echo json_encode($masp_select_box);
 		}
-	}
+			}
  ?>

@@ -13,7 +13,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
 </head>
-<body>
+<body >
 <section id="header">
 <div class="row max">
 	<div class="col-lg-6">
@@ -157,7 +157,7 @@
 
 
 <div id="login-box" class="login">
-            <p class="login_title"> Đặt mua <?php 
+            <p class="login_title"> <b style="font-weight: bold;font-size: 25px;">Đặt mua </b><?php 
 	  				if (isset($getinfo)) {
 	  					foreach ($getinfo as $key) {
 	  						echo $key->Ten_sp;}}
@@ -176,23 +176,23 @@ Vui lòng cung cấp đầy đủ thông tin sau. Chúng tôi sẽ gọi điện
                 	</tr>
                 	<tr>
                 		<td><label>Họ và tên (*)</label></td>
-                		<td><input type="text" name="hoten"></td>
+                		<td><input type="text" name="hoten" required=""></td>
                 	</tr>
                 	<tr>
                 		<td><label>Địa chỉ email (*)</label></td>
-                		<td><input type="email" name="email"></td> 
+                		<td><input type="email" name="email" required=""></td> 
                 	</tr>
                 	<tr>
                 		<td><label>Số điện thoại (*)</label></td>
-                		<td><input type="text" name="sdt"></td>
+                		<td><input type="text" name="sdt" required=""></td>
                 	</tr>
                 	<tr>
                 		<td><label>Địa chỉ giao hàng (*)</label></td>
-                		<td><input type="text" name="diachi"></td>
+                		<td><input type="text" name="diachi" required=""></td>
                 	</tr>
                 	<tr>
                 		<td><label>Tổng giá trị là: </label></td>
-                		<td><?php echo $money;?></td>
+                		<td><?php echo number_format($money);?> VNĐ</td>
                 		<!-- <td><input type="text" name="tongtien" value="<?php echo $money;?>"></td> -->
                 	</tr>
                 	<tr>
@@ -201,7 +201,7 @@ Vui lòng cung cấp đầy đủ thông tin sau. Chúng tôi sẽ gọi điện
                 	</tr>
                 </table>
                 <div class="text-center">
-                	<button class="button submit-button" type="submit">Đặt hàng ngay</button>
+                	<button class="btn btn-danger submit-button" type="submit">Đặt mua ngay</button>
                 </div>
             <p>
             <ul class="dv" style="font-size: 12px;">

@@ -12,6 +12,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>public/style/plugin/tinymce/tinymce.min.js"></script>
+<!--    <script>tinymce.init({ selector:'textarea' });</script>-->
+<!--    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>-->
+    <script type="text/javascript" src="<?php echo base_url();?>public/style/plugin/tinymce/init-tinymce.js"></script>
+
 </head>
 <body>
 

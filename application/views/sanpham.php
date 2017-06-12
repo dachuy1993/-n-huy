@@ -43,10 +43,12 @@ include 'header.php';
 				</div>
 			</div> 
 			<div class="col-lg-6">
-				<p style="font-weight: bold;font-size: 14px;padding: 2px;">	Giá: <span style="color: red;font-size: 24px;"><?php echo number_format($key->Gia_sp)?> vnđ</span><br/>
-					Mã sản phẩm: <?php echo $key->ma_sp." 0".$key->sanpham_id?><br/>
-					Kích thước: <?php echo $key->Kichthuoc_sp?><br/>
-					Bảo Hành: <?php echo $key->Baohanh_sp?><br/>
+				<p style="font-size: 14px;padding: 2px;">	<b style="font-weight: bold;">Giá cũ:</b> <span style="color: #8e8e8e;font-size: 18px;"><strike><?php echo number_format($key->Gia_cu)?> vnđ</strike></span><br/>
+					<b style="font-weight: bold;">Giá khuyến mại:</b> <span style="color: red;font-size: 24px;"><?php echo number_format($key->Gia_sp)?> vnđ</span><br/>
+					<b style="font-weight: bold;">Mã sản phẩm:</b> <?php echo $key->ma_sp." 0".$key->sanpham_id?><br/>
+					<b style="font-weight: bold;">Kích thước:</b> <?php echo $key->Kichthuoc_sp?><br/>
+					<b style="font-weight: bold;">Bảo Hành:</b> <?php echo $key->Baohanh_sp?><br/>
+					<b style="font-weight: bold;">Tình trạng:</b> <?php if($key->Soluong_sp>0) echo "Còn hàng"; else echo "Đặt hàng"?>
 				</p>
 				<div>
 					<a href="<?php echo base_url()?>product/buy/<?php echo $key->sanpham_id?>" class = 'btn green muahang'>MUA HÀNG</a>

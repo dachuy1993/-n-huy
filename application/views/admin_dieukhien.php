@@ -17,7 +17,7 @@
 
 
 	
-<div class=" menu-left">
+<div class=" menu-left" style="margin-top: -10px;">
 
 	<ul>
 
@@ -70,7 +70,7 @@
 
 <div class="menu-right">
 	<div>
-		<div class="row">
+		<div class="row" style="margin-top: 10px;">
 			<div class="col-lg-5">
 				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">BẢNG ĐIỀU KHIỂN</p>
 			</div>
@@ -108,7 +108,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
+		<div class="row" style="background: #ccc;margin: 10px 0 10px 0; ">
 			<div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
 
 				<a href="<?php echo base_url()?>nhanvien" class="btn btn-info lien-he login-window button orange">
@@ -144,18 +144,18 @@
 						<td>Ngày kết thúc</td>
 						<td><input type="date" name="ngaykt"></td>
 					</tr><br/><br/>
-					<p>Thống kê doanh thu</p><br/>
-					<p>120k</p>
+					<p style="font-weight: bold;font-size: 22px; color: #41362f">Thống kê doanh thu</p>
+					<p style="font-weight: bold;font-size: 27px;color: orange; margin-top: -11px;">120k</p>
 				</div>
 				
 				<div>
-					<p>Lần đặt hàng cuối cùng</p>
+					<p style="font-weight: bold;font-size: 22px; color: #41362f">Lần đặt hàng cuối cùng</p>
 					<div>
 						<table class="table">
 							<thead>
-								<td>Khách hàng</td>
-								<td>Số điện thoại</td>
-								<td>Thành tiền</td>
+								<td style="font-weight: bold;">Khách hàng</td>
+								<td style="font-weight: bold;">Số điện thoại</td>
+								<td style="font-weight: bold;">Thành tiền</td>
 							</thead>
 							<?php 
 								if(isset($order1))
@@ -178,6 +178,11 @@
 				 
 			</div>
 			<div class="col-lg-8">
-				<?php echo 'duc'?>
+				<div class="rows" style="margin-top: 50px;">
+					<a href="" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Bán chạy nhất</a>
+					<a href="" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Sản phẩm được xem nhiều nhất</a>
+					<a href="" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Những khách hàng mới</a>
+					<a href="" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Những sản phẩm bị trả lại</a>
+				</div>
 			</div>
 		</div>

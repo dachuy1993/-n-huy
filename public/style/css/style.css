@@ -139,7 +139,7 @@
 .name{
 	font-size: 15px;
 	text-align: left;
-	line-height: 30px;
+	/*line-height: -1px;*/
     font-weight: bold;
 }
 .dat-mua{
@@ -411,4 +411,9 @@ a, a:visited, a:active{
 .main_footer ul li{
     width: 200px;
 }
-
+.giasp{
+    margin: 0 0 -4px;
+}
+.cacho{
+    margin-bottom: 20px; 
+}

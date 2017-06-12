@@ -13,7 +13,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
 </head>
-<body>
+<body style="background: url(<?php echo base_url()?>public/img/bg.gif) repeat;">
 <nav class="navbar navbar-fixed-top">
 
 <section id="header">
@@ -60,7 +60,7 @@
 				foreach ($chitiet_model as $row) {
 			?>
 				
-					<li><a href="<?php echo base_url()?>danhmuc/view2/<?php echo $row->ma_sp?>"><?php echo $row->ten_chitiet_dm ?></li>
+					<li style="border-bottom:1px green dashed;"><a href="<?php echo base_url()?>danhmuc/view2/<?php echo $row->ma_sp?>"><?php echo $row->ten_chitiet_dm ?></li>
 			<?php
 				}
 
@@ -123,8 +123,8 @@
   								foreach ($noidung1 as $key) {
   							
   						?>
-  						<li style="list-style: none; color: black;">
-  							<a href="<?php echo base_url()?>Noidung/viewtt/<?php echo $key->noidung_id?>" style = "color: black;"><?php echo $key->ten_tieu_de?></a><?php echo " ".substr(date($key->thoi_gian),0,10)?> 
+  						<li style="list-style: none; color: black; border-bottom:1px white dashed;">
+  							<a href="<?php echo base_url()?>Noidung/viewtt/<?php echo $key->noidung_id?>" style = "color: black; line-height: 2"><?php echo $key->ten_tieu_de?></a><?php echo " ".substr(date($key->thoi_gian),0,10)?> 
 
   						</li>
   						<?php }}?>
@@ -167,7 +167,7 @@
                 		<td><input type="text" name="Sdt" required></td>
                 	</tr>
                 	<tr>
-                		<td><label>Tên sản phẩm (*)</label></td>
+                		<td><label>Tên sản phẩm</label></td>
                 		<td><input type="text" name="Tensp" required></td>
                 	</tr>
                 	<tr>
@@ -225,7 +225,7 @@
                 <div class="text-center">
                 	<button class="btn btn-default" type="submit" style="margin: 10px;">
                 		<a href="">
-                			GỬI
+                			ĐẶT HÀNG
                 		</a> 
                 	</button>
                 </div>
