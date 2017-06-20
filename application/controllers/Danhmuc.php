@@ -26,6 +26,17 @@ class danhmuc extends CI_Controller
 			}
 			$this->load->view('admin_laychitietdm',$data);
 		}
+		function get_chon($danhmuc_id)
+		{
+			$getinfo = $this->Danhmuc_model->getinfo($danhmuc_id);
+			if($getinfo){
+				$data['getinfo'] = $getinfo;
+			}
+			else{
+				$data['err'] = "danh mục này k tồn tại";
+			}
+			$this->load->view('admin_nhapkho',$data);
+		}
 		function view($danhmuc_id)
 		{
 			$danhmuc = $this->Danhmuc_model->get();

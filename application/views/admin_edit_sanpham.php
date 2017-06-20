@@ -18,7 +18,7 @@ include 'admin_header.php';
 				<div class="icon-user"  style="float: right;">
 					<ul>
 						<li>
-							<div class="input-group">
+							<div class="input-group" style="width: 370px;">
 					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
 					        		<button class="btn btn-default" type="button">Tìm Kiếm</button>
@@ -125,11 +125,11 @@ include 'admin_header.php';
 						<tr>
 							<td>Thông tin sản phẩm</td>
 							<td>
-								<textarea rows="15" name="thongtin" class="form-control"><?php echo $key->Thong_tin_sp?>
+								<textarea rows="15" name="thongtin" class="form-control "><?php echo $key->Thong_tin_sp?>
 								</textarea>
 							</td>
 						</tr>
-					</table>
+					</table> 
 			</div>
 		</div>
 		<?php }

@@ -87,6 +87,43 @@ class Product_model extends CI_Model
 			return true;
 		}else return false; 
 	}
+	function get_sp_chaynhat($limit){
+		$this->db->order_by('Luot_mua','DESC');
+		$this->db->limit($limit);
+		$get = $this->db->get('sanpham');
+		if($get->num_rows() > 0){
+			return $get->result(); 
+		}else return false;
+ 	}
+ 	function get_sp_xemnhieu($limit){
+ 		$this->db->order_by('Luot_xem','DESC');
+		$this->db->limit($limit);
+		$get = $this->db->get('sanpham');
+		if($get->num_rows() > 0){
+			return $get->result(); 
+		}else return false;
+ 	}
+ 	function get_timkiem($key)
+ 	{
+ 		$this->db->like('Ten_sp',$key);
+		$getdm =$this->db->get('sanpham');
+		if($getdm->num_rows() > 0){
+			return $getdm->result();
+		}else return false;
+ 	}
+ 	function nhapkho($data){
+ 		$query = $this->db->insert('nhapkho',$data);
+ 		if($query){
+ 			$this->db->select_max('nhapkho_id');
+ 			$id = $this->db->get('nhapkho');
+ 			return $id->result();
+ 		}
+
+ 	}
+ 	function nhapchitietkho($data){
+ 		$this->db->insert('chitietnhapkho',$data);
+ 		return true;
+ 	}
 }
 
  ?>

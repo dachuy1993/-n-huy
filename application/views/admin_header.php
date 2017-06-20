@@ -22,53 +22,46 @@
 
 
 	
-<div class=" menu-left">
+<div class=" menu-left" style="margin-top: -10px;">
 
-	<ul>
+    <ul>
 
-		<li>
-			<a href="<?php echo base_url()?>admin">
-				<span class=" glyphicon glyphicon-home icon"></span>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>admin">
-				<span class=" glyphicon glyphicon-dashboard icon"></span>
-				<p style="color: white;">Bảng điều khiển</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>dieukhien" style = "display: block;">
-				<span class=" glyphicon glyphicon-usd icon" ></span>
-				<p style="color: white;">Bán hàng</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>product" style = "display: block;">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			
-			<p style="color: white;">Các sản phẩm</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>customer" style = "display: block;">
-				<span class="  glyphicon glyphicon-heart icon" ></span>
-			
-			<p style="color: white;">Khách hàng</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>nhanvien">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-				<p style="color: white;">Nhân viên</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>Admin_kho">
-				<span class=" glyphicon glyphicon-book icon" ></span> 
-			</a>
-			<p style="color: white;">Quản lý kho</p>
-		</li>
-		
-	</ul>
+        <li>
+            <a href="<?php echo base_url()?>admin">
+                <span class=" glyphicon glyphicon-home icon"></span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>Dieukhien">
+                <span class=" glyphicon glyphicon-dashboard icon"></span>
+                <p style="color: white;">Bảng điều khiển</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>order" style = "display: block;">
+                <span class=" glyphicon glyphicon-usd icon" ></span>
+                <p style="color: white;">Bán hàng</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>product" style = "display: block;">
+                <span class=" glyphicon glyphicon-book icon" ></span>
+            
+            <p style="color: white;">Các sản phẩm</p>
+            </a>
+        </li>
+        <li style="background: #524d49">
+            <a href="<?php echo base_url()?>Noidung" style = "display: block;">
+                <span class="  glyphicon glyphicon-heart icon" ></span>
+            
+            <p style="color: white;">Nội dung</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>Admin_kho">
+                <span class=" glyphicon glyphicon-book icon" ></span> 
+            </a>
+            <p style="color: white;">Quản lý kho</p>
+        </li>
+    </ul>
 </div>

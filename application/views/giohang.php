@@ -89,7 +89,7 @@
 		<thead>
 			<tr>
 				<td>STT</td>
-				<td>Ảnh sản phẩm</td>
+				<td style="width: 150px;">Ảnh sản phẩm</td>
 				<td>Tên sản phẩm</td>
 				<td>Giá sản phẩm</td>
 				<td>Số sản phẩm</td>

@@ -26,8 +26,8 @@
 				<span class=" glyphicon glyphicon-home icon"></span>
 			</a>
 		</li>
-		<li>
-			<a href="<?php echo base_url()?>dieukhien">
+		<li  style="background: #524d49">
+			<a href="<?php echo base_url()?>Dieukhien">
 				<span class=" glyphicon glyphicon-dashboard icon"></span>
 				<p style="color: white;">Bảng điều khiển</p>
 			</a>
@@ -46,16 +46,10 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>customer" style = "display: block;">
+			<a href="<?php echo base_url()?>Noidung" style = "display: block;">
 				<span class="  glyphicon glyphicon-heart icon" ></span>
 			
-			<p style="color: white;">Khách hàng</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>nhanvien">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-				<p style="color: white;">Nhân viên</p>
+			<p style="color: white;">Nội dung</p>
 			</a>
 		</li>
 		<li>
@@ -64,24 +58,23 @@
 			</a>
 			<p style="color: white;">Quản lý kho</p>
 		</li>
-		
 	</ul>
 </div>
 
 <div class="menu-right">
 	<div>
-		<div class="row" style="margin-top: 10px;">
+		<div class="row" style="margin-top: 10px; margin-right: 0px;">
 			<div class="col-lg-5">
 				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">BẢNG ĐIỀU KHIỂN</p>
 			</div>
 			<div class="col-lg-7">
-				<div class="icon-user"  style="float: right;">
+				<div class="icon-user"  style="float: right; margin-right: 36px;">
 					<ul>
 						<li style="margin: 0 5px;">
-							<div class="input-group">
-					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
+							<div class="input-group" style="width: 370px;">
+					      		<input type="text" class="form-control timkiem" name="search" placeholder="Search for...">
 					      		<span class="input-group-btn">
-					        		<button class="btn btn-default" type="button">Tìm Kiếm</button>
+					        		<button class="btn btn-default" type="button" name="timkiem">Tìm Kiếm</button>
 					      		</span>
 					    	</div>
 						</li>
@@ -96,8 +89,8 @@
 								    	<a href="">
 								    		<span class=" glyphicon glyphicon-user"><?php if(isset($user)){echo $user;} ?></span>
 								    	</a>
-								    <span class="caret"></span>
-								  </button>
+								    <span class="caret"></span> 
+								  </button> 
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 								    <li><a href="<?php echo base_url()?>nhanvien/change">Thay đổi thông tin</a></li>
 								    <li><a href="<?php echo base_url()?>admin/logout">Đăng xuất</a></li> 
@@ -123,14 +116,6 @@
 				Khách hàng
 				</a>
   			</div>
-
-			<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
-
-				<a href="#login-box" class="btn btn-success lien-he login-window button orange">
-				<span class="glyphicon"></span>
-				Thêm đơn mua hàng
-				</a>
-  			</div>
 		</div>
 		<div class="col-lg-12">
 			<div class="col-lg-4">
@@ -145,7 +130,13 @@
 						<td><input type="date" name="ngaykt"></td>
 					</tr><br/><br/>
 					<p style="font-weight: bold;font-size: 22px; color: #41362f">Thống kê doanh thu</p>
-					<p style="font-weight: bold;font-size: 27px;color: orange; margin-top: -11px;">120k</p>
+					<?php 
+					$s = 0;
+			  				if(isset($hoadonban1)){
+			  					foreach ($hoadonban1 as $key) {
+			  					$s+=$key->Tong_gia;}} 
+							?>
+					<p style="font-weight: bold;font-size: 27px;color: orange; margin-top: -11px;"><?php echo number_format($s);?> VNĐ</p>
 				</div>
 				
 				<div>
@@ -168,7 +159,7 @@
 							<tbody>
 								<td><?php echo $key->Ten_kh?></td>
 								<td><?php echo $key->Sodt?></td>
-								<td><?php echo $key->Tong_gia?></td>
+								<td><?php echo number_format($key->Tong_gia)?></td>
 								<?php }?>
 							</tbody>
 							<?php }?>
@@ -179,10 +170,47 @@
 			</div>
 			<div class="col-lg-8">
 				<div class="rows" style="margin-top: 50px;">
-					<a href="" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Bán chạy nhất</a>
-					<a href="" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Sản phẩm được xem nhiều nhất</a>
-					<a href="" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Những khách hàng mới</a>
+					<a href="<?php echo base_url()?>Dieukhien" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; border-top-width: 0.4rem; border-top-style: solid;border-top-color: orange  ;background: white; color: black;">Bán chạy nhất</a>
+					<a href="<?php echo base_url()?>Dieukhien/dieukhien1" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Sản phẩm được xem nhiều nhất</a>
+					<a href="<?php echo base_url()?>Dieukhien/dieukhien2" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Những khách hàng còn nợ</a>
 					<a href="" style="border: 1px #c8c0c0 solid; width: 30px; height: 20px; padding: 10px; background: #a39baa4d; color: black;">Những sản phẩm bị trả lại</a>
+				</div>
+				<div style="padding-top: 10px;">
+					<table class="table">
+						<thead>
+							<thead>
+								<td style="font-weight: bold;">Sản phẩm</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td style="font-weight: bold;">Giá bán </td>
+								<td style="font-weight: bold;">Số lượng mua</td>
+							</thead>
+							<?php 
+								if(isset($product1))
+								{
+									$number = 0;
+									
+									foreach ($product1 as $key) {
+									 
+								?>
+							<tbody>
+								<td><?php echo $key->Ten_sp?></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><?php echo number_format($key->Gia_sp)?></td>
+								<td><?php echo $key->Luot_mua?></td>
+								<?php }}?>
+							</tbody>
+						</thead>
+					</table>
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+</body>
+</html>

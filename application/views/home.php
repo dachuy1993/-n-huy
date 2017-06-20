@@ -58,7 +58,7 @@ include 'header.php';
 						  						<a href="<?php echo base_url()?>product/view/<?php echo $key->sanpham_id?>" class = "btn btn-success lien_he" style="float: right; background: #67c62e; font-weight: bold;">
 						  							<span class="glyphicon glyphicon-shopping-cart"></span>
 						  							Đặt mua
-						  						</a>
+						  						</a> 
 					  						</div>
 					  					</div>
 	 

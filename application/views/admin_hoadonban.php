@@ -12,7 +12,7 @@ include 'admin_header.php';
 				<div class="icon-user"  style="float: right;">
 					<ul>
 						<li style="margin: 0 5px;">
-							<div class="input-group">
+							<div class="input-group" style="width: 370px;">
 					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
 					        		<button class="btn btn-default" type="button">Tìm Kiếm</button>
@@ -71,7 +71,7 @@ include 'admin_header.php';
 			    <tbody>
 					    <?php 
 			  				if(isset($hoadonban1)){
-			  					foreach ($hoadonban1 as $key) { 
+			  					foreach ($hoadonban1 as $key) {  
 							?>
 			      	<tr>
 			      		<td><a href="<?php echo base_url()?>chitiet_dondh/view/<?php echo $key->Dondh_id?>">Xem chi tiết đơn hàng</a></td>

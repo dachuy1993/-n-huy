@@ -45,7 +45,7 @@ class Nhanvien_model extends CI_Model
 		$this->db->where('mat_khau',$login['mat_khau']);
 		$login = $this->db->get('nhanvien');
 		if($login->num_rows() > 0){
-			return true;
+			return $login->result();
 		}
 		else return false;
 	}

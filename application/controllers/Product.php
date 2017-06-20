@@ -4,7 +4,7 @@
 	*/
 	class product extends CI_Controller
 	{
-		function index () 
+		function index ()  
 		{
 			$user = $this->session->userdata('user');
 			if(isset($user)){
@@ -12,7 +12,7 @@
 				$product = $this->Product_model->get_list();
 				$data['user'] = $user;
 				if ($product) {
-					$data['product1'] = $product;
+					$data['product1'] = $product; 
 				}
 				$this->load->view('admin_sanpham',$data);
 			}else{
@@ -281,6 +281,7 @@
                 }
             redirect('giohang');
 		}
+		
 		function update_cart()
 		{
 			$this->load->library('cart');
@@ -351,5 +352,64 @@
 			}
 			echo json_encode($masp_select_box);
 		}
+		function save_nhapkho()
+		{
+			$user = $this->session->userdata('user');
+			$money = 0;
+			foreach ($_SESSION['hdnhap'] as $key => $value) {
+				$money+=($value['price'] * $value['qty']);
 			}
+			$data_add = array(
+				'nhanvien_id' => $user,
+				'so_tien' => $money,
+				);
+			$add = $this->Product_model->nhapkho($data_add);
+			if($add){
+				foreach ($add as $id) {
+					$nhapkho_id = $id->nhapkho_id;
+				}
+				$product = $this->Product_model->get();
+				$check = true;
+				foreach ($_SESSION['hdnhap'] as $key => $value) {
+					foreach ($product as $sp) {
+						if($sp->sanpham_id == $value['id']){
+							$check = false;
+							$sanpham = $this->Product_model->getinfo($value['id']);
+							foreach ($sanpham as $sl) {};
+							$soluongcu_kho = $sl->Soluong_kho;
+							$soluongcu_ht = $sl->Soluong_sp;
+							$update = array(
+								'Soluong_sp' => $soluongcu_ht + $value['qty'],
+								'Soluong_kho' => $soluongcu_kho + $value['qty'],
+								);
+							$this->Product_model->edit($value['id'],$update);
+						}
+					}
+
+
+					if($check == true){
+						$add_sp_new = array(
+							'Ten_sp' => $value['name'],
+							'Anh_sp' => $value['Anh_sp'],
+							'Gia_nhap' => $value['price'],
+							'Soluong_sp' => $value['qty'],
+
+							);
+						$insert = $this->Product_model->add($add_sp_new);
+					}
+
+
+
+					$chitietnhap = array(
+					'nhapkho_id' => $nhapkho_id,
+					'Ten_sp' => $value['name'],
+					);
+					$this->Product_model->nhapchitietkho($chitietnhap);
+				}
+				unset($_SESSION['hdnhap']);
+				redirect('Admin_nhapkho');
+			}
+			
+		}
+	}
  ?>

@@ -40,6 +40,17 @@ class Customer_model extends CI_Model
 		}else return false;
 
 	}
+	function get_kh_no(){
+ 		$this->db->order_by('Sotienno','DESC');
+ 		$this->db->where('Sotienno>',0);
+		// $this->db->limit($limit);
+		$get = $this->db->get('khachhang');
+		if($get->num_rows() > 0){
+			return $get->result(); 
+		}else return false;
+ 	}
+ 	
+
 }
 
  ?>

@@ -17,60 +17,53 @@
 
 
 	
-<div class=" menu-left">
+<div class=" menu-left" style="margin-top: -10px;">
 
-	<ul>
+    <ul>
 
-		<li>
-			<a href="<?php echo base_url()?>admin">
-				<span class=" glyphicon glyphicon-home icon"></span>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>admin">
-				<span class=" glyphicon glyphicon-dashboard icon"></span>
-				<p style="color: white;">Bảng điều khiển</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>order" style = "display: block;">
-				<span class=" glyphicon glyphicon-usd icon" ></span>
-				<p style="color: white;">Bán hàng</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>product" style = "display: block;">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			
-			<p style="color: white;">Các sản phẩm</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>customer" style = "display: block;">
-				<span class="  glyphicon glyphicon-heart icon" ></span>
-			
-			<p style="color: white;">Khách hàng</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>nhanvien">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-				<p style="color: white;">Nhân viên</p>
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo base_url()?>Admin_kho">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-			</a>
-			<p style="color: white;">Quản lý kho</p>
-		</li>
-		
-	</ul>
+        <li>
+            <a href="<?php echo base_url()?>admin">
+                <span class=" glyphicon glyphicon-home icon"></span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>Dieukhien">
+                <span class=" glyphicon glyphicon-dashboard icon"></span>
+                <p style="color: white;">Bảng điều khiển</p>
+            </a>
+        </li>
+        <li style="background: #524d49">
+            <a href="<?php echo base_url()?>order" style = "display: block;">
+                <span class=" glyphicon glyphicon-usd icon" ></span>
+                <p style="color: white;">Bán hàng</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>product" style = "display: block;">
+                <span class=" glyphicon glyphicon-book icon" ></span>
+            
+            <p style="color: white;">Các sản phẩm</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>Noidung" style = "display: block;">
+                <span class="  glyphicon glyphicon-heart icon" ></span>
+            
+            <p style="color: white;">Nội dung</p>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo base_url()?>Admin_kho">
+                <span class=" glyphicon glyphicon-book icon" ></span> 
+            </a>
+            <p style="color: white;">Quản lý kho</p>
+        </li>
+    </ul>
 </div>
 
 <div class="menu-right">
 	<div>
-		<div class="row">
+		<div class="row"  style="margin-top: 10px;margin-right: 0px;">
 			<div class="col-lg-5">
 				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">CHI TIẾT ĐƠN ĐẶT HÀNG</p>
 			</div>
@@ -78,7 +71,7 @@
 				<div class="icon-user"  style="float: right;">
 					<ul>
 						<li style="margin: 0 5px;">
-							<div class="input-group">
+							<div class="input-group" style="width: 370px;">
 					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
 					        		<button class="btn btn-default" type="button">Tìm Kiếm</button>
@@ -87,7 +80,7 @@
 						</li>
 						<li style="margin:  0 5px;">
 							<a href="">
-								<span class=" glyphicon glyphicon-bell"><sup>0</sup></span>
+								<span class=" glyphicon glyphicon-bell" style="margin: 0 10px 0 10px;"><sup>0</sup></span>
 							</a>
 						</li>
 						<li style="margin: 0 20px 0 5px;">
@@ -104,18 +97,12 @@
 								  </ul>
 							</div>
 						</li>
-					</ul>
+					</ul> 
 				</div>
 			</div>
 		</div>
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
-			<div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
-
-				<a href="<?php echo base_url()?>hoadonban" class="btn btn-info lien-he login-window button orange">
-				<span class="glyphicon"></span>
-				Hóa đơn bán hàng
-				</a>
-  			</div>
+			
   			<?php
 			  				if(isset($chitiet1)){
 			  					foreach ($chitiet1 as $key) { 
@@ -124,7 +111,7 @@
 
 				<a href="<?php echo base_url()?>Admin_kho/xuatkho/<?php echo $key->Dondh_id?>" class="btn btn-success lien-he login-window button orange">
 				<span class="glyphicon"></span>
-				Phiếu xuất kho
+				Phiếu xuất kho 
 				</a>
   			</div> 
   			<?php }}?> 
@@ -143,7 +130,7 @@
 			        <th>Chất liệu</th>
 			        <th>Số lượng</th>
 			        <th>Bảo hành</th>
-			        <td>Hoạt động</td>
+			        <!-- <td>Hoạt động</td> -->
 			      </tr> 
 			    </thead> 
 			    <tbody>

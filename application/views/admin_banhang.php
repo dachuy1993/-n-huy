@@ -17,7 +17,7 @@
 
 
 	
-<div class=" menu-left">
+<div class=" menu-left" style="margin-top: -10px;">
 
 	<ul>
 
@@ -32,7 +32,7 @@
 				<p style="color: white;">Bảng điều khiển</p>
 			</a>
 		</li>
-		<li>
+		<li style="background: #524d49">
 			<a href="<?php echo base_url()?>order" style = "display: block;">
 				<span class=" glyphicon glyphicon-usd icon" ></span>
 				<p style="color: white;">Bán hàng</p>
@@ -53,24 +53,17 @@
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo base_url()?>nhanvien">
-				<span class=" glyphicon glyphicon-book icon" ></span>
-				<p style="color: white;">Nhân viên</p>
-			</a>
-		</li>
-		<li>
 			<a href="<?php echo base_url()?>Admin_kho">
 				<span class=" glyphicon glyphicon-book icon" ></span> 
 			</a>
 			<p style="color: white;">Quản lý kho</p>
 		</li>
-		
 	</ul>
 </div>
 
 <div class="menu-right">
 	<div>
-		<div class="row">
+		<div class="row" style="margin-top: 10px;">
 			<div class="col-lg-5">
 				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">ĐƠN ĐẶT HÀNG</p>
 			</div>
@@ -78,7 +71,7 @@
 				<div class="icon-user"  style="float: right;">
 					<ul>
 						<li style="margin: 0 5px;">
-							<div class="input-group">
+							<div class="input-group" style="width: 370px;">
 					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
 					        		<button class="btn btn-default" type="button">Tìm Kiếm</button>
@@ -154,14 +147,15 @@
 				        <td><?php echo $key->Ngay_lap?></td>
 				        <td><?php echo $key->Ten_kh?></td>
 				        <td><?php echo $key->Sodt?></td>
-				        <td><?php echo $key->Tong_gia?></td>
+				        <td><?php echo number_format($key->Tong_gia)?> VNĐ</td>
 				  		<td><?php echo $key->Ghi_chu?></td>
 				        <td><?php echo "Chờ giao hàng"?></td>
 				        <td>
 						<?php 
 					        if($key->Tinh_trang === "0" ){
 				    	?>
-				    	<a href="<?php echo base_url()?>order/giaohang/<?php echo $key->Dondh_id?>">giao hàng</a>
+				    	<a href="<?php echo base_url()?>order/giaohang/<?php echo $key->Dondh_id?>">Giao hàng</a>
+				    	<a href="<?php echo base_url()?>order/huy/<?php echo $key->Dondh_id?>">Hủy</a>
 				    	<?php
 				        	}
 				        	if($key->Tinh_trang === "2"){

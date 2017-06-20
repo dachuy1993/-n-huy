@@ -26,11 +26,14 @@
 		</h1>
 	</div>
 	<div class="col-lg-6">
+	<?php 
+		
 
+	?> 
 		<div class="input-group">
-      		<input type="text" class="form-control" placeholder="Search for...">
+      		<input type="text" class="form-control" name="timkiem" placeholder="Search for...">
       		<span class="input-group-btn">
-        		<button class="btn btn-default" type="button">Tìm Kiếm</button>
+        		<a href="<?php echo base_url()?>Timkiem" class="btn btn-default" type="submit">Tìm Kiếm</a>
       		</span>
     	</div>
     	<div class="input-group" style = "float: right;">
@@ -123,7 +126,7 @@
   								foreach ($noidung1 as $key) {
   							
   						?>
-  						<li style="list-style: none; color: black; border-bottom:1px white dashed;">
+  						<li style="list-style: none; color: black; border-bottom:1px white dashed; font-size: 12px;">
   							<a href="<?php echo base_url()?>Noidung/viewtt/<?php echo $key->noidung_id?>" style = "color: black; line-height: 2"><?php echo $key->ten_tieu_de?></a><?php echo " ".substr(date($key->thoi_gian),0,10)?> 
 
   						</li>

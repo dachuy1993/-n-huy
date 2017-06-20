@@ -46,6 +46,6 @@
 			}
 			$this->load->view('home',$data);
 		}
-		
+				 
 	}
  ?>

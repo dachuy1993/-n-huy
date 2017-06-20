@@ -119,6 +119,11 @@
 			redirect('order');
 			// $this->load->db->
 		}
+		function huy($Dondh_id)
+		{
+			$delete = $this->Order_model->delete($Dondh_id);
+			redirect('order');
+		}
 		function edit($Dondh_id)
 		{
 			$getinfo = $this->Order_model->getinfo($Dondh_id);

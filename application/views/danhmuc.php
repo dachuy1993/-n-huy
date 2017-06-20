@@ -45,14 +45,20 @@ include 'header.php';
 	  							<div class="sp-view"> 
 			  						<a href="<?php echo base_url()?>product/view/<?php echo $key->sanpham_id?>"><img  style="margin: 0 auto; width: 250px; height: 157px;" src="<?php echo base_url()?>public/img/<?php echo $key->Anh_sp?>"></a>
 			  					</div>
-			  					<p class="name"><a href="/sanpham.php" style="color: black;"><?php echo $key->Ten_sp." 0".$key->sanpham_id ?></a></p>
-			  					<div style="display: table; width: 100%">
-				  					<p class="giasp" style="float: left; font-size: 20px;"><?php echo number_format($key->Gia_sp)?> vnđ</p>
-			  						<a href="<?php echo base_url()?>product/view/<?php echo $key->sanpham_id?>" class = "btn btn-success lien_he" style="float: right;">
-			  							<span class="glyphicon glyphicon-shopping-cart"></span>
-			  							Đặt mua
-			  						</a>
-			  					</div>
+			  					<div style="">
+					  					<p class="name"><a href="/sanpham.php" style="color: black;font-weight: bold;"><?php echo $key->Ten_sp." 0".$key->sanpham_id?></a></p>
+					  					<div style="display: table; width: 100%;">
+						  					<p class="giasp" style=" font-size: 15px; font-weight: bold;"><?php echo number_format($key->Gia_sp)?> vnđ</p><br/>
+						  					<div>
+							  					<p class="" style="float: left; font-size: 15px; color: #8e8e8e;font-weight: bold;"><strike><?php echo number_format($key->Gia_cu)?> vnđ</strike></p>
+						  						<a href="<?php echo base_url()?>product/view/<?php echo $key->sanpham_id?>" class = "btn btn-success lien_he" style="float: right; background: #67c62e; font-weight: bold;">
+						  							<span class="glyphicon glyphicon-shopping-cart"></span>
+						  							Đặt mua
+						  						</a> 
+					  						</div>
+					  					</div>
+	 
+				  					</div>
 	  						</div>
 	  					</div>
 					<?php

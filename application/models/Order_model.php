@@ -95,4 +95,4 @@ class Order_model extends CI_Model
 			return $get->result(); 
 		}else return false;
  	}
-}
+} 

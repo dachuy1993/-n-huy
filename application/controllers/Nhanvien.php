@@ -19,9 +19,10 @@
 			redirect('admin/login');
 			}
 		}
-		function change($nhanvien_id)
+		function change()
 		{
-			$getinfo = $this->Nhanvien_model->getinfo($nhanvien_id);
+			$id = $this->session->userdata('id');
+			$getinfo = $this->Nhanvien_model->getinfo($id);
 			
 			if($getinfo){
 				$data['getinfo'] = $getinfo;

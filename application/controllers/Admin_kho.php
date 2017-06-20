@@ -50,11 +50,12 @@ class Admin_kho extends CI_Controller
 				else{
 					$data['err'] = "sản phầm này k tồn tại";
 				}
-			$this->load->view('Admin_xuatkho',$data);
+			$this->load->view('Admin_phieuxuatkho',$data);
 			}else{
 			redirect('admin/login');
 			}
 		}
+		
 
 	// function nhapkhomoi()
 	// 	{

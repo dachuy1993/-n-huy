@@ -18,7 +18,7 @@ include 'admin_header.php';
 				<div class="icon-user"  style="float: right;">
 					<ul>
 						<li>
-							<div class="input-group">
+							<div class="input-group" style="width: 370px;">
 					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
 					        		<button class="btn btn-default" type="button">Tìm Kiếm</button>

@@ -12,6 +12,7 @@
 				if(isset($user))
 				{
 					$data['user'] = $user;
+					$data['pass'] = $pass;
 					$this->load->view('admin', $data); 
 				}
 				
@@ -21,7 +22,7 @@
 				// }
 				
 				else{
-					redirect('admin/login');
+					redirect('admin/login'); 
 				}
 		}
 		
@@ -42,17 +43,21 @@
 			$pass = $this->input->post('pass');
 			if(isset($user) && isset($pass)){
 				$login = array(
-					'tai_khoan' => $user,
+					'tai_khoan' => $user, 
 					'mat_khau' => $pass,
 					);
 				$login = $this->Nhanvien_model->login($login); 
 				if($login){
+					foreach ($login as $key) {
+						$id = $key->nhanvien_id;
+					}
 					$session = array(
 						'user' => $user,
 						'pass' =>$pass,
+						'id'=>$id,
 						);
 					$this->session->set_userdata($session);
-					redirect('admin');
+					redirect('Dieukhien'); 
 				}else $data['err'] = "Loi";
 				}
 			$this->load->view('login',$data);
