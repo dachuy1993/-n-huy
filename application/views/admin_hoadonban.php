@@ -1,15 +1,73 @@
-<?php 
-include 'admin_header.php';
- ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script type="text/javascript" src = "<?php echo base_url()?>public/style/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/style/css/style.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="<?php echo base_url()?>public/style/js/cycle.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
+</head>
+<body>
+ 
+
+	
+<div class=" menu-left" style="margin-top: -10px;">
+
+	<ul>
+
+		<li>
+			<a href="<?php echo base_url()?>admin">
+				<span class=" glyphicon glyphicon-home icon"></span>
+			</a>
+		</li>
+		<li  style="background: #524d49">
+			<a href="<?php echo base_url()?>Dieukhien">
+				<span class=" glyphicon glyphicon-dashboard icon"></span>
+				<p style="color: white;">Bảng điều khiển</p>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo base_url()?>order" style = "display: block;">
+				<span class=" glyphicon glyphicon-usd icon" ></span>
+				<p style="color: white;">Bán hàng</p>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo base_url()?>product" style = "display: block;">
+				<span class=" glyphicon glyphicon-book icon" ></span>
+			
+			<p style="color: white;">Các sản phẩm</p>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo base_url()?>Noidung" style = "display: block;">
+				<span class="  glyphicon glyphicon-heart icon" ></span>
+			
+			<p style="color: white;">Nội dung</p>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo base_url()?>Admin_kho">
+				<span class=" glyphicon glyphicon-book icon" ></span> 
+			</a>
+			<p style="color: white;">Quản lý kho</p>
+		</li>
+	</ul>
+</div>
 <div class="menu-right">
 	<div>
-		<div class="row">
+		<div class="row" style="margin-top: 10px; margin-right: 0px;">
 			<div class="col-lg-5">
 				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">HÓA ĐƠN BÁN</p>
 			</div>
 			<div class="col-lg-7">
-				<div class="icon-user"  style="float: right;">
+				<div class="icon-user"  style="float: right;margin-right: 36px;">
 					<ul>
 						<li style="margin: 0 5px;">
 							<div class="input-group" style="width: 370px;">
@@ -43,16 +101,13 @@ include 'admin_header.php';
 			</div>
 		</div>
 		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
-			<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
+			<div class="btn-group" style="height: 76PX;" role="group" aria-label="..." style="float: right; margin: 20px;">
 
-				<a href="#login-box" class="btn btn-success lien-he login-window button orange">
-				<span class="glyphicon"></span>
-				Thêm đơn mua hàng
-				</a>
+				
   			</div>
 		</div>
 		<p class="text-center" style="font-size: 20px; color: blue;">HÓA ĐƠN BÁN HÀNG</p>
-		<div class="col-md-12"  style="height: 250px;overflow-x: hidden;">
+		<div class="col-md-12"  style="height: 400px;overflow-x: hidden;">
 			<table class="table table-bordered" >
 			    <thead>
 			      <tr>
@@ -68,13 +123,13 @@ include 'admin_header.php';
 			        <td>Hoạt động1</td>
 			      </tr>
 			    </thead> 
-			    <tbody>
+			    <tbody> 
 					    <?php 
 			  				if(isset($hoadonban1)){
-			  					foreach ($hoadonban1 as $key) {  
+			  					foreach ($hoadonban1 as $key) {   
 							?>
 			      	<tr>
-			      		<td><a href="<?php echo base_url()?>chitiet_dondh/view/<?php echo $key->Dondh_id?>">Xem chi tiết đơn hàng</a></td>
+			      		<td><a href="<?php echo base_url()?>chitiet_dondh/viewhdb/<?php echo $key->Dondh_id?>">Xem chi tiết hóa dơn bán</a></td>
 			      		<td><?php echo $key->Dondh_id?></td>
 				        <td><?php echo $key->Ngay_lap?></td>
 				        <td><?php echo $key->Tong_gia?></td>

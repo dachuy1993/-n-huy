@@ -361,12 +361,12 @@
 			}
 			$data_add = array(
 				'nhanvien_id' => $user,
-				'so_tien' => $money,
+				'so_tien' => $money, 
 				);
 			$add = $this->Product_model->nhapkho($data_add);
 			if($add){
 				foreach ($add as $id) {
-					$nhapkho_id = $id->nhapkho_id;
+					$nhapkho_id = $id->nhapkho_id; 
 				}
 				$product = $this->Product_model->get();
 				$check = true;
@@ -409,6 +409,29 @@
 				unset($_SESSION['hdnhap']);
 				redirect('Admin_nhapkho');
 			}
+			
+		}
+		function admin_tk()
+		{
+			$user = $this->session->userdata('user');
+			$tk_sp = $this->input->post('admintimkiemsp');
+			if(isset($tk_sp))
+			{
+				$data['user'] = $user;
+				$getinfo1 = $this->Timkiem_model->get_tk($tk_sp);
+				if($getinfo1) 
+				{ 
+					$data['getinfo1'] = $getinfo1; 
+
+				}
+				else{
+					$data['err'] = "từ cần tìm k tồn tại";
+				
+				}
+				$this->load->view('admin_timkiemsp',$data); 
+			}
+			else
+				echo $tk_sp;
 			
 		}
 	}

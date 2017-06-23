@@ -11,7 +11,7 @@ class Dieukhien extends CI_Controller
 				$data = array();
 				$product = $this->Product_model->get();
 				
-				if(isset($user))
+				if(isset($user)) 
 				{
 					$data['user'] = $user;
 					$order = $this->Order_model->get_ddh_end('2');
@@ -22,7 +22,7 @@ class Dieukhien extends CI_Controller
 					if ($hoadonban) {
 						$data['hoadonban1'] = $hoadonban;
 					}
-
+					
 					$product1 = $this->Product_model->get_sp_chaynhat('2');
 					if($product1){
 						$data['product1'] = $product1;
@@ -33,6 +33,16 @@ class Dieukhien extends CI_Controller
 					redirect('admin/login');
 				}
 		}
+	function get_date()
+	{
+		$bd = $this->input->post('ngaybd');
+		$kt = $this->input->post('ngaykt');
+		$getdate = $this->Hoadonban_model->getdate($bd,$kt);
+		if($getdate){
+			$data['getdate'] = $getdate;
+		}
+		$this->load->view('admin_dieukhien',$data);
+	}
 	function dieukhien1()
 		{
 			$user = $this->session->userdata('user'); 

@@ -14,7 +14,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
 </head>
 <body>
-
+ 
 
 	
 <div class=" menu-left" style="margin-top: -10px;">
@@ -92,7 +92,7 @@
 								    <span class="caret"></span> 
 								  </button> 
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								    <li><a href="<?php echo base_url()?>nhanvien/change">Thay đổi thông tin</a></li>
+								    <li><a href="<?php echo base_url()?>nhanvien/change/">Thay đổi thông tin</a></li>
 								    <li><a href="<?php echo base_url()?>admin/logout">Đăng xuất</a></li> 
 								  </ul>
 							</div>
@@ -119,26 +119,30 @@
 		</div>
 		<div class="col-lg-12">
 			<div class="col-lg-4">
-			
+			 
 				<div>
+				<?php echo form_open('Dieukhien/get_date')?>
 					<tr>
 						<td>Ngày bắt đầu</td>
 						<td><input type="date" name="ngaybd"></td>
+						<td></td>
 					</tr><br/><br/>
 					<tr>
 						<td>Ngày kết thúc</td>
 						<td><input type="date" name="ngaykt"></td>
+						<td><button class="btn btn-default">Tìm</button></td>
 					</tr><br/><br/>
+
 					<p style="font-weight: bold;font-size: 22px; color: #41362f">Thống kê doanh thu</p>
 					<?php 
 					$s = 0;
-			  				if(isset($hoadonban1)){
-			  					foreach ($hoadonban1 as $key) {
+			  				if(isset($getdate)){
+			  					foreach ($getdate as $key) {
 			  					$s+=$key->Tong_gia;}} 
 							?>
 					<p style="font-weight: bold;font-size: 27px;color: orange; margin-top: -11px;"><?php echo number_format($s);?> VNĐ</p>
 				</div>
-				
+					<?php echo form_close()?>
 				<div>
 					<p style="font-weight: bold;font-size: 22px; color: #41362f">Lần đặt hàng cuối cùng</p>
 					<div>

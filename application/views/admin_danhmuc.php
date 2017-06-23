@@ -121,7 +121,6 @@
 				</a>
   			</div>			
   			<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
-
 				<a href="#login-box" class="btn btn-success lien-he login-window button orange">
 				<span class="glyphicon"></span>
 				Thêm danh mục
@@ -134,18 +133,20 @@
 				<table class="table table-bordered">
 				    <thead>
 				      <tr>
-				        <th>ID</th>
+				        <th>STT</th>
 				        <th>Tên danh mục</th>
 				        <th>Hoạt động</th>
 				      </tr>
 				    </thead>
 				    <tbody>
 				    <?php 
+				    $i = 0;
 					  				if(isset($danhmuc1)){
 					  					foreach ($danhmuc1 as $key) {
+					  						$i+=1;
 									?>
 				      <tr>
-				        <td><?php echo $key->danhmuc_id?></td>
+				        <td><?php echo $i?></td>
 				        <td><?php echo $key->tendanhmuc?></td>
 				        <td><a href="<?php echo base_url()?>danhmuc/edit/<?php echo $key->danhmuc_id?>">Sửa</a>
 				        <a href="<?php echo base_url()?>danhmuc/delete/<?php echo $key->danhmuc_id?>">Xóa</a>
@@ -186,9 +187,7 @@
                 </table>
                 <div class="text-center">
                 	<button class="btn btn-default" type="submit" style="margin: 10px;">
-                		<a href="">
                 			Lưu danh mục mới
-                		</a>
                 	</button>
                 </div>
             <p>

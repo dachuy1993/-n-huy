@@ -107,6 +107,7 @@
 			  				if(isset($chitiet1)){
 			  					foreach ($chitiet1 as $key) { 
 							?>
+							<?php }}?> 
 			<div class="btn-group" role="group" aria-label="..." style="float: right; margin: 20px;">
 
 				<a href="<?php echo base_url()?>Admin_kho/xuatkho/<?php echo $key->Dondh_id?>" class="btn btn-success lien-he login-window button orange">
@@ -114,7 +115,7 @@
 				Phiếu xuất kho 
 				</a>
   			</div> 
-  			<?php }}?> 
+  			
 		</div>
 		<p class="text-center" style="font-size: 20px; color: blue;">CHI TIẾT ĐƠN MUA HÀNG</p>
 		<div class="col-md-12"  style="height: 250px;overflow-x: hidden;">

@@ -167,7 +167,7 @@
             <?php 
             $style = array('class'=>'login-content');
             echo form_open('giohang/save',$style);
-             ?>
+             ?> 
                 <table>
                 	<tr>
                 		<td colspan="2"><label>

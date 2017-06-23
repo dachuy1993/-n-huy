@@ -5,7 +5,7 @@
 class Hoadonban_model extends CI_Model
 {
 	
-	function get()
+	function get() 
 	{
 		$get = $this->db->get('hoadonban');
 		if($get->num_rows()>0)
@@ -24,9 +24,10 @@ class Hoadonban_model extends CI_Model
 	}
 	function getdate($ngaybd,$ngaykt)
 	{
-		$this->db->where('ngay_lap_hd>=',$ngaybd);
-		$this->db->where('ngay_lap_hd<=',$ngaykt);
-		$get = $this->db->get('hoadonban');
+		$this->db->where('Ngay_lap>=',$ngaybd);
+		$this->db->where('Ngay_lap<=',$ngaykt);
+		$this->db->where('Tinh_trang','1');
+		$get = $this->db->get('dondh'); 
 		if($get->num_rows()>0)
 		{
 			return $get->result(); //tra ve duoi dang mang

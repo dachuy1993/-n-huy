@@ -142,7 +142,7 @@ echo $id;
 						
 					<?php if(isset($list_chon))
 							{
-
+ 
 								?>
 								<table class="table table-bordered" >
 							<?php foreach($list_chon as $key){?>
@@ -232,7 +232,7 @@ echo $id;
 			            	echo form_open('Admin_nhapkho/add',$style);
 			             ?>  
 			             <tr>
-			             	<td colspan="2">Thông tin sản phẩm mới nhập</td>
+			             	<td colspan="2" style="text-align: center;">Thông tin sản phẩm mới nhập</td>
 			             </tr>
 						<tr>
 							<td>Tên sản phẩm</td>

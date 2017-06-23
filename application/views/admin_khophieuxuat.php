@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Admin</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<title>Admin</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -20,7 +20,9 @@
 </head>
 <body>
 
- <div class=" menu-left" style="margin-top: -10px;">
+
+	
+<div class=" menu-left" style="margin-top: -10px;">
 
     <ul>
 
@@ -39,7 +41,7 @@
             <a href="<?php echo base_url()?>order" style = "display: block;">
                 <span class=" glyphicon glyphicon-usd icon" ></span>
                 <p style="color: white;">Bán hàng</p>
-            </a> 
+            </a>
         </li>
         <li>
             <a href="<?php echo base_url()?>product" style = "display: block;">
@@ -48,14 +50,14 @@
             <p style="color: white;">Các sản phẩm</p>
             </a>
         </li>
-        <li style="background: #524d49">
+        <li>
             <a href="<?php echo base_url()?>Noidung" style = "display: block;">
                 <span class="  glyphicon glyphicon-heart icon" ></span>
             
             <p style="color: white;">Nội dung</p>
             </a>
         </li>
-        <li>
+        <li style="background: #524d49">
             <a href="<?php echo base_url()?>Admin_kho">
                 <span class=" glyphicon glyphicon-book icon" ></span> 
             </a>
@@ -65,15 +67,15 @@
 </div>
 <div class="menu-right">
 	<div>
-		<div class="row">
+		<div class="row" style="margin-top: 10px;margin-right: 0px;">
 			<div class="col-lg-5">
-				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">THÊM BÀI VIẾT</p>
+				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">KHO PHIẾU XUẤT</p>
 			</div>
 			<div class="col-lg-7">
-				<div class="icon-user"  style="float: right;">
+				<div class="icon-user"  style="float: right;"> 
 					<ul>
 						<li>
-							<div class="input-group" style="width: 370px;">
+							<div class="input-group" style="width: 370px;"">
 					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
 					        		<button class="btn btn-default" type="button">Tìm Kiếm</button>
@@ -82,7 +84,7 @@
 						</li>
 						<li>
 							<a href="">
-								<span class=" glyphicon glyphicon-bell"><sup>0</sup></span>
+								<span class=" glyphicon glyphicon-bell" style="margin: 0 10px 0 10px;"><sup>0</sup></span>
 							</a>
 						</li>
 						<li>
@@ -103,54 +105,53 @@
 				</div>
 			</div>
 		</div>
-		<?php 
-            	$style = array(
-            		'class' => 'login-content',
-            		);
-            	echo form_open('Noidung/add',$style);
-             ?>
-		<div class="row" style="background: #ccc;margin: 20px 0 20px 0;">
-			<button type="submit" class="btn btn-default" style="margin: 20px; background: orange; float: right;">Lưu bài viết</button>
+		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
+  			<div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
+
+				<a href="<?php echo base_url()?>Admin_nhapkho" class="btn btn-info lien-he login-window button orange">
+				<span class="glyphicon"></span>
+				Nhập sản phẩm
+				</a>
+  			</div>
 		</div>
-		<div class="row">
-			<div style="width: 1000px;margin: 0 auto;">
-				<table class="table_edit_sp">
-					<tr>
-						<td colspan="2" style="text-align: center;font-size: 25px;">Thông tin bài viết</td>
-					</tr>
-					<tr>
-						<td  style="width: 150px;">Danh mục</td>
-						<td><select name="danhmuc">
-							<option value="Bài viết tư vấn">Bài viết tư vấn</option>
-							<option value="Giới thiệu">Giới thiệu</option>	
-							<option value="Chính sách vận chuyển">Chính sách vận chuyển</option>
-							<option value="Chính sách bảo hành">Chính sách bảo hành</option>
-							<option value="Hình thức thanh toán">Hình thức thanh toán</option>
-							<option value="Đổi trả hàng">Đổi trả hàng</option>
-						</select></td>
-					</tr>
-					<tr>
-						<td>Tên tiêu đề</td>
-						<td>
-							<input class="form-control" type="text" name="tentieude" value="">
-						</td>
-					</tr>
-					<tr>
-						<td>Nội dung</td>
-						<td>
-							<textarea rows="20" name="noidung" class="form-control tinymce"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>Người viết</td>
-						<td><?php if(isset($user)){echo $user;} ?></td>
-					</tr>
-				</table>
-			</div>
+		<div>
+			<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tên sản phẩm</th>
+        <th>Ảnh sản phẩm</th>
+        <th>Giá nhập</th>
+        <th>Số lượng sản phẩm hiện có</th>
+       	<th>Kích thước</th>
+       	<th>Màu sắc</th>
+       	<th>Chất liệu</th>
+       	<th>Thời gian bảo hành</th>
+      </tr>
+    </thead> 
+    <tbody><?php $stt=0;?>
+    <?php 
+	  				if(isset($kho1)){
+	  					foreach ($kho1 as $key) {  
+	  						$stt+=1;
+					?>
+      <tr>
+        <td><?php echo $stt?></td>
+        <td><?php echo $key->Ten_sp?></td>
+        <td><?php echo $key->Anh_sp?></td>
+        <td><?php echo number_format($key->Gia_nhap)?></td>
+        <td><?php echo $key->Soluong_kho?></td>
+        <td><?php echo $key->Kichthuoc_sp?></td>
+        <td><?php echo $key->Mausac_sp?></td>
+        <td><?php echo $key->Chatlieu_sp?></td>
+        <td><?php echo $key->Baohanh_sp?></td>
+      </tr>
+      <?php }}?>
+    </tbody>
+  </table>
 		</div>
-		 <?php echo form_close() ?>
-		}?>
 	</div>
 </div>
+</div>
+
 </body>
-</html>

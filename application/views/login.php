@@ -17,7 +17,7 @@
 		 		echo $err;
 		 	}
 
-		 	 ?>
+		 	 ?> 
 		 	<div style="float: left;">
 			 	<table>
 			 		<tr>

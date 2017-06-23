@@ -89,6 +89,26 @@
 			$delete = $this->Customer_model->delete($khachhang_id);
 			redirect('customer');
 		}
-	
+		function admin_tk(){
+			$user = $this->session->userdata('user');
+			$tk_kh = $this->input->post('admin_tk_kh');
+			if(isset($tk_kh))
+			{
+				$data['user'] = $user;
+				$getinfo1 = $this->Customer_model->get_tk($tk_kh);
+				if($getinfo1) 
+				{ 
+					$data['getinfo1'] = $getinfo1; 
+
+				}
+				else{
+					$data['err'] = "từ cần tìm k tồn tại";
+				
+				}
+				$this->load->view('admin_timkiemkh',$data); 
+			}
+			else
+				echo $tk_kh;
+		} 
 	}
  ?>

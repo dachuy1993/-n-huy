@@ -124,6 +124,16 @@ class Product_model extends CI_Model
  		$this->db->insert('chitietnhapkho',$data);
  		return true;
  	}
+ 	function xuatkho($data){
+ 		$query = $this->db->insert('xuatkho',$data);
+ 		if($query){
+			return true; 
+		}else return false;
+ 	}
+ 	function xuatchitietkho($data){
+ 		$this->db->insert('chitietxuatkho',$data);
+ 		return true;
+ 	}
 }
 
  ?>

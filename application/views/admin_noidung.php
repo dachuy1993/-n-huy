@@ -83,11 +83,11 @@
 					      		</span>
 					    	</div>
 						</li>
-						<li>
-							<a href="">
-								<span class=" glyphicon glyphicon-bell"><sup>0</sup></span>
-							</a>
-						</li>
+						<li style="margin:  0 5px;">
+                            <a href="">
+                                <span class=" glyphicon glyphicon-bell"><sup>0</sup></span>
+                            </a>
+                        </li>
 						<li>
 							<div class="dropdown">
 								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

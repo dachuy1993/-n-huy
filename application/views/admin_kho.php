@@ -110,9 +110,23 @@
 
 				<a href="<?php echo base_url()?>Admin_nhapkho" class="btn btn-info lien-he login-window button orange">
 				<span class="glyphicon"></span>
-				Nhập kho sản phẩm mới
+				Nhập sản phẩm
 				</a>
   			</div>
+            <div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
+
+                <a href="<?php echo base_url()?>Admin_kho/khophieuxuat" class="btn btn-info lien-he login-window button orange">
+                <span class="glyphicon"></span>
+                Phiếu xuất
+                </a>
+            </div>
+            <div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
+
+                <a href="<?php echo base_url()?>Admin_nhapkho" class="btn btn-info lien-he login-window button orange">
+                <span class="glyphicon"></span>
+                Phiếu nhập
+                </a>
+            </div>
 		</div>
 		<div>
 			<table class="table table-bordered">
@@ -127,7 +141,6 @@
        	<th>Màu sắc</th>
        	<th>Chất liệu</th>
        	<th>Thời gian bảo hành</th>
-        <th>Hoạt động</th>
       </tr>
     </thead> 
     <tbody><?php $stt=0;?>
@@ -146,8 +159,6 @@
         <td><?php echo $key->Mausac_sp?></td>
         <td><?php echo $key->Chatlieu_sp?></td>
         <td><?php echo $key->Baohanh_sp?></td>
-        <td><a href="<?php echo base_url()?>Admin_kho/nhapkhocu/<?php echo $key->sanpham_id?>">Nhập kho</a>
-        </td>
       </tr>
       <?php }}?>
     </tbody>

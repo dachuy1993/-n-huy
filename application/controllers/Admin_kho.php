@@ -20,7 +20,9 @@ class Admin_kho extends CI_Controller
 			redirect('admin/login');
 			}
 		} 
-
+	function khophieuxuat(){
+		$this->load->view('Admin_khophieuxuat');
+	}
 	function xuatkho($dondh_id)
 		{
 		$data = array();

@@ -26,23 +26,6 @@
 			}
 			// redirect('home');
 		}
-		// function hoadonban()
-		// {
-		// 	$user = $this->session->userdata('user');
-		// 	if(isset($user)){
-		// 		$data = array();
-		// 		$order = $this->Order_model->get();
-		// 		$data['user'] = $user;
-		// 		if ($order) {
-		// 			$data['order1'] = $order;
-		// 		}
-		// 		$data['user'] = $user;
-		// 		$this->load->view('admin_hoadonban',$data);
-
-		// 	}else{
-		// 		redirect('admin');
-		// 	}
-		// }
 		
 		function hoadonban()
 		{
@@ -148,9 +131,11 @@
 					'Tinh_trang' => $trang_thai,
 					);
 				$edit = $this->Order_model->edit($Dondh_id,$edit);
+
+
 				redirect('order');
 			}
-			if($getinfo){
+			if($getinfo){ 
 				$data['getinfo'] = $getinfo; 
 			}
 			else{

@@ -25,13 +25,14 @@
 			$getinfo = $this->Nhanvien_model->getinfo($id);
 			
 			if($getinfo){
+				// var_dump($getinfo);die()
 				$data['getinfo'] = $getinfo;
 			}
 			else
 			{
 				$data['err'] = 'Nhân viên này không tồn tại';
 			}
-			$this->load->view('admin_thaydoithongtin');
+			$this->load->view('admin_thaydoithongtin',$data);
 		}
 		function edit($nhanvien_id)
 		{
@@ -61,6 +62,32 @@
 				$data['err'] = "sản phầm này k tồn tại";
 			}
 			$this->load->view('admin_edit_nhanvien',$data);
+		}
+		function editnv(){
+			$id = $this->session->userdata('id');
+			$getinfo = $this->Nhanvien_model->getinfo($id);
+			$hoten = $this->input->post('hoten');
+			$diachi = $this->input->post('diachi');
+			$sdt = $this->input->post('sdt');
+			$mkcu = $this->input->post('mkcu');
+			$mkmoi = $this->input->post('mkmoi');
+			$mkmoi2 = $this->input->post('mkmoi2');
+			foreach ($getinfo as $key) {
+				$matkhaucu = $key->mat_khau;
+			}
+			if($mkcu == $matkhaucu && $mkmoi == $mkmoi2 && isset($hoten)&& isset($diachi) && isset($sdt) && isset($mkcu) && isset($mkmoi) && isset($mkmoi2)){
+				$edit = array(
+					'ho_ten' =>$hoten,
+					'dia_chi' =>$diachi,
+					'sdt' =>$sdt,
+					'mat_khau' =>$mkmoi,
+					);
+				$edit = $this->Nhanvien_model->edit($id,$edit);
+				redirect('nhanvien/change');
+			}
+			else{
+				echo 'Mời bạn nhập lại mật khẩu';
+			}
 		}
 		function add()
 		{

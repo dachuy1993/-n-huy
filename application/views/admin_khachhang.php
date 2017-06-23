@@ -81,12 +81,14 @@
 				<div class="icon-user"  style="float: right;">
 					<ul>
 						<li>
+                        <?php echo form_open('customer/admin_tk');?>
 							<div class="input-group" style="width: 370px;">
-					      		<input type="text" class="form-control timkiem" placeholder="Search for...">
+					      		<input type="text" name="admin_tk_kh" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
-					        		<button class="btn btn-default" type="button">Tìm Kiếm</button>
+					        		<button class="btn btn-default" type="submit">Tìm Kiếm</button>
 					      		</span>
 					    	</div>
+                            <?php echo form_close();?>
 						</li>
 						<li>
 							<a href="">

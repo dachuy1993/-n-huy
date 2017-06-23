@@ -1,6 +1,6 @@
 <!-- <?php 
 // include 'admin_header.php';
- ?> 
+ ?>
  -->
 <!DOCTYPE html>
 <html>
@@ -73,12 +73,12 @@
 				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">SẢN PHẨM</p>
 			</div>
 			<div class="col-lg-7">
-				<div class="icon-user"  style="float: right;"> 
+				<div class="icon-user"  style="float: right;">
 					<ul>
 						<li>
                         <?php echo form_open('Product/admin_tk');?>
 							<div class="input-group" style="width: 370px;">
-					      		<input type="text" name="admintimkiemsp" class="form-control timkiem" placeholder="Search for...">
+					      		<input type="text" name="timkiemsp" class="form-control timkiem" placeholder="Search for...">
 					      		<span class="input-group-btn">
 					        		<button class="btn btn-default" type="submit">Tìm Kiếm</button>
 					      		</span>
@@ -108,15 +108,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" style="background: #ccc;margin: 20px 0 20px 0; ">
-			<div class="btn-group" role="group" aria-label="..." style="float: left; margin: 20px;">
-
-				<a href="<?php echo base_url()?>danhmuc" class="btn btn-info lien-he login-window button orange">
-				<span class="glyphicon"></span>
-				Danh mục
-				</a>
-  			</div>
+		<div class="row" style="height: 76px; background: #ccc;margin: 20px 0 20px 0; ">
 			
+			<a href="<?php echo base_url()?>product" class = "btn btn-default" style="float: right; margin-top: 23px; margin-right: 50px;">Trở về</a>
 		</div>
 		<div>
 			<table class="table table-bordered" style="text-align: center;">
@@ -141,8 +135,8 @@
                 </thead><?php $stt = 0;?>
                 <tbody>
                 <?php 
-            	  				if(isset($product1)){
-            	  					foreach ($product1 as $key) { 
+            	  				if(isset($getinfo1)){
+            	  					foreach ($getinfo1 as $key) { 
             	  						$stt +=1;
             					?>
                   <tr>

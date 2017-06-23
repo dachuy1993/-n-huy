@@ -63,12 +63,12 @@
 
 <div class="menu-right">
 	<div>
-		<div class="row" style="margin-top: 10px;">
+		<div class="row" style="margin-top: 10px; margin-right: 0px;">
 			<div class="col-lg-5">
 				<p style="font-size: 30px;font-weight: bold; padding: 0px 0 0 20px;">ĐƠN ĐẶT HÀNG</p>
 			</div>
 			<div class="col-lg-7">
-				<div class="icon-user"  style="float: right;">
+				<div class="icon-user"  style="float: right;margin-right: 36px;">
 					<ul>
 						<li style="margin: 0 5px;">
 							<div class="input-group" style="width: 370px;">
@@ -191,7 +191,7 @@
 				    	?>
 				    	<a href="<?php echo base_url()?>order/edit/<?php echo $key->Dondh_id?>">giao hàng</a>
 				    	<?php
-				        	}
+				        	} 
 				        	if($key->Tinh_trang === "2"){
 						?>
 						<a href="<?php echo base_url()?>order/delete/<?php echo $key->Dondh_id?>">Xác nhận</a>
@@ -226,7 +226,7 @@
              ?>
                 <table>
                 	<tr>
-                		<td colspan="2"><label>
+                		<td colspan="2"><label> 
 
 						Thông tin đơn đặt hàng
 				</label></td>

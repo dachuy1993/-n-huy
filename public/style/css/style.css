@@ -22,13 +22,13 @@
 	width: 100%;
 	padding: 0;
 	margin: 0;
-}
+} 
 .main_menu ul li{
 
 	list-style: none;
 	float: left;
 	/*display: inline;*/
-	padding: 2px 15px;
+	padding: 1px 15px;
 	line-height: 37px;
 	position: relative;
 }
@@ -407,10 +407,11 @@ a, a:visited, a:active{
 }
 .main_footer ul li a{
     color: white;
-
+    padding-right: 66px;
 }
 .main_footer ul li{
     width: 200px;
+
 }
 .giasp{
     margin: 0 0 -4px;

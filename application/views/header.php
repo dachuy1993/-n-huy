@@ -14,8 +14,8 @@
 <script type="text/javascript" src="<?php echo base_url()?>public/style/js/javacript.js"></script>
 </head>
 <body style="background: url(<?php echo base_url()?>public/img/bg.gif) repeat;">
-<nav class="navbar navbar-fixed-top">
-
+<nav class="navbar ">
+<!-- navbar-fixed-top -->
 <section id="header">
 <div class="row max" style="">
 	<div class="col-lg-6">
@@ -27,15 +27,17 @@
 	</div>
 	<div class="col-lg-6">
 	<?php 
-		
+		echo form_open('Timkiem');
 
 	?> 
 		<div class="input-group">
-      		<input type="text" class="form-control" name="timkiem" placeholder="Search for...">
-      		<span class="input-group-btn">
-        		<a href="<?php echo base_url()?>Timkiem" class="btn btn-default" type="submit">Tìm Kiếm</a>
+      		<input type="text" style="height: 28px;" class="form-control" name="timkiem" placeholder="Search for...">
+      		<span class="input-group-btn" >
+
+        		<button class="btn btn-default" style="margin-left: 30px; height: 28px;" type="submit">Tìm Kiếm</button>
       		</span>
     	</div>
+    	<?php echo form_close();?>
     	<div class="input-group" style = "float: right;">
 	    	<h1>
 				<a href="#">
@@ -53,7 +55,7 @@
 			<li><a href="<?php echo base_url()?>Gioithieu">GIỚI THIỆU</a></li>
 			<?php 
 			if(isset($danhmuc)){
-				foreach ($danhmuc as $key) { 
+				foreach ($danhmuc as $key) {  
 			?>
 			<li><a href="<?php echo base_url()?>danhmuc/view/<?php echo $key->danhmuc_id?>"><?php echo $key->tendanhmuc ?></a>
 				<ul>
@@ -86,7 +88,7 @@
 </section>
 	
 </nav>
-<section class = "max" style="margin-top:177px ">
+<section class = "max" style="margin-top:-25px; ">
 	<div class="slide">
             <div id="slideshow" class="cycle-slideshow"
             data-cycle-fx="scrollHorz"

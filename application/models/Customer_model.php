@@ -49,6 +49,14 @@ class Customer_model extends CI_Model
 			return $get->result(); 
 		}else return false;
  	}
+ 	function get_tk($ten_kh)
+	{
+		$this->db->like('Ten_kh',$ten_kh);
+		$getinfo = $this->db->get('khachhang');
+		if($getinfo->num_rows() > 0){
+			return $getinfo->result();
+		}else return false;
+	}
  	
 
 }

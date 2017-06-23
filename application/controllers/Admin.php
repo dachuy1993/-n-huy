@@ -7,6 +7,7 @@
 		function index ()
 		{
 			$user = $this->session->userdata('user'); 
+			$pass = $this->session->userdata('pass');
 				$data = array();
 				$product = $this->Product_model->get();
 				if(isset($user))
@@ -42,13 +43,13 @@
 			$user = $this->input->post('user');
 			$pass = $this->input->post('pass');
 			if(isset($user) && isset($pass)){
-				$login = array(
+				$login = array( 
 					'tai_khoan' => $user, 
 					'mat_khau' => $pass,
 					);
 				$login = $this->Nhanvien_model->login($login); 
 				if($login){
-					foreach ($login as $key) {
+					foreach ($login as $key) { 
 						$id = $key->nhanvien_id;
 					}
 					$session = array(

@@ -38,7 +38,7 @@ class danhmuc extends CI_Controller
 			$this->load->view('admin_nhapkho',$data);
 		}
 		function view($danhmuc_id)
-		{
+		{ 
 			$danhmuc = $this->Danhmuc_model->get();
 			$getdm = $this->Product_model->get_dm($danhmuc_id);
 			if($getdm){
@@ -90,23 +90,7 @@ class danhmuc extends CI_Controller
 			if($getctdm){
 				$data['getctdm'] = $getctdm;
 			}
-			// $getinfo = $this->Danhmuc_model->getinfo($chitiet_dm_id);
-			// if($getinfo){
-			// 	$data['getinfo'] = $getinfo;
-			// }
-			// else{
-			// 	$data['err'] = "danh mục này k tồn tại";
-			// }
-			// if($catalog){
-			// 	$data['catalog'] = $catalog;
-			// }
-			// $getinfo = $this->Chitiet_dm_model->getinfo($chitiet_dm_id);
-			// if($getinfo){
-			// 	$data['getinfo'] = $getinfo;
-			// }
-			// else{
-			// 	$data['err'] = "danh mục này k tồn tại";
-			// }
+			
 			$sanpham = $this->Product_model->get_sp($ma_sp);
 			if($sanpham){
 				$data['sanpham'] = $sanpham;

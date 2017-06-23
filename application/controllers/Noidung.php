@@ -87,19 +87,25 @@ class Noidung extends CI_Controller
 	
 	function viewadd()
 	{
-		$this->load->view('admin_add_noidung');
+		
+		$user = $this->session->userdata('user');
+		$data['user'] = $user;
+		$this->load->view('admin_add_noidung',$data);
 	}
 	function add()
 	{
 		$danhmuc = $this->input->post('danhmuc');
 		$tieude = $this->input->post('tentieude');
 		$noidung = $this->input->post('noidung');
+		$user = $this->session->userdata('user');
+		
 		if(isset($danhmuc) && isset($tieude) &&isset($noidung))
 		{
 			$data = array(
 			'ten_tieu_de' =>$tieude,
 			'noi_dung' =>$noidung,
 			'danh_muc' =>$danhmuc,
+			'nguoiviet' =>$user,
 				);
 			$insert = $this->Noidung_model->add($data);
 			redirect('Noidung');

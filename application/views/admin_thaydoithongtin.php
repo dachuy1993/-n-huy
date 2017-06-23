@@ -43,7 +43,7 @@
 				<span class=" glyphicon glyphicon-book icon" ></span>
 			
 			<p style="color: white;">Các sản phẩm</p>
-			</a>
+			</a> 
 		</li>
 		<li>
 			<a href="<?php echo base_url()?>Noidung" style = "display: block;">
@@ -58,8 +58,8 @@
 			</a>
 			<p style="color: white;">Quản lý kho</p>
 		</li>
-	</ul>
-</div>
+	</ul> 
+</div> 
 <div class="menu-right">
 	<div class="row" style="margin-top: 10px; margin-right: 0px;">
 		<div class="col-lg-5">
@@ -67,11 +67,57 @@
 		</div>
 		<div class="col-lg-7"></div>
 	</div>
+	<?php 
+		echo form_open('nhanvien/editnv');
+	?>
 	<div class="row" style="background: #ccc; height: 76px;">
+		<div style="float: left;">
+			<a href="<?php echo base_url()?>Dieukhien" class="btn btn-default" style="margin-top: 20px;margin-left: 30px;">Trở về</a>
+		</div>
+		<div style="float: right;">
+			<button class="btn btn-default" type="submit" style="float: right;margin-right: 40px; margin-top: 20px;">Lưu thông tin</button>
+		</div>
 	</div>
 	<div>
-		<p>THÔNG TIN NHÂN VIÊN</p>
-		
+		<p style="font-size: 20px; text-align: center;margin-top: 20px;">THÔNG TIN NHÂN VIÊN</p>
+		<?php if(isset($getinfo)){
+			foreach ($getinfo as $key) {
+			?>
+
+		<table class="table" style="width: 350px; margin-left: 440px;">
+			
+			<tr>
+				<td>Họ và tên</td>
+				<td><input type="text" name="hoten" value="<?php echo $key->ho_ten?>"></input></td>
+				
+			</tr>
+			<tr>
+				<td>Địa chỉ</td>
+				<td><input type="text" name="diachi" value="<?php echo $key->dia_chi?>"></input></td>
+				
+			</tr>
+			<tr>
+				<td>Số điện thoại</td>
+				<td><input type="text" name="sdt" value="<?php echo $key->sdt?>"></td>
+				
+			</tr>
+			<TR>
+				<td>Mật khẩu cũ</td>
+				<td><input type="text" name="mkcu" placeholder="Mời bạn nhập mật khẩu cũ"></td>
+				
+			</TR>
+			<tr>
+				<td>Mật khẩu mới</td>
+				<td><input type="text" name="mkmoi" placeholder="Mời bạn nhập mật khẩu mới"></td>
+			</tr>
+			<tr>
+				<td>Xác nhận mật khẩu</td>
+				<td><input type="text" name="mkmoi2" placeholder="Mời bạn nhập lại mật khẩu mới"></td>
+			</tr>
+		</table>
+		<?php }}
+		else echo 1?>
 	</div>
+	<?php echo form_close();?>
 </div>
  
